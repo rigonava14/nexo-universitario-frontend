@@ -1,5 +1,7 @@
 import { FormEvent, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { getRole, signOut } from './auth'
+import { loadInstitutionSettings } from './institution'
 import {
   Award,
   Bell,
@@ -74,11 +76,6 @@ const news = [
 
 type NoticeSetter = (message: string) => void
 
-function StudentLogin({ onLogin }: { onLogin: () => void }) {
-  function submit(event: FormEvent) { event.preventDefault(); onLogin() }
-  return <main className="student-login"><section className="student-login-card"><div className="student-login-brand"><span><GraduationCap size={25} /></span><div><strong>Nexo</strong><small>Portal de estudiantes</small></div></div><p className="student-kicker">BIENVENIDO A TU UNIVERSIDAD</p><h1>Hola, estudiante.</h1><p>Consulta tu información académica y realiza tus trámites desde un solo lugar.</p><form onSubmit={submit}><label>Matrícula<input defaultValue="20230184" required /></label><label>Contraseña<input type="password" defaultValue="universidad" required /></label><button>Ingresar a mi portal <ChevronRight size={17} /></button></form><small className="student-demo">Acceso de demostración con los datos precargados.</small><a href="/aspirantes">¿Aún no eres alumno? Consulta admisiones</a></section><aside><div className="student-login-quote"><span>“</span><blockquote>Aprender es descubrir que algo es posible.</blockquote><p>— Fritz Perls</p></div></aside></main>
-}
-
 function StudentSidebar({ active, open, onClose, onNavigate, onLogout }: { active: string; open: boolean; onClose: () => void; onNavigate: (slug: string) => void; onLogout: () => void }) {
   return <aside className={`student-sidebar ${open ? 'open' : ''}`}><div className="student-side-brand"><span><GraduationCap size={23} /></span><div><strong>Nexo</strong><small>Portal de estudiantes</small></div><button onClick={onClose}><X size={19} /></button></div><div className="student-mini-profile"><div>AM</div><strong>Ana Martínez López</strong><span>Ing. en Sistemas · 6° semestre</span></div><nav>{studentNavigation.map((item) => { const Icon = item.icon; return <button className={active === item.slug ? 'active' : ''} key={item.slug} onClick={() => { onNavigate(item.slug); onClose() }}><Icon size={18} /><span>{item.label}</span></button> })}</nav><button className="student-logout" onClick={onLogout}><LogOut size={17} /> Cerrar sesión</button></aside>
 }
@@ -137,17 +134,15 @@ function ProfilePage({ notify }: { notify: NoticeSetter }) {
 export default function StudentPortal() {
   const location = useLocation()
   const navigate = useNavigate()
-  const [authenticated, setAuthenticated] = useState(() => sessionStorage.getItem('nexo-student-session') === 'active')
   const [menuOpen, setMenuOpen] = useState(false)
   const [notice, setNotice] = useState('')
   const active = location.pathname.split('/')[2] || 'inicio'
 
   function notify(message: string) { setNotice(message); window.setTimeout(() => setNotice(''), 2800) }
-  function login() { sessionStorage.setItem('nexo-student-session', 'active'); setAuthenticated(true); navigate('/alumnos/inicio') }
-  function logout() { sessionStorage.removeItem('nexo-student-session'); setAuthenticated(false); navigate('/alumnos') }
+  function logout() { signOut(); navigate('/') }
   function go(slug: string) { navigate(`/alumnos/${slug}`) }
 
-  if (!authenticated) return <StudentLogin onLogin={login} />
+  if (getRole() !== 'student') return <Navigate to="/" replace />
 
   let content: React.ReactNode
   if (active === 'clases') content = <ClassesPage />
@@ -161,5 +156,5 @@ export default function StudentPortal() {
   else if (active === 'perfil') content = <ProfilePage notify={notify} />
   else content = <StudentHome go={go} notify={notify} />
 
-  return <div className="student-shell"><StudentSidebar active={active} open={menuOpen} onClose={() => setMenuOpen(false)} onNavigate={go} onLogout={logout} /><div className="student-main"><header className="student-topbar"><button className="student-menu-button" onClick={() => setMenuOpen(true)}><Menu size={20} /></button><div><strong>Universidad Metropolitana</strong><span>Periodo 2026-2</span></div><div><button className="student-notification"><Bell size={19} /><i /></button><div className="student-top-avatar">AM</div></div></header><main className="student-content">{content}</main></div>{menuOpen && <button className="student-menu-overlay" onClick={() => setMenuOpen(false)} />}{notice && <div className="toast"><CheckCircle2 size={17} /> {notice}</div>}</div>
+  return <div className="student-shell"><StudentSidebar active={active} open={menuOpen} onClose={() => setMenuOpen(false)} onNavigate={go} onLogout={logout} /><div className="student-main"><header className="student-topbar"><button className="student-menu-button" onClick={() => setMenuOpen(true)}><Menu size={20} /></button><div><strong>{loadInstitutionSettings().name}</strong><span>Periodo 2026-2</span></div><div><button className="student-notification"><Bell size={19} /><i /></button><div className="student-top-avatar">AM</div></div></header><main className="student-content">{content}</main></div>{menuOpen && <button className="student-menu-overlay" onClick={() => setMenuOpen(false)} />}{notice && <div className="toast"><CheckCircle2 size={17} /> {notice}</div>}</div>
 }

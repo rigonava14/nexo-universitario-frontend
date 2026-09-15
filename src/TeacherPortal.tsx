@@ -1,5 +1,7 @@
 import { FormEvent, useMemo, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { getRole, signOut } from './auth'
+import { loadInstitutionSettings } from './institution'
 import {
   AlertCircle,
   BarChart3,
@@ -61,11 +63,6 @@ const teacherNav = [
   { label: 'Mi perfil', slug: 'perfil', icon: UserRound },
 ]
 
-function TeacherLogin({ onLogin }: { onLogin: () => void }) {
-  function submit(event: FormEvent) { event.preventDefault(); onLogin() }
-  return <main className="teacher-login"><aside><div className="teacher-login-message"><span><School size={29} /></span><p>PORTAL DOCENTE</p><h1>Enseña.<br />Evalúa.<br />Transforma.</h1><small>Todo lo que necesitas para acompañar el aprendizaje de tus estudiantes.</small></div></aside><section><form onSubmit={submit}><div className="teacher-login-brand"><span><GraduationCap size={24} /></span><div><strong>Nexo</strong><small>Portal docente</small></div></div><p className="teacher-eyebrow">ACCESO PARA PROFESORES</p><h2>Bienvenido de nuevo</h2><p>Ingresa tus credenciales institucionales para continuar.</p><label>Número de empleado<input defaultValue="DOC-0048" required /></label><label>Contraseña<input type="password" defaultValue="universidad" required /></label><button>Ingresar al portal <ChevronRight size={17} /></button><small>Acceso de demostración con los datos precargados.</small><a href="/admin">Ir al acceso administrativo</a></form></section></main>
-}
-
 function TeacherSidebar({ active, open, go, close, logout }: { active: string; open: boolean; go: (slug: string) => void; close: () => void; logout: () => void }) {
   return <aside className={`teacher-sidebar ${open ? 'open' : ''}`}><div className="teacher-brand"><span><GraduationCap size={22} /></span><div><strong>Nexo</strong><small>Portal docente</small></div><button onClick={close}><X size={19} /></button></div><div className="teacher-card"><div>EM</div><strong>Dra. Elena Márquez</strong><span>Departamento de Sistemas</span><small>DOC-0048</small></div><nav>{teacherNav.map((item) => { const Icon = item.icon; return <button className={active === item.slug ? 'active' : ''} key={item.slug} onClick={() => { go(item.slug); close() }}><Icon size={17} /><span>{item.label}</span>{item.slug === 'evaluaciones' && <i>3</i>}</button> })}</nav><button className="teacher-logout" onClick={logout}><LogOut size={17} /> Cerrar sesión</button></aside>
 }
@@ -115,9 +112,9 @@ function TeacherProfile({ notify }: { notify: TeacherNotice }) {
 }
 
 export default function TeacherPortal(){
-  const location=useLocation();const navigate=useNavigate();const [authenticated,setAuthenticated]=useState(()=>sessionStorage.getItem('nexo-teacher-session')==='active');const [menuOpen,setMenuOpen]=useState(false);const [notice,setNotice]=useState('');const active=location.pathname.split('/')[2]||'inicio';
-  const notify=(message:string)=>{setNotice(message);window.setTimeout(()=>setNotice(''),2800)};const go=(slug:string)=>navigate(`/docentes/${slug}`);const login=()=>{sessionStorage.setItem('nexo-teacher-session','active');setAuthenticated(true);go('inicio')};const logout=()=>{sessionStorage.removeItem('nexo-teacher-session');setAuthenticated(false);navigate('/docentes')};
-  if(!authenticated)return <TeacherLogin onLogin={login}/>;
+  const location=useLocation();const navigate=useNavigate();const [menuOpen,setMenuOpen]=useState(false);const [notice,setNotice]=useState('');const active=location.pathname.split('/')[2]||'inicio';
+  const notify=(message:string)=>{setNotice(message);window.setTimeout(()=>setNotice(''),2800)};const go=(slug:string)=>navigate(`/docentes/${slug}`);const logout=()=>{signOut();navigate('/')};
+  if(getRole()!=='teacher')return <Navigate to="/" replace/>;
   let content:React.ReactNode;if(active==='grupos')content=<GroupsPage notify={notify}/>;else if(active==='evaluaciones')content=<EvaluationsPage notify={notify}/>;else if(active==='asistencia')content=<AttendancePage notify={notify}/>;else if(active==='actas')content=<EvaluationsPage actsOnly notify={notify}/>;else if(active==='historial')content=<HistoryPage notify={notify}/>;else if(active==='reportes')content=<ReportsPage notify={notify}/>;else if(active==='perfil')content=<TeacherProfile notify={notify}/>;else content=<TeacherHome go={go}/>;
-  return <div className="teacher-shell"><TeacherSidebar active={active} open={menuOpen} go={go} close={()=>setMenuOpen(false)} logout={logout}/><div className="teacher-main"><header className="teacher-topbar"><button className="teacher-menu" onClick={()=>setMenuOpen(true)}><Menu size={20}/></button><div><strong>Universidad Metropolitana</strong><span>Periodo académico 2026-2</span></div><div><button className="teacher-notification"><Bell size={19}/><i/></button><div className="teacher-avatar">EM</div></div></header><main className="teacher-content">{content}</main></div>{menuOpen&&<button className="teacher-overlay" onClick={()=>setMenuOpen(false)}/>} {notice&&<div className="toast"><CheckCircle2 size={17}/>{notice}</div>}</div>
+  return <div className="teacher-shell"><TeacherSidebar active={active} open={menuOpen} go={go} close={()=>setMenuOpen(false)} logout={logout}/><div className="teacher-main"><header className="teacher-topbar"><button className="teacher-menu" onClick={()=>setMenuOpen(true)}><Menu size={20}/></button><div><strong>{loadInstitutionSettings().name}</strong><span>Periodo académico 2026-2</span></div><div><button className="teacher-notification"><Bell size={19}/><i/></button><div className="teacher-avatar">EM</div></div></header><main className="teacher-content">{content}</main></div>{menuOpen&&<button className="teacher-overlay" onClick={()=>setMenuOpen(false)}/>} {notice&&<div className="toast"><CheckCircle2 size={17}/>{notice}</div>}</div>
 }

@@ -5,6 +5,8 @@ import App from './App'
 import './styles.css'
 import './student.css'
 import './teacher.css'
+import './settings.css'
+import './theme.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

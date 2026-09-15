@@ -11,7 +11,7 @@ npm run dev
 
 ## Incluido en esta iteración
 
-- Acceso de demostración.
+- Acceso único de demostración con redirección por rol.
 - Panel administrativo adaptable a móvil.
 - Navegación de módulos universitarios.
 - Indicadores, matrícula, actividad reciente y tabla de alumnos.
@@ -31,7 +31,7 @@ Folio de demostración con proceso aceptado: `ASP-2026-0148`.
 
 ## Portal de estudiantes
 
-- `/alumnos` — acceso del estudiante.
+- `/alumnos` — portal del estudiante; sin sesión redirige al acceso único.
 - `/alumnos/inicio` — resumen académico y próximas clases.
 - `/alumnos/clases` y `/alumnos/horario` — materias, docentes, aulas y agenda semanal.
 - `/alumnos/calificaciones` y `/alumnos/kardex` — evaluación e historial académico.
@@ -40,11 +40,11 @@ Folio de demostración con proceso aceptado: `ASP-2026-0148`.
 - `/alumnos/procesos` — servicio social, residencias, titulación y carga de evidencias.
 - `/alumnos/noticias` y `/alumnos/perfil` — avisos y datos personales.
 
-Matrícula de demostración: `20230184`.
+Cuenta de demostración: `alumno@universidad.edu.mx`.
 
 ## Portal docente
 
-- `/docentes` — acceso exclusivo para profesores.
+- `/docentes` — portal exclusivo para profesores; sin sesión redirige al acceso único.
 - `/docentes/inicio` — clases del día, grupos y evaluaciones pendientes.
 - `/docentes/grupos` — clases, grupos y datos académicos detallados.
 - `/docentes/evaluaciones` — captura editable de calificaciones por grupo.
@@ -54,7 +54,15 @@ Matrícula de demostración: `20230184`.
 - `/docentes/reportes` — estadísticas, aprobación, promedios y asistencia.
 - `/docentes/perfil` — información profesional y de contacto.
 
-Número de empleado de demostración: `DOC-0048`.
+Cuenta de demostración: `docente@universidad.edu.mx`.
+
+## Acceso único y personalización institucional
+
+- `/` — único login para alumnos, docentes, administradores y administradores del instituto.
+- `/admin/institucion` — formulario visual para nombre, siglas, lema, contacto y colores con selectores y vista previa; exclusivo para el administrador del instituto.
+- `src/content/institution.json` — configuración institucional predeterminada; el formulario genera y guarda el JSON internamente y permite exportarlo.
+
+Las cuentas de demostración son `instituto@universidad.edu.mx`, `admin@universidad.edu.mx`, `docente@universidad.edu.mx` y `alumno@universidad.edu.mx`; todas usan la contraseña `universidad`. La sesión y los roles son solo una simulación del frontend, no seguridad real. La personalización se guarda en `localStorage` de este navegador, no se publica a otros usuarios. Para un despliegue real faltan autenticación, autorización y almacenamiento compartido en backend.
 
 ## Pendiente
 

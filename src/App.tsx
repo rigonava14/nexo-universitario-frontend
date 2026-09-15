@@ -1,5 +1,5 @@
-import { FormEvent, useMemo, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { FormEvent, useEffect, useMemo, useState } from 'react'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import {
   Bell,
   BookOpen,
@@ -28,6 +28,9 @@ import { AdmissionsHome, ApplicantRegistration, ApplicantTracking } from './Publ
 import { Applicant, loadApplicants, saveApplicants } from './admissions'
 import StudentPortal from './StudentPortal'
 import TeacherPortal from './TeacherPortal'
+import InstitutionSettings from './InstitutionSettings'
+import { InstitutionSettings as InstitutionConfig, applyInstitutionSettings, loadInstitutionSettings, resetInstitutionSettings, saveInstitutionSettings } from './institution'
+import { demoAccounts, getRole, Role, routeForRole, signIn, signOut } from './auth'
 
 type IconType = typeof LayoutDashboard
 
@@ -63,6 +66,7 @@ const navigation: Array<{ title: string; items: NavItem[] }> = [
     items: [
       { label: 'Reportes', icon: TrendingUp },
       { label: 'Usuarios y permisos', icon: ShieldCheck },
+      { label: 'Personalización institucional', icon: Settings },
       { label: 'Configuración', icon: Settings },
     ],
   },
@@ -82,12 +86,17 @@ const recentStudents = [
   { initials: 'JL', name: 'Jorge Luna Pérez', id: '20260097', career: 'Ingeniería Mecatrónica', semester: '4°', status: 'Activo' },
 ]
 
-function Login({ onLogin }: { onLogin: () => void }) {
+function Login({ onLogin, institution }: { onLogin: (role: Role) => void; institution: InstitutionConfig }) {
   const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState(demoAccounts[1].email)
+  const [password, setPassword] = useState('universidad')
+  const [error, setError] = useState('')
 
   function submit(event: FormEvent) {
     event.preventDefault()
-    onLogin()
+    const role = signIn(email, password)
+    if (role) { setError(''); onLogin(role) }
+    else setError('Datos incorrectos. Usa una cuenta de demostración y la contraseña universidad.')
   }
 
   return (
@@ -96,8 +105,8 @@ function Login({ onLogin }: { onLogin: () => void }) {
         <div className="login-brand-content">
           <div className="brand-mark brand-mark--light"><GraduationCap size={27} /></div>
           <p className="eyebrow">GESTIÓN UNIVERSITARIA</p>
-          <h1>Todo tu campus,<br />en un solo lugar.</h1>
-          <p className="login-intro">Conecta procesos académicos, personas y decisiones con una plataforma creada para instituciones que quieren avanzar.</p>
+          <h1>{institution.name}<br />en un solo lugar.</h1>
+          <p className="login-intro">{institution.tagline}. Un acceso para administración, docentes y alumnos.</p>
           <div className="login-proof">
             <div className="proof-avatars"><span>AM</span><span>CR</span><span>DV</span></div>
             <div><strong>Una experiencia más simple</strong><small>para toda la comunidad universitaria</small></div>
@@ -109,37 +118,35 @@ function Login({ onLogin }: { onLogin: () => void }) {
 
       <section className="login-form-panel">
         <form className="login-card" onSubmit={submit}>
-          <div className="mobile-logo"><div className="brand-mark"><GraduationCap size={24} /></div><span>Nexo</span></div>
+          <div className="mobile-logo"><div className="brand-mark"><GraduationCap size={24} /></div><span>{institution.shortName} · Nexo</span></div>
           <p className="eyebrow eyebrow--dark">BIENVENIDO DE NUEVO</p>
           <h2>Inicia sesión</h2>
-          <p className="form-subtitle">Ingresa tus datos para acceder al panel institucional.</p>
+          <p className="form-subtitle">Ingresa con tu cuenta. Te llevaremos al portal que corresponde a tu rol.</p>
 
           <label>
             Correo institucional
-            <input type="email" defaultValue="admin@universidad.edu.mx" required />
+            <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
           </label>
           <label>
             Contraseña
             <div className="password-field">
-              <input type={showPassword ? 'text' : 'password'} defaultValue="universidad" required />
+              <input type={showPassword ? 'text' : 'password'} value={password} onChange={(event) => setPassword(event.target.value)} required />
               <button type="button" onClick={() => setShowPassword((value) => !value)}>{showPassword ? 'Ocultar' : 'Mostrar'}</button>
             </div>
           </label>
-          <div className="form-row">
-            <label className="checkbox"><input type="checkbox" defaultChecked /> Recordarme</label>
-            <button className="link-button" type="button">¿Olvidaste tu contraseña?</button>
-          </div>
           <button className="primary-button" type="submit">Entrar a la plataforma</button>
-          <p className="demo-note">Acceso de demostración: puedes entrar con los datos precargados.</p>
-          <Link className="student-access-link" to="/alumnos">Ir al portal de estudiantes</Link>
-          <Link className="teacher-access-link" to="/docentes">Ir al portal docente</Link>
+          {error && <p className="login-error" role="alert">{error}</p>}
+          <p className="demo-note">Demostración: elige una cuenta. Contraseña: universidad.</p>
+          <div className="demo-accounts">{demoAccounts.map((account) => <button type="button" key={account.role} onClick={() => { setEmail(account.email); setError('') }}>{account.label}</button>)}</div>
+          <Link className="student-access-link" to="/aspirantes">¿Eres aspirante? Consulta admisiones</Link>
+          <a className="institution-contact" href={`mailto:${institution.contactEmail}`}>Contacto institucional: {institution.contactEmail}</a>
         </form>
       </section>
     </main>
   )
 }
 
-function Sidebar({ active, onSelect, open, onClose }: { active: string; onSelect: (label: string) => void; open: boolean; onClose: () => void }) {
+function Sidebar({ active, onSelect, open, onClose, role }: { active: string; onSelect: (label: string) => void; open: boolean; onClose: () => void; role: Role }) {
   return (
     <aside className={`sidebar ${open ? 'sidebar--open' : ''}`}>
       <div className="sidebar-brand">
@@ -151,7 +158,7 @@ function Sidebar({ active, onSelect, open, onClose }: { active: string; onSelect
         {navigation.map((section) => (
           <div className="nav-section" key={section.title}>
             <p>{section.title}</p>
-            {section.items.map((item) => {
+            {section.items.filter((item) => role === 'institution' || item.label !== 'Personalización institucional').map((item) => {
               const Icon = item.icon
               return (
                 <button key={item.label} className={active === item.label ? 'active' : ''} onClick={() => { onSelect(item.label); onClose() }}>
@@ -165,7 +172,7 @@ function Sidebar({ active, onSelect, open, onClose }: { active: string; onSelect
       </nav>
       <div className="sidebar-footer">
         <div className="avatar">LA</div>
-        <div><strong>Laura Andrade</strong><span>Administradora</span></div>
+        <div><strong>{role === 'institution' ? 'Instituto' : 'Laura Andrade'}</strong><span>{role === 'institution' ? 'Administrador institucional' : 'Administradora'}</span></div>
         <MoreHorizontal size={18} />
       </div>
     </aside>
@@ -221,7 +228,7 @@ function Dashboard({ active }: { active: string }) {
             <div className="chart-body">
               <div className="grid-lines"><i /><i /><i /><i /><i /><i /></div>
               <svg viewBox="0 0 700 230" preserveAspectRatio="none" aria-label="Gráfica ascendente de matrícula">
-                <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3182ce" stopOpacity=".25" /><stop offset="100%" stopColor="#3182ce" stopOpacity="0" /></linearGradient></defs>
+                <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#4C1D95" stopOpacity=".25" /><stop offset="100%" stopColor="#4C1D95" stopOpacity="0" /></linearGradient></defs>
                 <path className="chart-area" d="M0,188 C70,178 90,161 145,165 C205,169 220,139 290,142 C345,145 375,109 435,118 C500,126 525,82 580,90 C635,98 660,55 700,48 L700,230 L0,230 Z" />
                 <path className="chart-line" d="M0,188 C70,178 90,161 145,165 C205,169 220,139 290,142 C345,145 375,109 435,118 C500,126 525,82 580,90 C635,98 660,55 700,48" />
               </svg>
@@ -265,12 +272,15 @@ function Dashboard({ active }: { active: string }) {
 }
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false)
+  const [, setRole] = useState<Role | null>(getRole)
   const [active, setActive] = useState('Resumen')
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [applicants, setApplicants] = useState<Applicant[]>(loadApplicants)
+  const [institution, setInstitution] = useState<InstitutionConfig>(loadInstitutionSettings)
+  useEffect(() => applyInstitutionSettings(institution), [institution])
   const location = useLocation()
   const navigate = useNavigate()
+  const signedRole = getRole()
 
   function updateApplicant(updated: Applicant) {
     setApplicants((current) => {
@@ -288,35 +298,49 @@ function App() {
     })
   }
 
+  function updateInstitution(settings: InstitutionConfig) {
+    saveInstitutionSettings(settings)
+    setInstitution(settings)
+  }
+
+  function restoreInstitution() {
+    setInstitution(resetInstitutionSettings())
+  }
+
+  if (location.pathname === '/') return <Login institution={institution} onLogin={(nextRole) => { setRole(nextRole); navigate(routeForRole(nextRole)) }} />
   if (location.pathname === '/aspirantes/registro') return <ApplicantRegistration onCreate={createNewApplicant} />
   if (location.pathname === '/aspirantes/seguimiento') return <ApplicantTracking applicants={applicants} />
   if (location.pathname.startsWith('/aspirantes')) return <AdmissionsHome />
   if (location.pathname.startsWith('/alumnos')) return <StudentPortal />
   if (location.pathname.startsWith('/docentes')) return <TeacherPortal />
 
-  if (!authenticated) return <Login onLogin={() => { setAuthenticated(true); navigate('/admin') }} />
+  if (!signedRole) return <Navigate to="/" replace />
+  if (signedRole !== 'admin' && signedRole !== 'institution') return <Navigate to={routeForRole(signedRole)} replace />
+  if (location.pathname === '/admin/landing') return <Navigate to={signedRole === 'institution' ? '/admin/institucion' : '/admin'} replace />
+  if (location.pathname === '/admin/institucion' && signedRole !== 'institution') return <Navigate to="/admin" replace />
 
-  const isApplicantsModule = location.pathname === '/admin/aspirantes' || active === 'Aspirantes'
+  const isApplicantsModule = location.pathname === '/admin/aspirantes'
+  const isSettingsModule = location.pathname === '/admin/institucion'
 
   function selectModule(label: string) {
     setActive(label)
-    navigate(label === 'Aspirantes' ? '/admin/aspirantes' : '/admin')
+    navigate(label === 'Aspirantes' ? '/admin/aspirantes' : label === 'Personalización institucional' ? '/admin/institucion' : '/admin')
   }
 
   return (
     <div className="app-shell">
-      <Sidebar active={isApplicantsModule ? 'Aspirantes' : active} onSelect={selectModule} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar active={isApplicantsModule ? 'Aspirantes' : isSettingsModule ? 'Personalización institucional' : active} onSelect={selectModule} open={sidebarOpen} onClose={() => setSidebarOpen(false)} role={signedRole} />
       <div className="app-content">
         <header>
           <button className="icon-button menu-button" onClick={() => setSidebarOpen(true)}><Menu size={21} /></button>
-          <div className="institution-selector"><Building2 size={18} /><span>Universidad Metropolitana</span><ChevronDown size={15} /></div>
+          <div className="institution-selector"><Building2 size={18} /><span>{institution.name}</span><ChevronDown size={15} /></div>
           <div className="header-actions">
             <label className="search-box"><Search size={18} /><input placeholder="Buscar alumno, trámite..." /></label>
             <button className="icon-button notification"><Bell size={20} /><i /></button>
-            <div className="header-avatar">LA</div>
+            <button className="header-signout" onClick={() => { signOut(); setRole(null); navigate('/') }}>Cerrar sesión</button><div className="header-avatar">{signedRole === 'institution' ? institution.shortName.slice(0, 2).toUpperCase() : 'LA'}</div>
           </div>
         </header>
-        <main className="page-content">{isApplicantsModule ? <AdminApplicants applicants={applicants} onUpdate={updateApplicant} /> : <Dashboard active={active} />}</main>
+        <main className="page-content">{isApplicantsModule ? <AdminApplicants applicants={applicants} onUpdate={updateApplicant} /> : isSettingsModule ? <InstitutionSettings settings={institution} onSave={updateInstitution} onReset={restoreInstitution} /> : <Dashboard active={active} />}</main>
       </div>
       {sidebarOpen && <button className="sidebar-overlay" aria-label="Cerrar menú" onClick={() => setSidebarOpen(false)} />}
     </div>

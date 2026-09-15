@@ -1,0 +1,13 @@
+{
+  "name": "Universidad Metropolitana",
+  "shortName": "UM",
+  "tagline": "Conocimiento que transforma",
+  "contactEmail": "contacto@universidad.edu.mx",
+  "colors": {
+    "primary": "#4C1D95",
+    "secondary": "#F05D5E",
+    "accent": "#FBBF24",
+    "background": "#F5F3FF",
+    "text": "#241535"
+  }
+}
