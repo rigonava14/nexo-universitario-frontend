@@ -1,13 +1,45 @@
 {
+  "version": 2,
   "name": "Universidad Metropolitana",
   "shortName": "UM",
   "tagline": "Conocimiento que transforma",
   "contactEmail": "contacto@universidad.edu.mx",
+  "grading": {
+    "currentPeriod": "2026-2",
+    "currentEvaluation": "Segundo parcial",
+    "captureDeadline": "2026-09-20",
+    "minimumGrade": 0,
+    "maximumGrade": 100,
+    "passingGrade": 70,
+    "decimals": 0,
+    "specialCodes": [
+      {
+        "code": "NP",
+        "label": "No presentó",
+        "description": "El estudiante no presentó la evaluación."
+      },
+      {
+        "code": "NA",
+        "label": "No acreditó",
+        "description": "El estudiante no alcanzó los criterios de acreditación."
+      },
+      {
+        "code": "NAD",
+        "label": "Desertor",
+        "description": "El estudiante abandonó o dejó de asistir al curso."
+      }
+    ]
+  },
   "colors": {
     "primary": "#4C1D95",
     "secondary": "#F05D5E",
     "accent": "#FBBF24",
     "background": "#F5F3FF",
-    "text": "#241535"
+    "surface": "#FFFDFB",
+    "text": "#241535",
+    "muted": "#74677F",
+    "border": "#E6DEEE",
+    "sidebar": "#261438",
+    "sidebarText": "#FFFFFF"
   }
 }

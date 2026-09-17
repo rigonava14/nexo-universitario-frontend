@@ -17,6 +17,7 @@ import {
   UserRound,
 } from 'lucide-react'
 import { Applicant, careers, createApplicant } from './admissions'
+import FadeContent from './components/FadeContent'
 
 export function PublicHeader() {
   return <header className="public-header"><Link to="/aspirantes" className="public-brand"><span><GraduationCap size={23} /></span><div><strong>Nexo</strong><small>Admisiones</small></div></Link><nav><Link to="/aspirantes">Inicio</Link><Link to="/aspirantes/registro">Registrarme</Link><Link to="/aspirantes/seguimiento">Consultar proceso</Link></nav><Link className="outline-link" to="/admin">Acceso institucional</Link></header>
@@ -27,12 +28,18 @@ export function AdmissionsHome() {
     <div className="public-page">
       <PublicHeader />
       <main>
+        <FadeContent blur duration={0.65}>
         <section className="admissions-hero">
           <div className="hero-copy"><p className="public-eyebrow">ADMISIONES 2027 · REGISTRO ABIERTO</p><h1>Tu futuro comienza aquí.</h1><p>Realiza tu proceso de admisión en línea, consulta cada etapa y mantén tus documentos siempre disponibles.</p><div className="hero-actions"><Link className="public-primary" to="/aspirantes/registro">Iniciar mi registro <ArrowRight size={18} /></Link><Link className="public-secondary" to="/aspirantes/seguimiento"><Search size={17} /> Consultar mi proceso</Link></div><small className="hero-help"><ShieldCheck size={15} /> Tus datos se mantienen seguros durante todo el proceso.</small></div>
           <div className="process-card"><div className="process-card-top"><span><GraduationCap size={24} /></span><div><small>PROCESO DE ADMISIÓN</small><strong>Periodo 2027-1</strong></div></div><div className="mini-step done"><i><Check size={14} /></i><div><strong>Registro en línea</strong><small>Completa tus datos personales</small></div></div><div className="mini-step active"><i>2</i><div><strong>Pago y ficha de examen</strong><small>Descarga tu referencia</small></div></div><div className="mini-step"><i>3</i><div><strong>Examen de admisión</strong><small>Consulta fecha y sede</small></div></div><div className="mini-step"><i>4</i><div><strong>Resultados e inscripción</strong><small>Obtén tu ficha de admisión</small></div></div></div>
         </section>
+        </FadeContent>
+        <FadeContent delay={0.08}>
         <section className="public-benefits"><div><UserRound size={21} /><strong>Registro simple</strong><span>Completa tu solicitud desde cualquier dispositivo.</span></div><div><ClipboardCheck size={21} /><strong>Seguimiento claro</strong><span>Consulta en qué etapa se encuentra tu proceso.</span></div><div><FileText size={21} /><strong>Documentos disponibles</strong><span>Descarga tus fichas cuando las necesites.</span></div></section>
+        </FadeContent>
+        <FadeContent delay={0.12}>
         <section className="public-programs"><p className="public-eyebrow">OFERTA ACADÉMICA</p><h2>Encuentra la carrera para ti</h2><div>{careers.slice(0, 4).map((career, index) => <article key={career}><span>0{index + 1}</span><h3>{career}</h3><Link to="/aspirantes/registro">Elegir programa <ArrowRight size={14} /></Link></article>)}</div></section>
+        </FadeContent>
       </main>
     </div>
   )

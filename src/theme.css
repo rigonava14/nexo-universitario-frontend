@@ -12,24 +12,24 @@ body { color: var(--brand-plum); background: var(--brand-lavender); }
 ::selection { color: var(--brand-white); background: var(--brand-violet); }
 :where(button, a, input, select, textarea):focus-visible { outline: 2px solid var(--brand-coral); outline-offset: 2px; }
 
-.login-brand-panel { background: radial-gradient(circle at 20% 20%, #6D28D9, transparent 38%), linear-gradient(140deg, var(--brand-violet), var(--brand-plum)); }
+.login-brand-panel { background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--brand-violet) 72%, white), transparent 38%), linear-gradient(140deg, var(--brand-violet), var(--brand-plum)); }
 .brand-mark, .student-side-brand>span, .teacher-side-brand>span { background: var(--brand-violet); }
 .login-page .primary-button, .student-primary-button, .teacher-primary, .public-primary { background: var(--brand-violet); }
 .nav-section button.active, .student-sidebar nav button.active, .teacher-sidebar nav button.active { color: var(--brand-violet); background: var(--brand-lavender); }
 .student-shell, .teacher-shell, .app-shell { background: var(--brand-lavender); }
 .student-page-heading h1, .teacher-page-heading h1, .module-heading h1 { color: var(--brand-plum); }
 .demo-accounts button, .header-signout { color: var(--brand-violet); }
-.primary-button:hover { background: #3B1775; }
-.student-primary-button:hover, .teacher-primary-button:hover { background: #3B1775; }
+.primary-button:hover { background: color-mix(in srgb, var(--brand-violet) 82%, black); }
+.student-primary-button:hover, .teacher-primary-button:hover { background: color-mix(in srgb, var(--brand-violet) 82%, black); }
 .student-notification i, .teacher-notification i { background: var(--brand-coral); }
 .student-metric.amber, .grade-preview span.amber, .grade-subject span.amber,
 .teacher-metrics .amber, .pending-list span.amber, .evaluation-summary span.amber,
-.stat-dot--amber, .change--amber { color: #835400; background: #FFF4D6; }
+.stat-dot--amber, .change--amber { color: color-mix(in srgb, var(--brand-amber) 55%, black); background: color-mix(in srgb, var(--brand-amber) 22%, var(--campus-paper)); }
 .student-metric.amber, .teacher-metrics .amber { color: var(--brand-plum); background: var(--brand-amber); }
 .stat-dot--amber { background: var(--brand-amber); }
 .student-metric.green, .grade-preview span.green, .grade-subject span.green,
 .teacher-metrics .green, .pending-list span.green, .evaluation-summary span.green,
-.change--green, .stat-dot--green { color: var(--brand-violet); background: #EDE9FE; }
+.change--green, .stat-dot--green { color: var(--brand-violet); background: color-mix(in srgb, var(--brand-violet) 12%, var(--campus-paper)); }
 .stat-dot--green { background: var(--brand-violet); }
 .cms-success, .status--active, .public-status.success { color: var(--brand-violet); }
-.status--pending, .public-status.warning { color: #835400; background: #FFF4D6; }
+.status--pending, .public-status.warning { color: color-mix(in srgb, var(--brand-amber) 55%, black); background: color-mix(in srgb, var(--brand-amber) 22%, var(--campus-paper)); }

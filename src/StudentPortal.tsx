@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { getRole, signOut } from './auth'
 import { loadInstitutionSettings } from './institution'
+import FadeContent from './components/FadeContent'
 import {
   Award,
   Bell,
@@ -156,5 +157,5 @@ export default function StudentPortal() {
   else if (active === 'perfil') content = <ProfilePage notify={notify} />
   else content = <StudentHome go={go} notify={notify} />
 
-  return <div className="student-shell"><StudentSidebar active={active} open={menuOpen} onClose={() => setMenuOpen(false)} onNavigate={go} onLogout={logout} /><div className="student-main"><header className="student-topbar"><button className="student-menu-button" onClick={() => setMenuOpen(true)}><Menu size={20} /></button><div><strong>{loadInstitutionSettings().name}</strong><span>Periodo 2026-2</span></div><div><button className="student-notification"><Bell size={19} /><i /></button><div className="student-top-avatar">AM</div></div></header><main className="student-content">{content}</main></div>{menuOpen && <button className="student-menu-overlay" onClick={() => setMenuOpen(false)} />}{notice && <div className="toast"><CheckCircle2 size={17} /> {notice}</div>}</div>
+  return <div className="student-shell"><StudentSidebar active={active} open={menuOpen} onClose={() => setMenuOpen(false)} onNavigate={go} onLogout={logout} /><div className="student-main"><header className="student-topbar"><button className="student-menu-button" onClick={() => setMenuOpen(true)}><Menu size={20} /></button><div><strong>{loadInstitutionSettings().name}</strong><span>Periodo 2026-2</span></div><div><button className="student-notification"><Bell size={19} /><i /></button><div className="student-top-avatar">AM</div></div></header><main className="student-content"><FadeContent key={active} blur>{content}</FadeContent></main></div>{menuOpen && <button className="student-menu-overlay" onClick={() => setMenuOpen(false)} />}{notice && <div className="toast"><CheckCircle2 size={17} /> {notice}</div>}</div>
 }

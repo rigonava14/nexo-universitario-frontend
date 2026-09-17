@@ -7,6 +7,7 @@ import './student.css'
 import './teacher.css'
 import './settings.css'
 import './theme.css'
+import './design-system.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -31,6 +31,7 @@ import TeacherPortal from './TeacherPortal'
 import InstitutionSettings from './InstitutionSettings'
 import { InstitutionSettings as InstitutionConfig, applyInstitutionSettings, loadInstitutionSettings, resetInstitutionSettings, saveInstitutionSettings } from './institution'
 import { demoAccounts, getRole, Role, routeForRole, signIn, signOut } from './auth'
+import FadeContent from './components/FadeContent'
 
 type IconType = typeof LayoutDashboard
 
@@ -308,8 +309,8 @@ function App() {
   }
 
   if (location.pathname === '/') return <Login institution={institution} onLogin={(nextRole) => { setRole(nextRole); navigate(routeForRole(nextRole)) }} />
-  if (location.pathname === '/aspirantes/registro') return <ApplicantRegistration onCreate={createNewApplicant} />
-  if (location.pathname === '/aspirantes/seguimiento') return <ApplicantTracking applicants={applicants} />
+  if (location.pathname === '/aspirantes/registro') return <FadeContent blur><ApplicantRegistration onCreate={createNewApplicant} /></FadeContent>
+  if (location.pathname === '/aspirantes/seguimiento') return <FadeContent blur><ApplicantTracking applicants={applicants} /></FadeContent>
   if (location.pathname.startsWith('/aspirantes')) return <AdmissionsHome />
   if (location.pathname.startsWith('/alumnos')) return <StudentPortal />
   if (location.pathname.startsWith('/docentes')) return <TeacherPortal />
@@ -340,7 +341,7 @@ function App() {
             <button className="header-signout" onClick={() => { signOut(); setRole(null); navigate('/') }}>Cerrar sesión</button><div className="header-avatar">{signedRole === 'institution' ? institution.shortName.slice(0, 2).toUpperCase() : 'LA'}</div>
           </div>
         </header>
-        <main className="page-content">{isApplicantsModule ? <AdminApplicants applicants={applicants} onUpdate={updateApplicant} /> : isSettingsModule ? <InstitutionSettings settings={institution} onSave={updateInstitution} onReset={restoreInstitution} /> : <Dashboard active={active} />}</main>
+        <main className="page-content"><FadeContent key={location.pathname + active} blur>{isApplicantsModule ? <AdminApplicants applicants={applicants} onUpdate={updateApplicant} /> : isSettingsModule ? <InstitutionSettings settings={institution} onSave={updateInstitution} onReset={restoreInstitution} /> : <Dashboard active={active} />}</FadeContent></main>
       </div>
       {sidebarOpen && <button className="sidebar-overlay" aria-label="Cerrar menú" onClick={() => setSidebarOpen(false)} />}
     </div>
