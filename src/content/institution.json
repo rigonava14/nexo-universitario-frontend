@@ -30,6 +30,280 @@
       }
     ]
   },
+  "admissions": {
+    "callName": "Convocatoria de admisión 2027-1",
+    "portalHeadline": "Tu futuro comienza aquí.",
+    "portalDescription": "Realiza tu proceso de admisión en línea, consulta cada etapa y mantén tus documentos siempre disponibles.",
+    "applicationOpen": "2026-10-01",
+    "applicationClose": "2027-01-30",
+    "examDate": "2027-02-07",
+    "resultsDate": "2027-02-14",
+    "applicationFee": 850,
+    "capacity": 1200,
+    "examMode": "Presencial",
+    "supportEmail": "admisiones@universidad.edu.mx",
+    "requirePayment": true,
+    "requiredDocuments": [
+      "Acta de nacimiento",
+      "CURP",
+      "Certificado o constancia de bachillerato",
+      "Fotografía reciente"
+    ]
+  },
+  "enrollment": {
+    "newStudentOpen": "2027-02-15",
+    "newStudentClose": "2027-03-05",
+    "returningOpen": "2027-01-18",
+    "returningClose": "2027-01-29",
+    "studentIdPrefix": "2027",
+    "maximumSubjects": 8,
+    "allowLateEnrollment": true,
+    "lateFee": 450,
+    "instructions": "Entrega documentos originales en Servicios Escolares y conserva tu comprobante digital."
+  },
+  "closingRules": {
+    "lockAfterDeadline": true,
+    "requireTeacherConfirmation": true,
+    "requireCoordinatorSignature": false,
+    "autoActNumber": true
+  },
+  "academicOffer": {
+    "campuses": [
+      { "id": "central", "name": "Campus Central" },
+      { "id": "norte", "name": "Campus Norte" },
+      { "id": "virtual", "name": "Campus Virtual" }
+    ],
+    "programs": [
+      {
+        "id": "isc-2026",
+        "code": "ISC",
+        "name": "Ingeniería en Sistemas Computacionales",
+        "level": "Licenciatura",
+        "modality": "Escolarizada",
+        "status": "Activo",
+        "durationSemesters": 9,
+        "totalCredits": 260,
+        "campusIds": ["central", "norte"],
+        "capacity": 180,
+        "rvoe": "RVOE-2026-ISC-014",
+        "planVersion": "Plan 2026",
+        "description": "Forma profesionales capaces de diseñar, desarrollar y administrar soluciones de software e infraestructura tecnológica.",
+        "curriculum": [
+          { "semester": 1, "subjects": [{ "id": "isc-101", "code": "ISC-101", "name": "Fundamentos de programación", "credits": 8, "hours": 5, "mandatory": true }, { "id": "mat-101", "code": "MAT-101", "name": "Cálculo diferencial", "credits": 7, "hours": 5, "mandatory": true }, { "id": "hum-101", "code": "HUM-101", "name": "Comunicación académica", "credits": 5, "hours": 3, "mandatory": true }] },
+          { "semester": 2, "subjects": [{ "id": "isc-201", "code": "ISC-201", "name": "Programación orientada a objetos", "credits": 8, "hours": 5, "mandatory": true }, { "id": "mat-201", "code": "MAT-201", "name": "Álgebra lineal", "credits": 7, "hours": 5, "mandatory": true }] }
+        ]
+      },
+      {
+        "id": "industrial-2026",
+        "code": "IIND",
+        "name": "Ingeniería Industrial",
+        "level": "Licenciatura",
+        "modality": "Mixta",
+        "status": "Activo",
+        "durationSemesters": 9,
+        "totalCredits": 255,
+        "campusIds": ["central"],
+        "capacity": 140,
+        "rvoe": "RVOE-2026-IIND-018",
+        "planVersion": "Plan 2026",
+        "description": "Integra procesos, calidad, logística y gestión para optimizar sistemas productivos y de servicios.",
+        "curriculum": [
+          { "semester": 1, "subjects": [{ "id": "iin-101", "code": "IIN-101", "name": "Introducción a la ingeniería", "credits": 6, "hours": 4, "mandatory": true }, { "id": "mat-111", "code": "MAT-111", "name": "Matemáticas para ingeniería", "credits": 8, "hours": 5, "mandatory": true }] }
+        ]
+      },
+      {
+        "id": "gestion-2026",
+        "code": "LGE",
+        "name": "Licenciatura en Gestión Empresarial",
+        "level": "Licenciatura",
+        "modality": "En línea",
+        "status": "Activo",
+        "durationSemesters": 8,
+        "totalCredits": 220,
+        "campusIds": ["virtual"],
+        "capacity": 240,
+        "rvoe": "RVOE-2026-LGE-021",
+        "planVersion": "Plan 2026",
+        "description": "Desarrolla capacidades de dirección, emprendimiento, finanzas y transformación organizacional.",
+        "curriculum": [
+          { "semester": 1, "subjects": [{ "id": "lge-101", "code": "LGE-101", "name": "Fundamentos de administración", "credits": 7, "hours": 4, "mandatory": true }, { "id": "lge-102", "code": "LGE-102", "name": "Contabilidad básica", "credits": 7, "hours": 4, "mandatory": true }] }
+        ]
+      },
+      {
+        "id": "data-2027",
+        "code": "MCD",
+        "name": "Maestría en Ciencia de Datos",
+        "level": "Maestría",
+        "modality": "Híbrida",
+        "status": "Borrador",
+        "durationSemesters": 4,
+        "totalCredits": 90,
+        "campusIds": ["central", "virtual"],
+        "capacity": 45,
+        "rvoe": "En trámite",
+        "planVersion": "Plan 2027",
+        "description": "Programa avanzado de análisis, aprendizaje automático y gobierno estratégico de datos.",
+        "curriculum": [
+          { "semester": 1, "subjects": [{ "id": "mcd-101", "code": "MCD-101", "name": "Programación para ciencia de datos", "credits": 8, "hours": 5, "mandatory": true }, { "id": "mcd-102", "code": "MCD-102", "name": "Estadística aplicada", "credits": 8, "hours": 5, "mandatory": true }] }
+        ]
+      }
+    ]
+  },
+  "finance": {
+    "currency": "MXN",
+    "fiscalName": "Universidad Metropolitana A.C.",
+    "rfc": "UME920514KJ7",
+    "paymentMethods": ["Tarjeta", "Transferencia", "Efectivo", "Depósito bancario"],
+    "concepts": [
+      { "id": "tuition", "code": "COL-MES", "name": "Colegiatura mensual", "category": "Colegiatura", "amount": 3850, "taxable": false, "active": true },
+      { "id": "enrollment", "code": "INS-SEM", "name": "Inscripción semestral", "category": "Inscripción", "amount": 5200, "taxable": false, "active": true },
+      { "id": "credential", "code": "SER-CRE", "name": "Reposición de credencial", "category": "Servicios", "amount": 280, "taxable": true, "active": true },
+      { "id": "late-fee", "code": "REC-MOR", "name": "Recargo por pago tardío", "category": "Recargos", "amount": 350, "taxable": false, "active": true }
+    ],
+    "charges": [
+      { "id": "charge-1", "studentId": "20260184", "studentName": "Ana Martínez López", "conceptId": "tuition", "concept": "Colegiatura septiembre", "dueDate": "2026-09-10", "amount": 3850, "paid": 3850, "status": "Pagado" },
+      { "id": "charge-2", "studentId": "20260421", "studentName": "Carlos Ramírez Soto", "conceptId": "tuition", "concept": "Colegiatura septiembre", "dueDate": "2026-09-10", "amount": 3850, "paid": 2000, "status": "Parcial" },
+      { "id": "charge-3", "studentId": "20251106", "studentName": "Daniela Vega Ruiz", "conceptId": "tuition", "concept": "Colegiatura septiembre", "dueDate": "2026-09-10", "amount": 3850, "paid": 0, "status": "Vencido" },
+      { "id": "charge-4", "studentId": "20260097", "studentName": "Jorge Luna Pérez", "conceptId": "enrollment", "concept": "Inscripción 2026-2", "dueDate": "2026-08-25", "amount": 5200, "paid": 5200, "status": "Pagado" }
+    ],
+    "receipts": [
+      { "id": "REC-001849", "date": "2026-09-18", "studentName": "Ana Martínez López", "concept": "Colegiatura septiembre", "method": "Tarjeta", "amount": 3850, "status": "Emitido" },
+      { "id": "REC-001848", "date": "2026-09-18", "studentName": "Jorge Luna Pérez", "concept": "Inscripción 2026-2", "method": "Transferencia", "amount": 5200, "status": "Facturado" },
+      { "id": "REC-001847", "date": "2026-09-17", "studentName": "Carlos Ramírez Soto", "concept": "Abono colegiatura", "method": "Efectivo", "amount": 2000, "status": "Emitido" }
+    ],
+    "scholarships": [
+      { "id": "scholar-1", "studentName": "Mariana Torres Díaz", "studentId": "20260318", "name": "Excelencia académica", "discount": 40, "validUntil": "2026-12-20", "status": "Activa" },
+      { "id": "scholar-2", "studentName": "Luis Herrera Cruz", "studentId": "20260255", "name": "Convenio empresarial", "discount": 25, "validUntil": "2027-06-30", "status": "Activa" },
+      { "id": "scholar-3", "studentName": "Sofía Campos León", "studentId": "20260147", "name": "Apoyo socioeconómico", "discount": 30, "validUntil": "2026-12-20", "status": "Por renovar" }
+    ],
+    "scholarshipPrograms": [
+      { "id": "program-excellence", "name": "Excelencia académica", "description": "Reconoce desempeño sobresaliente y continuidad escolar.", "discount": 40, "minimumAverage": 90, "minimumAttendance": 90, "slots": 25, "validUntil": "2026-12-20", "status": "Activa" },
+      { "id": "program-socioeconomic", "name": "Apoyo socioeconómico", "description": "Apoyo parcial sujeto a estudio socioeconómico y disponibilidad.", "discount": 30, "minimumAverage": 82, "minimumAttendance": 85, "slots": 40, "validUntil": "2026-12-20", "status": "Activa" },
+      { "id": "program-sports", "name": "Talento deportivo", "description": "Beneficio para representantes deportivos de la institución.", "discount": 35, "minimumAverage": 80, "minimumAttendance": 85, "slots": 15, "validUntil": "2027-06-30", "status": "Convocatoria" }
+    ],
+    "scholarshipCandidates": [
+      { "id": "candidate-1", "studentId": "20260184", "studentName": "Ana Martínez López", "program": "Ingeniería en Sistemas Computacionales", "average": 94.6, "attendance": 97, "financialNeed": "Media", "recommendedProgramId": "program-excellence", "status": "Elegible" },
+      { "id": "candidate-2", "studentId": "20260421", "studentName": "Carlos Ramírez Soto", "program": "Ingeniería Industrial", "average": 91.2, "attendance": 93, "financialNeed": "Alta", "recommendedProgramId": "program-excellence", "status": "Elegible" },
+      { "id": "candidate-3", "studentId": "20251106", "studentName": "Daniela Vega Ruiz", "program": "Licenciatura en Gestión Empresarial", "average": 86.8, "attendance": 91, "financialNeed": "Alta", "recommendedProgramId": "program-socioeconomic", "status": "Elegible" },
+      { "id": "candidate-4", "studentId": "20260097", "studentName": "Jorge Luna Pérez", "program": "Ingeniería Industrial", "average": 79.4, "attendance": 88, "financialNeed": "Media", "recommendedProgramId": "", "status": "Por mejorar" },
+      { "id": "candidate-5", "studentId": "20260318", "studentName": "Mariana Torres Díaz", "program": "Ingeniería en Sistemas Computacionales", "average": 96.1, "attendance": 98, "financialNeed": "Baja", "recommendedProgramId": "program-excellence", "status": "Asignada" }
+    ],
+    "scholarshipNews": [
+      { "id": "news-1", "title": "Convocatoria de becas 2026-2", "audience": "Alumnos elegibles", "channel": "Portal y correo", "message": "Consulta los requisitos y postúlate antes del cierre de la convocatoria.", "date": "2026-09-18", "status": "Enviada" },
+      { "id": "news-2", "title": "Renovación de apoyos vigentes", "audience": "Becarios activos", "channel": "Correo", "message": "Actualiza tu expediente y conserva tu beneficio para el próximo periodo.", "date": "2026-09-22", "status": "Programada" }
+    ],
+    "payroll": [
+      { "id": "employee-1", "employeeId": "DOC-0312", "name": "Dra. Elena Vargas", "area": "Docencia", "position": "Profesora de tiempo completo", "gross": 28400, "deductions": 4980, "status": "Calculado" },
+      { "id": "employee-2", "employeeId": "ADM-0087", "name": "Ricardo Mendoza", "area": "Servicios escolares", "position": "Coordinador", "gross": 22600, "deductions": 3740, "status": "Calculado" },
+      { "id": "employee-3", "employeeId": "DOC-0184", "name": "Mtra. Paola Hernández", "area": "Docencia", "position": "Profesora por asignatura", "gross": 16800, "deductions": 2410, "status": "Pendiente" }
+    ]
+  },
+  "admissionExam": {
+    "name": "Examen general de admisión",
+    "durationMinutes": 120,
+    "passingScore": 70,
+    "attempts": 1,
+    "randomizeQuestions": true,
+    "randomizeAnswers": true,
+    "showResult": false,
+    "instructions": "Lee cada reactivo con atención. Sólo puedes enviar el examen una vez.",
+    "questions": [
+      {
+        "id": "q-1",
+        "type": "multiple-choice",
+        "category": "Razonamiento matemático",
+        "prompt": "¿Cuál es el resultado de 12 × 8?",
+        "points": 10,
+        "options": [
+          { "id": "a", "text": "86", "correct": false },
+          { "id": "b", "text": "96", "correct": true },
+          { "id": "c", "text": "108", "correct": false }
+        ]
+      },
+      {
+        "id": "q-2",
+        "type": "multiple-choice",
+        "category": "Comprensión lectora",
+        "prompt": "Selecciona la opción que expresa una conclusión.",
+        "points": 10,
+        "options": [
+          { "id": "a", "text": "Por lo tanto", "correct": true },
+          { "id": "b", "text": "Sin embargo", "correct": false },
+          { "id": "c", "text": "Mientras tanto", "correct": false }
+        ]
+      }
+    ]
+  },
+  "reports": {
+    "templates": [
+      {
+        "id": "admission-letter",
+        "name": "Carta de aceptación",
+        "documentType": "Admisiones",
+        "pageSize": "Carta",
+        "orientation": "Vertical",
+        "fontFamily": "Arial",
+        "fontSize": 11,
+        "textColor": "#211A27",
+        "accentColor": "#4C1D95",
+        "paperColor": "#FFFFFF",
+        "marginMm": 18,
+        "watermark": "",
+        "showPageBorder": false,
+        "header": "Universidad Metropolitana · Admisiones",
+        "body": "<h1>Carta de aceptación</h1><p>Por medio de la presente se informa que <strong>{{aspirante.nombre}}</strong>, con folio <strong>{{aspirante.folio}}</strong>, ha sido aceptado en el programa <strong>{{aspirante.programa}}</strong>.</p><p>Periodo de ingreso: {{convocatoria.periodo}}</p><p>Atentamente,<br>Departamento de Admisiones</p>",
+        "footer": "Documento institucional · {{fecha.actual}}"
+      },
+      {
+        "id": "grade-report",
+        "name": "Boleta de calificaciones",
+        "documentType": "Control escolar",
+        "pageSize": "Carta",
+        "orientation": "Vertical",
+        "fontFamily": "Arial",
+        "fontSize": 11,
+        "textColor": "#211A27",
+        "accentColor": "#4C1D95",
+        "paperColor": "#FFFFFF",
+        "marginMm": 18,
+        "watermark": "BORRADOR",
+        "showPageBorder": false,
+        "header": "Universidad Metropolitana · Control Escolar",
+        "body": "<h1>Boleta de calificaciones</h1><p><strong>{{alumno.nombre}}</strong> · Matrícula {{alumno.matricula}}</p><p>Programa: {{alumno.programa}}</p><p>Periodo: {{periodo.nombre}}</p><hr><p>Las asignaturas y calificaciones se integrarán desde la API institucional.</p>",
+        "footer": "Este documento es informativo."
+      }
+    ]
+  },
+  "accessControl": {
+    "roles": [
+      {
+        "id": "coordination",
+        "name": "Coordinación administrativa",
+        "description": "Operación académica, financiera y seguimiento institucional.",
+        "permissions": ["Resumen", "Aspirantes", "Alumnos", "Docentes", "Control escolar", "Oferta académica", "Finanzas", "Becas", "Reportes"],
+        "status": "Activo"
+      },
+      {
+        "id": "school-control",
+        "name": "Control escolar",
+        "description": "Expedientes, calificaciones, oferta académica y reportes escolares.",
+        "permissions": ["Resumen", "Aspirantes", "Alumnos", "Docentes", "Control escolar", "Oferta académica", "Becas", "Reportes"],
+        "status": "Activo"
+      },
+      {
+        "id": "finance-team",
+        "name": "Tesorería y finanzas",
+        "description": "Cobranza, recibos, becas aplicadas y consulta financiera.",
+        "permissions": ["Resumen", "Alumnos", "Finanzas", "Becas", "Reportes"],
+        "status": "Activo"
+      }
+    ],
+    "users": [
+      { "id": "user-admin", "name": "Laura Andrade", "email": "admin@universidad.edu.mx", "roleId": "coordination", "area": "Administración", "status": "Activo" },
+      { "id": "user-school", "name": "Mónica Salgado", "email": "escolares@universidad.edu.mx", "roleId": "school-control", "area": "Servicios escolares", "status": "Activo" },
+      { "id": "user-finance", "name": "Daniel Ortega", "email": "finanzas@universidad.edu.mx", "roleId": "finance-team", "area": "Tesorería", "status": "Activo" }
+    ]
+  },
   "colors": {
     "primary": "#4C1D95",
     "secondary": "#F05D5E",

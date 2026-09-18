@@ -37,6 +37,11 @@ import {
 type TeacherNotice = (message: string) => void
 type Group = { id: string; subject: string; code: string; students: number; room: string; schedule: string; career: string; semester: string; progress: number; pending: string; color: string }
 
+function formatAcademicDate(value: string) {
+  const date = new Date(`${value}T12:00:00`)
+  return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'short', year: 'numeric' }).format(date)
+}
+
 const groups: Group[] = [
   { id: 'ISC-6A', subject: 'Programación Web', code: 'SCC-1014', students: 31, room: 'B-12', schedule: 'Mar y jue · 11:00–13:00', career: 'Ing. en Sistemas Computacionales', semester: '6°', progress: 68, pending: 'Segundo parcial', color: 'blue' },
   { id: 'ISC-4B', subject: 'Fundamentos de Bases de Datos', code: 'AEF-1031', students: 28, room: 'LC-2', schedule: 'Lun y mié · 08:00–10:00', career: 'Ing. en Sistemas Computacionales', semester: '4°', progress: 100, pending: 'Sin pendientes', color: 'green' },
@@ -116,7 +121,7 @@ function EvaluationsPage({ actsOnly = false, notify }: { actsOnly?: boolean; not
 
   return <>
     <TeacherHeading eyebrow="EVALUACIÓN ACADÉMICA" title="Captura de calificaciones" description="Trabaja con un grupo a la vez, con su escala y claves institucionales." action={<button className="evaluation-back" onClick={() => setSearchParams({})}><ArrowLeft size={17} /> Cambiar de grupo</button>} />
-    <section className="evaluation-summary"><div><span className={group.color}><BookOpen size={20}/></span><section><small>{group.code} · {group.id}</small><h2>{group.subject}</h2><p>{group.students} estudiantes · {group.career}</p></section></div><div><small>Evaluación actual</small><strong>{group.pending}</strong></div><div><small>Fecha límite</small><strong>20 sep 2026</strong></div></section>
+    <section className="evaluation-summary"><div><span className={group.color}><BookOpen size={20}/></span><section><small>{group.code} · {group.id}</small><h2>{group.subject}</h2><p>{group.students} estudiantes · {group.career}</p></section></div><div><small>Evaluación actual</small><strong>{grading.currentEvaluation}</strong></div><div><small>Fecha límite</small><strong>{formatAcademicDate(grading.captureDeadline)}</strong></div></section>
     <section className="grading-rules-banner"><div><strong>Escala institucional</strong><span>{grading.minimumGrade}–{grading.maximumGrade} · Aprobatoria: {grading.passingGrade}</span></div><div className="grading-code-chips">{grading.specialCodes.map((item) => <span key={item.code} title={item.description}><b>{item.code}</b> {item.label}</span>)}</div></section>
     <article className="teacher-grade-table">
       <div className="grade-table-tools"><label><Search size={18}/><input value={studentSearch} onChange={(event) => setStudentSearch(event.target.value)} placeholder="Buscar por nombre o matrícula" /></label><span><AlertCircle size={16}/> Selecciona el tipo de resultado configurado por el instituto.</span></div>

@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import {
   Bell,
+  Award,
   BookOpen,
   BriefcaseBusiness,
   Building2,
@@ -29,8 +30,14 @@ import { Applicant, loadApplicants, saveApplicants } from './admissions'
 import StudentPortal from './StudentPortal'
 import TeacherPortal from './TeacherPortal'
 import InstitutionSettings from './InstitutionSettings'
+import SchoolControl from './SchoolControl'
+import AcademicOffer from './AcademicOffer'
+import Finance from './Finance'
+import Scholarships from './Scholarships'
+import UserPermissions from './UserPermissions'
 import { InstitutionSettings as InstitutionConfig, applyInstitutionSettings, loadInstitutionSettings, resetInstitutionSettings, saveInstitutionSettings } from './institution'
-import { demoAccounts, getRole, Role, routeForRole, signIn, signOut } from './auth'
+import { demoAccounts, getCurrentEmail, getRole, Role, routeForRole, signIn, signOut } from './auth'
+import { allPermissionSections, permissionsForUser, routeBySection } from './access-control'
 import FadeContent from './components/FadeContent'
 
 type IconType = typeof LayoutDashboard
@@ -56,6 +63,7 @@ const navigation: Array<{ title: string; items: NavItem[] }> = [
       { label: 'Control escolar', icon: ClipboardCheck },
       { label: 'Oferta académica', icon: CalendarDays },
       { label: 'Finanzas', icon: CircleDollarSign },
+      { label: 'Becas', icon: Award },
       { label: 'Residencias', icon: BriefcaseBusiness },
       { label: 'Titulación', icon: GraduationCap },
       { label: 'Academias', icon: Building2 },
@@ -147,7 +155,7 @@ function Login({ onLogin, institution }: { onLogin: (role: Role) => void; instit
   )
 }
 
-function Sidebar({ active, onSelect, open, onClose, role }: { active: string; onSelect: (label: string) => void; open: boolean; onClose: () => void; role: Role }) {
+function Sidebar({ active, onSelect, open, onClose, role, permissions, userName }: { active: string; onSelect: (label: string) => void; open: boolean; onClose: () => void; role: Role; permissions: string[]; userName?: string }) {
   return (
     <aside className={`sidebar ${open ? 'sidebar--open' : ''}`}>
       <div className="sidebar-brand">
@@ -159,7 +167,7 @@ function Sidebar({ active, onSelect, open, onClose, role }: { active: string; on
         {navigation.map((section) => (
           <div className="nav-section" key={section.title}>
             <p>{section.title}</p>
-            {section.items.filter((item) => role === 'institution' || item.label !== 'Personalización institucional').map((item) => {
+            {section.items.filter((item) => role === 'institution' || (item.label !== 'Personalización institucional' && item.label !== 'Usuarios y permisos' && permissions.includes(item.label))).map((item) => {
               const Icon = item.icon
               return (
                 <button key={item.label} className={active === item.label ? 'active' : ''} onClick={() => { onSelect(item.label); onClose() }}>
@@ -173,7 +181,7 @@ function Sidebar({ active, onSelect, open, onClose, role }: { active: string; on
       </nav>
       <div className="sidebar-footer">
         <div className="avatar">LA</div>
-        <div><strong>{role === 'institution' ? 'Instituto' : 'Laura Andrade'}</strong><span>{role === 'institution' ? 'Administrador institucional' : 'Administradora'}</span></div>
+        <div><strong>{role === 'institution' ? 'Instituto' : userName || 'Usuario administrativo'}</strong><span>{role === 'institution' ? 'Administrador institucional' : 'Acceso por rol'}</span></div>
         <MoreHorizontal size={18} />
       </div>
     </aside>
@@ -282,6 +290,9 @@ function App() {
   const location = useLocation()
   const navigate = useNavigate()
   const signedRole = getRole()
+  const currentEmail = getCurrentEmail()
+  const currentAccessUser = institution.accessControl.users.find((user) => user.email.toLowerCase() === currentEmail?.toLowerCase())
+  const userPermissions = signedRole === 'institution' ? allPermissionSections : permissionsForUser(institution, currentEmail)
 
   function updateApplicant(updated: Applicant) {
     setApplicants((current) => {
@@ -309,9 +320,9 @@ function App() {
   }
 
   if (location.pathname === '/') return <Login institution={institution} onLogin={(nextRole) => { setRole(nextRole); navigate(routeForRole(nextRole)) }} />
-  if (location.pathname === '/aspirantes/registro') return <FadeContent blur><ApplicantRegistration onCreate={createNewApplicant} /></FadeContent>
-  if (location.pathname === '/aspirantes/seguimiento') return <FadeContent blur><ApplicantTracking applicants={applicants} /></FadeContent>
-  if (location.pathname.startsWith('/aspirantes')) return <AdmissionsHome />
+  if (location.pathname === '/aspirantes/registro') return <FadeContent blur><ApplicantRegistration onCreate={createNewApplicant} institution={institution} /></FadeContent>
+  if (location.pathname === '/aspirantes/seguimiento') return <FadeContent blur><ApplicantTracking applicants={applicants} institution={institution} /></FadeContent>
+  if (location.pathname.startsWith('/aspirantes')) return <AdmissionsHome institution={institution} />
   if (location.pathname.startsWith('/alumnos')) return <StudentPortal />
   if (location.pathname.startsWith('/docentes')) return <TeacherPortal />
 
@@ -319,18 +330,28 @@ function App() {
   if (signedRole !== 'admin' && signedRole !== 'institution') return <Navigate to={routeForRole(signedRole)} replace />
   if (location.pathname === '/admin/landing') return <Navigate to={signedRole === 'institution' ? '/admin/institucion' : '/admin'} replace />
   if (location.pathname === '/admin/institucion' && signedRole !== 'institution') return <Navigate to="/admin" replace />
+  if (location.pathname === '/admin/usuarios-permisos' && signedRole !== 'institution') return <Navigate to="/admin" replace />
+
+  const requestedSection = location.pathname === '/admin/aspirantes' ? 'Aspirantes' : location.pathname === '/admin/control-escolar' ? 'Control escolar' : location.pathname === '/admin/oferta-academica' ? 'Oferta académica' : location.pathname === '/admin/finanzas' ? 'Finanzas' : location.pathname === '/admin/becas' ? 'Becas' : null
+  if (signedRole === 'admin' && requestedSection && !userPermissions.includes(requestedSection)) return <Navigate to={routeBySection[userPermissions[0]] ?? '/admin'} replace />
 
   const isApplicantsModule = location.pathname === '/admin/aspirantes'
   const isSettingsModule = location.pathname === '/admin/institucion'
+  const isSchoolControlModule = location.pathname === '/admin/control-escolar'
+  const isAcademicOfferModule = location.pathname === '/admin/oferta-academica'
+  const isFinanceModule = location.pathname === '/admin/finanzas'
+  const isScholarshipsModule = location.pathname === '/admin/becas'
+  const isPermissionsModule = location.pathname === '/admin/usuarios-permisos'
+  const effectiveActive = signedRole === 'institution' || userPermissions.includes(active) ? active : userPermissions[0] ?? 'Sin acceso'
 
   function selectModule(label: string) {
     setActive(label)
-    navigate(label === 'Aspirantes' ? '/admin/aspirantes' : label === 'Personalización institucional' ? '/admin/institucion' : '/admin')
+    navigate(label === 'Personalización institucional' ? '/admin/institucion' : label === 'Usuarios y permisos' ? '/admin/usuarios-permisos' : routeBySection[label] ?? '/admin')
   }
 
   return (
     <div className="app-shell">
-      <Sidebar active={isApplicantsModule ? 'Aspirantes' : isSettingsModule ? 'Personalización institucional' : active} onSelect={selectModule} open={sidebarOpen} onClose={() => setSidebarOpen(false)} role={signedRole} />
+      <Sidebar active={isApplicantsModule ? 'Aspirantes' : isSettingsModule ? 'Personalización institucional' : isSchoolControlModule ? 'Control escolar' : isAcademicOfferModule ? 'Oferta académica' : isFinanceModule ? 'Finanzas' : isScholarshipsModule ? 'Becas' : isPermissionsModule ? 'Usuarios y permisos' : effectiveActive} onSelect={selectModule} open={sidebarOpen} onClose={() => setSidebarOpen(false)} role={signedRole} permissions={userPermissions} userName={currentAccessUser?.name} />
       <div className="app-content">
         <header>
           <button className="icon-button menu-button" onClick={() => setSidebarOpen(true)}><Menu size={21} /></button>
@@ -341,7 +362,7 @@ function App() {
             <button className="header-signout" onClick={() => { signOut(); setRole(null); navigate('/') }}>Cerrar sesión</button><div className="header-avatar">{signedRole === 'institution' ? institution.shortName.slice(0, 2).toUpperCase() : 'LA'}</div>
           </div>
         </header>
-        <main className="page-content"><FadeContent key={location.pathname + active} blur>{isApplicantsModule ? <AdminApplicants applicants={applicants} onUpdate={updateApplicant} /> : isSettingsModule ? <InstitutionSettings settings={institution} onSave={updateInstitution} onReset={restoreInstitution} /> : <Dashboard active={active} />}</FadeContent></main>
+        <main className="page-content"><FadeContent key={location.pathname + effectiveActive} blur>{isApplicantsModule ? <AdminApplicants applicants={applicants} onUpdate={updateApplicant} /> : isSettingsModule ? <InstitutionSettings settings={institution} onSave={updateInstitution} onReset={restoreInstitution} /> : isSchoolControlModule ? <SchoolControl settings={institution} onSave={updateInstitution} /> : isAcademicOfferModule ? <AcademicOffer settings={institution} onSave={updateInstitution} /> : isFinanceModule ? <Finance settings={institution} onSave={updateInstitution} /> : isScholarshipsModule ? <Scholarships settings={institution} onSave={updateInstitution} /> : isPermissionsModule ? <UserPermissions settings={institution} onSave={updateInstitution} /> : <Dashboard active={effectiveActive} />}</FadeContent></main>
       </div>
       {sidebarOpen && <button className="sidebar-overlay" aria-label="Cerrar menú" onClick={() => setSidebarOpen(false)} />}
     </div>

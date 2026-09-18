@@ -304,6 +304,7 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
 .public-programs article { min-height: 210px; padding: 26px; border-radius: 18px; background: linear-gradient(160deg, var(--campus-paper), color-mix(in srgb, var(--campus-paper) 92%, var(--brand-violet))); box-shadow: var(--campus-shadow-sm); }
 .public-programs article > span { color: var(--brand-coral); font-size: 13px; }
 .public-programs h3 { margin-top: 28px; font-size: 17px; }
+.public-programs article > p { margin: -7px 0 18px; color: var(--campus-muted); font-size: 12px; line-height: 1.5; }
 .public-programs article a { font-size: 12px; }
 
 .registration-shell, .tracking-shell { max-width: 1240px; padding-top: 52px; }
