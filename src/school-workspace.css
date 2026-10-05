@@ -1,0 +1,11 @@
+.school-workspace { min-width: 0; }
+.school-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 22px; }
+.school-tabs button { padding: 11px 15px; border: 1px solid var(--campus-line); border-radius: 9px; color: var(--campus-ink); background: var(--campus-paper); font-weight: 700; }
+.school-tabs button.active { color: var(--campus-paper); background: var(--brand-violet); border-color: var(--brand-violet); }
+.school-workspace>.directory-table-wrap, .school-workspace .operation-panel>.directory-table-wrap { margin: 18px 0; background: var(--campus-paper); border: 1px solid var(--campus-line); border-radius: 12px; }
+.school-workspace label>select { max-width: 100%; min-height: 42px; border: 1px solid var(--campus-line); padding: 9px; border-radius: 9px; color: var(--campus-ink); background: var(--campus-paper); }
+.school-workspace .operation-toolbar select { max-width: min(100%, 520px); }
+.school-workspace .operation-panel>.directory-form { padding-inline: 0; }
+.school-workspace .directory-table-wrap td { white-space: normal; }
+.school-workspace button:focus-visible { outline: 2px solid var(--brand-violet); outline-offset: 3px; }
+@media(max-width:760px) { .school-tabs button { flex: 1 1 140px; }.school-workspace .operation-toolbar select { max-width: 100%; } }

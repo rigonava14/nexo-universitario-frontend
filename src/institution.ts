@@ -188,5 +188,5 @@ export function applyInstitutionSettings(settings: InstitutionSettings) {
   root.style.setProperty('--sidebar-text', settings.colors.sidebarText)
   root.style.setProperty('--blue', settings.colors.primary)
   root.style.setProperty('--navy', settings.colors.text)
-  document.title = `${settings.shortName} · Nexo Universitario`
+  document.title = `${settings.shortName} · CampusOne`
 }

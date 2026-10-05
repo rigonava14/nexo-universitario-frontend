@@ -1,0 +1,58 @@
+import { FormEvent, useState } from 'react'
+import { Plus, Save, Search } from 'lucide-react'
+import { EnglishEnrollment, EnglishGroup, englishResult } from './operations'
+import { InstitutionSettings } from './institution'
+import { OperationEditor, OperationEmpty, OperationFeedback, OperationSummary, PersonOptions, personName, useOperations } from './operation-ui'
+import './directory.css'
+
+export default function EnglishModule({ settings }: { settings: InstitutionSettings }) {
+  const store = useOperations()
+  const { data, students, teachers } = store
+  const [query, setQuery] = useState('')
+  const [level, setLevel] = useState('')
+  const [groupDraft, setGroupDraft] = useState<EnglishGroup | null>(null)
+  const [enrollmentDraft, setEnrollmentDraft] = useState<EnglishEnrollment | null>(null)
+  const [selectedId, setSelectedId] = useState('')
+  const selected = data.englishGroups.find((item) => item.id === selectedId)
+  const groupEnrollments = data.englishEnrollments.filter((item) => item.groupId === selectedId)
+  const filtered = data.englishGroups.filter((item) => `${item.code} ${item.period} ${personName(teachers, item.teacherId)}`.toLowerCase().includes(query.toLowerCase()) && (!level || item.level === level))
+  const occupied = (groupId: string) => data.englishEnrollments.filter((item) => item.groupId === groupId && item.status === 'Inscrito').length
+  function updateGroup(key: keyof EnglishGroup, value: string | number) { setGroupDraft((current) => current ? { ...current, [key]: value } : current); store.setError('') }
+  function updateEnrollment(key: keyof EnglishEnrollment, value: string | number | null) { setEnrollmentDraft((current) => current ? { ...current, [key]: value } : current); store.setError('') }
+  function saveGroup(event: FormEvent) {
+    event.preventDefault()
+    if (!groupDraft) return
+    if (!teachers.some((item) => item.id === groupDraft.teacherId)) { store.setError('Selecciona un docente del directorio.'); return }
+    const item = { ...groupDraft, code: groupDraft.code.trim().toUpperCase(), period: groupDraft.period.trim(), schedule: groupDraft.schedule.trim(), room: groupDraft.room.trim() }
+    if (data.englishGroups.some((group) => group.id !== item.id && group.period.toLowerCase() === item.period.toLowerCase() && group.code.toLowerCase() === item.code.toLowerCase())) { store.setError('Ya existe ese código de grupo en el periodo.'); return }
+    if (item.capacity < occupied(item.id)) { store.setError('El cupo no puede ser menor al número de inscritos.'); return }
+    const englishGroups = data.englishGroups.some((group) => group.id === item.id) ? data.englishGroups.map((group) => group.id === item.id ? item : group) : [...data.englishGroups, item]
+    if (store.commit({ ...data, englishGroups })) { setGroupDraft(null); setSelectedId(item.id); setQuery(''); setLevel('') }
+  }
+  function saveEnrollment(event: FormEvent) {
+    event.preventDefault()
+    if (!enrollmentDraft || !selected) return
+    if (!students.some((item) => item.id === enrollmentDraft.studentId)) { store.setError('Selecciona un alumno del directorio.'); return }
+    const previous = data.englishEnrollments.find((item) => item.id === enrollmentDraft.id)
+    if (enrollmentDraft.status === 'Inscrito' && previous?.status !== 'Inscrito' && selected.status !== 'Abierto') { store.setError('Abre el grupo antes de inscribir o reactivar alumnos.'); return }
+    if (data.englishEnrollments.some((item) => item.id !== enrollmentDraft.id && item.groupId === selected.id && item.studentId === enrollmentDraft.studentId)) { store.setError('Este alumno ya tiene una inscripción en el grupo. Edita su registro existente.'); return }
+    if (enrollmentDraft.status === 'Inscrito' && data.englishEnrollments.filter((item) => item.groupId === selected.id && item.status === 'Inscrito' && item.id !== enrollmentDraft.id).length >= selected.capacity) { store.setError('El grupo ya alcanzó su cupo.'); return }
+    const englishEnrollments = previous ? data.englishEnrollments.map((item) => item.id === enrollmentDraft.id ? enrollmentDraft : item) : [...data.englishEnrollments, enrollmentDraft]
+    if (store.commit({ ...data, englishEnrollments })) setEnrollmentDraft(null)
+  }
+  return <section className="operation-module"><div className="module-heading"><div><p className="date-label">FORMACIÓN EN IDIOMAS</p><h1>Inglés</h1><p>Niveles, grupos, inscripción y resultados por alumno.</p></div><button className="primary-button compact" disabled={store.blocked || !teachers.length} onClick={() => { store.setError(''); setGroupDraft({ id: crypto.randomUUID(), code: '', level: 'A1', teacherId: '', period: settings.grading.currentPeriod, schedule: '', room: '', capacity: 30, status: 'Abierto' }) }}><Plus size={17} />Nuevo grupo</button></div>
+    <p className="directory-local">Demostración local · Acreditación: calificación mínima {data.settings.englishPassingGrade} y asistencia mínima {data.settings.englishMinimumAttendance}%.</p><OperationFeedback error={groupDraft || enrollmentDraft ? '' : store.error} notice={store.notice} />
+    <OperationSummary items={[{ label: 'Grupos', value: data.englishGroups.length }, { label: 'Inscripciones activas', value: data.englishEnrollments.filter((item) => item.status === 'Inscrito').length }, { label: 'Acreditaciones', value: data.englishEnrollments.filter((item) => englishResult(item, data.settings) === 'Acreditado').length }]} />
+    <div className="academic-catalog"><div className="operation-toolbar"><label><Search size={17} /><input aria-label="Buscar grupos de inglés" placeholder="Buscar grupo, periodo o docente" value={query} onChange={(event) => setQuery(event.target.value)} /></label><select aria-label="Filtrar por nivel" value={level} onChange={(event) => setLevel(event.target.value)}><option value="">Todos los niveles</option>{['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((item) => <option key={item}>{item}</option>)}</select></div><div className="operation-cards">{filtered.map((item) => <article key={item.id}><span className="directory-status">{item.status} · {item.level}</span><h2>{item.code}</h2><p>{item.period} · {item.room}</p><p>{item.schedule}</p><p>{personName(teachers, item.teacherId)} · {occupied(item.id)}/{item.capacity} inscritos</p><div className="operation-card-actions"><button className="secondary-button" onClick={() => { store.setError(''); setSelectedId(item.id) }}>Ver lista<span className="directory-sr"> de {item.code}</span></button><button className="secondary-button" onClick={() => { store.setError(''); setGroupDraft({ ...item }) }}>Editar grupo<span className="directory-sr"> {item.code}</span></button></div></article>)}</div>{!filtered.length && <OperationEmpty>Registra un grupo y asigna un docente para comenzar.</OperationEmpty>}</div>
+    {selected && <article className="operation-panel"><div className="operation-panel-heading"><h2>Lista de {selected.code}</h2><button className="primary-button compact" disabled={store.blocked || selected.status !== 'Abierto' || !students.length || occupied(selected.id) >= selected.capacity} onClick={() => { store.setError(''); setEnrollmentDraft({ id: crypto.randomUUID(), groupId: selected.id, studentId: '', grade: null, attendance: 0, status: 'Inscrito' }) }}><Plus size={16} />Inscribir alumno</button></div><div className="directory-table-wrap"><table><thead><tr><th>Alumno</th><th>Calificación</th><th>Asistencia</th><th>Resultado</th><th>Evaluación</th></tr></thead><tbody>{groupEnrollments.map((item) => <tr key={item.id}><td>{personName(students, item.studentId)}</td><td>{item.grade ?? 'Sin evaluar'}</td><td>{item.attendance}%</td><td>{englishResult(item, data.settings)}</td><td><button className="secondary-button" onClick={() => { store.setError(''); setEnrollmentDraft({ ...item }) }}>Evaluar<span className="directory-sr"> a {personName(students, item.studentId)}</span></button></td></tr>)}</tbody></table></div>{!groupEnrollments.length && <OperationEmpty>Este grupo aún no tiene alumnos inscritos.</OperationEmpty>}</article>}
+    {groupDraft && <OperationEditor title="Grupo de inglés" close={() => setGroupDraft(null)}><form className="directory-form" onSubmit={saveGroup}>
+      <label>Código del grupo<input required maxLength={40} value={groupDraft.code} onChange={(event) => updateGroup('code', event.target.value)} /></label><label>Nivel<select value={groupDraft.level} onChange={(event) => updateGroup('level', event.target.value)}>{['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((item) => <option key={item}>{item}</option>)}</select></label>
+      <label>Docente<select required value={groupDraft.teacherId} onChange={(event) => updateGroup('teacherId', event.target.value)}><PersonOptions records={teachers} selectedId={groupDraft.teacherId} /></select></label><label>Periodo<input required maxLength={40} value={groupDraft.period} onChange={(event) => updateGroup('period', event.target.value)} /></label><label>Horario<input required maxLength={150} placeholder="Lun y mié · 16:00–18:00" value={groupDraft.schedule} onChange={(event) => updateGroup('schedule', event.target.value)} /></label><label>Aula<input required maxLength={40} value={groupDraft.room} onChange={(event) => updateGroup('room', event.target.value)} /></label><label>Cupo<input required type="number" min={1} max={200} step={1} value={groupDraft.capacity} onChange={(event) => updateGroup('capacity', Number(event.target.value))} /></label><label>Estado<select value={groupDraft.status} onChange={(event) => updateGroup('status', event.target.value)}><option>Abierto</option><option>Cerrado</option></select></label>
+      <div className="directory-wide"><OperationFeedback error={store.error} notice="" /></div><footer className="directory-wide"><button className="secondary-button" type="button" onClick={() => setGroupDraft(null)}>Cancelar</button><button className="primary-button compact" disabled={store.blocked}><Save size={16} />Guardar grupo</button></footer>
+    </form></OperationEditor>}
+    {enrollmentDraft && <OperationEditor title="Inscripción y evaluación de inglés" close={() => setEnrollmentDraft(null)}><form className="directory-form" onSubmit={saveEnrollment}>
+      <label className="directory-wide">Alumno<select required value={enrollmentDraft.studentId} disabled={data.englishEnrollments.some((item) => item.id === enrollmentDraft.id)} onChange={(event) => updateEnrollment('studentId', event.target.value)}><PersonOptions records={students} selectedId={enrollmentDraft.studentId} /></select></label><label>Calificación (0–100)<input type="number" min={0} max={100} step="0.1" placeholder="Sin evaluar" value={enrollmentDraft.grade ?? ''} onChange={(event) => updateEnrollment('grade', event.target.value === '' ? null : Number(event.target.value))} /></label><label>Asistencia (%)<input required type="number" min={0} max={100} step="0.1" value={enrollmentDraft.attendance} onChange={(event) => updateEnrollment('attendance', Number(event.target.value))} /></label><label>Estado<select value={enrollmentDraft.status} onChange={(event) => updateEnrollment('status', event.target.value)}><option>Inscrito</option><option>Baja</option></select></label><p>Resultado: <strong>{englishResult(enrollmentDraft, data.settings)}</strong></p>
+      <div className="directory-wide"><OperationFeedback error={store.error} notice="" /></div><footer className="directory-wide"><button type="button" className="secondary-button" onClick={() => setEnrollmentDraft(null)}>Cancelar</button><button className="primary-button compact" disabled={store.blocked}><Save size={16} />Guardar inscripción</button></footer>
+    </form></OperationEditor>}
+  </section>
+}

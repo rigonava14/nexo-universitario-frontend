@@ -280,7 +280,7 @@
         "id": "coordination",
         "name": "Coordinación administrativa",
         "description": "Operación académica, financiera y seguimiento institucional.",
-        "permissions": ["Resumen", "Aspirantes", "Alumnos", "Docentes", "Control escolar", "Oferta académica", "Finanzas", "Becas", "Reportes"],
+        "permissions": ["Resumen", "Aspirantes", "Alumnos", "Docentes", "Control escolar", "Coordinación académica", "Oferta académica", "Finanzas", "Becas", "Reportes"],
         "status": "Activo"
       },
       {

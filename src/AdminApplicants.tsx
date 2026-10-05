@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react'
 import { Applicant, admissionStatuses } from './admissions'
+import DocumentFiles from './DocumentFiles'
 
 type Props = {
   applicants: Applicant[]
@@ -118,6 +119,7 @@ export default function AdminApplicants({ applicants, onUpdate }: Props) {
               {selected.score !== undefined && <p className="detail-note"><strong>Resultado:</strong> {selected.score}/100</p>}
             </div>
             <div className="drawer-section"><h3>Documentos generados</h3>{selected.applicationFile ? <div className="generated-file"><FileCheck2 size={18} /><div><strong>{selected.applicationFile}</strong><small>Ficha del aspirante</small></div><Download size={16} /></div> : <p className="muted-copy">Aún no se ha generado una ficha.</p>}</div>
+            <DocumentFiles key={selected.id} ownerType="applicant" ownerId={selected.id} />
             <div className="drawer-actions">
               <button className="secondary-action" onClick={validateData} disabled={selected.dataValidated}><CheckCircle2 size={17} /> {selected.dataValidated ? 'Datos validados' : 'Validar datos'}</button>
               <button className="primary-button compact" onClick={generateFile}><FileCheck2 size={17} /> Generar ficha</button>

@@ -30,11 +30,18 @@ import { Applicant, loadApplicants, saveApplicants } from './admissions'
 import StudentPortal from './StudentPortal'
 import TeacherPortal from './TeacherPortal'
 import InstitutionSettings from './InstitutionSettings'
-import SchoolControl from './SchoolControl'
+import SchoolControl from './SchoolWorkspace'
+import Coordination from './Coordination'
 import AcademicOffer from './AcademicOffer'
 import Finance from './Finance'
 import Scholarships from './Scholarships'
 import UserPermissions from './UserPermissions'
+import PeopleDirectory from './PeopleDirectory'
+import ProcessModules from './ProcessModules'
+import Academies from './Academies'
+import EnglishModule from './EnglishModule'
+import OperationalReports from './OperationalReports'
+import OperationalSettings from './OperationalSettings'
 import { InstitutionSettings as InstitutionConfig, applyInstitutionSettings, loadInstitutionSettings, resetInstitutionSettings, saveInstitutionSettings } from './institution'
 import { demoAccounts, getCurrentEmail, getRole, Role, routeForRole, signIn, signOut } from './auth'
 import { allPermissionSections, permissionsForUser, routeBySection } from './access-control'
@@ -61,6 +68,7 @@ const navigation: Array<{ title: string; items: NavItem[] }> = [
     title: 'Gestión universitaria',
     items: [
       { label: 'Control escolar', icon: ClipboardCheck },
+      { label: 'Coordinación académica', icon: CalendarDays },
       { label: 'Oferta académica', icon: CalendarDays },
       { label: 'Finanzas', icon: CircleDollarSign },
       { label: 'Becas', icon: Award },
@@ -127,7 +135,7 @@ function Login({ onLogin, institution }: { onLogin: (role: Role) => void; instit
 
       <section className="login-form-panel">
         <form className="login-card" onSubmit={submit}>
-          <div className="mobile-logo"><div className="brand-mark"><GraduationCap size={24} /></div><span>{institution.shortName} · Nexo</span></div>
+          <div className="mobile-logo"><div className="brand-mark"><GraduationCap size={24} /></div><span>{institution.shortName} · CampusOne</span></div>
           <p className="eyebrow eyebrow--dark">BIENVENIDO DE NUEVO</p>
           <h2>Inicia sesión</h2>
           <p className="form-subtitle">Ingresa con tu cuenta. Te llevaremos al portal que corresponde a tu rol.</p>
@@ -160,7 +168,7 @@ function Sidebar({ active, onSelect, open, onClose, role, permissions, userName 
     <aside className={`sidebar ${open ? 'sidebar--open' : ''}`}>
       <div className="sidebar-brand">
         <div className="brand-mark"><GraduationCap size={24} /></div>
-        <div><strong>Nexo</strong><span>Universitario</span></div>
+        <div><strong>CampusOne</strong><span>Universitario</span></div>
         <button className="icon-button sidebar-close" onClick={onClose}><X size={20} /></button>
       </div>
       <nav>
@@ -331,8 +339,10 @@ function App() {
   if (location.pathname === '/admin/landing') return <Navigate to={signedRole === 'institution' ? '/admin/institucion' : '/admin'} replace />
   if (location.pathname === '/admin/institucion' && signedRole !== 'institution') return <Navigate to="/admin" replace />
   if (location.pathname === '/admin/usuarios-permisos' && signedRole !== 'institution') return <Navigate to="/admin" replace />
+  if (signedRole === 'admin' && !userPermissions.length) return <main className="empty-state"><h1>Sin módulos asignados</h1><p>Solicita al administrador del instituto que revise tu usuario y rol.</p><button className="primary-button" onClick={() => { signOut(); setRole(null); navigate('/') }}>Cerrar sesión</button></main>
 
-  const requestedSection = location.pathname === '/admin/aspirantes' ? 'Aspirantes' : location.pathname === '/admin/control-escolar' ? 'Control escolar' : location.pathname === '/admin/oferta-academica' ? 'Oferta académica' : location.pathname === '/admin/finanzas' ? 'Finanzas' : location.pathname === '/admin/becas' ? 'Becas' : null
+  const directoryKind = location.pathname === '/admin/alumnos' ? 'students' : location.pathname === '/admin/docentes' ? 'teachers' : null
+  const requestedSection = Object.entries(routeBySection).find(([, route]) => route === location.pathname)?.[0] ?? null
   if (signedRole === 'admin' && requestedSection && !userPermissions.includes(requestedSection)) return <Navigate to={routeBySection[userPermissions[0]] ?? '/admin'} replace />
 
   const isApplicantsModule = location.pathname === '/admin/aspirantes'
@@ -351,10 +361,10 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Sidebar active={isApplicantsModule ? 'Aspirantes' : isSettingsModule ? 'Personalización institucional' : isSchoolControlModule ? 'Control escolar' : isAcademicOfferModule ? 'Oferta académica' : isFinanceModule ? 'Finanzas' : isScholarshipsModule ? 'Becas' : isPermissionsModule ? 'Usuarios y permisos' : effectiveActive} onSelect={selectModule} open={sidebarOpen} onClose={() => setSidebarOpen(false)} role={signedRole} permissions={userPermissions} userName={currentAccessUser?.name} />
+      <Sidebar active={requestedSection ?? (isSettingsModule ? 'Personalización institucional' : isPermissionsModule ? 'Usuarios y permisos' : effectiveActive)} onSelect={selectModule} open={sidebarOpen} onClose={() => setSidebarOpen(false)} role={signedRole} permissions={userPermissions} userName={currentAccessUser?.name} />
       <div className="app-content">
         <header>
-          <button className="icon-button menu-button" onClick={() => setSidebarOpen(true)}><Menu size={21} /></button>
+          <button className="icon-button menu-button" aria-label="Abrir menú" onClick={() => setSidebarOpen(true)}><Menu size={21} /></button>
           <div className="institution-selector"><Building2 size={18} /><span>{institution.name}</span><ChevronDown size={15} /></div>
           <div className="header-actions">
             <label className="search-box"><Search size={18} /><input placeholder="Buscar alumno, trámite..." /></label>
@@ -362,7 +372,7 @@ function App() {
             <button className="header-signout" onClick={() => { signOut(); setRole(null); navigate('/') }}>Cerrar sesión</button><div className="header-avatar">{signedRole === 'institution' ? institution.shortName.slice(0, 2).toUpperCase() : 'LA'}</div>
           </div>
         </header>
-        <main className="page-content"><FadeContent key={location.pathname + effectiveActive} blur>{isApplicantsModule ? <AdminApplicants applicants={applicants} onUpdate={updateApplicant} /> : isSettingsModule ? <InstitutionSettings settings={institution} onSave={updateInstitution} onReset={restoreInstitution} /> : isSchoolControlModule ? <SchoolControl settings={institution} onSave={updateInstitution} /> : isAcademicOfferModule ? <AcademicOffer settings={institution} onSave={updateInstitution} /> : isFinanceModule ? <Finance settings={institution} onSave={updateInstitution} /> : isScholarshipsModule ? <Scholarships settings={institution} onSave={updateInstitution} /> : isPermissionsModule ? <UserPermissions settings={institution} onSave={updateInstitution} /> : <Dashboard active={effectiveActive} />}</FadeContent></main>
+        <main className="page-content"><FadeContent key={location.pathname + effectiveActive} blur>{requestedSection === 'Coordinación académica' ? <Coordination settings={institution} /> : requestedSection === 'Residencias' ? <ProcessModules key="residencies" kind="residencies" /> : requestedSection === 'Titulación' ? <ProcessModules key="graduations" kind="graduations" /> : requestedSection === 'Academias' ? <Academies /> : requestedSection === 'Inglés' ? <EnglishModule settings={institution} /> : requestedSection === 'Reportes' ? <OperationalReports permissions={userPermissions} /> : requestedSection === 'Configuración' ? <OperationalSettings /> : directoryKind ? <PeopleDirectory key={directoryKind} kind={directoryKind} settings={institution} /> : isApplicantsModule ? <AdminApplicants applicants={applicants} onUpdate={updateApplicant} /> : isSettingsModule ? <InstitutionSettings settings={institution} onSave={updateInstitution} onReset={restoreInstitution} /> : isSchoolControlModule ? <SchoolControl settings={institution} onSave={updateInstitution} /> : isAcademicOfferModule ? <SchoolControl initialView="Carreras y planes" settings={institution} onSave={updateInstitution} /> : isFinanceModule ? <Finance settings={institution} onSave={updateInstitution} /> : isScholarshipsModule ? <Scholarships settings={institution} onSave={updateInstitution} /> : isPermissionsModule ? <UserPermissions settings={institution} onSave={updateInstitution} /> : <Dashboard active={requestedSection ?? effectiveActive} />}</FadeContent></main>
       </div>
       {sidebarOpen && <button className="sidebar-overlay" aria-label="Cerrar menú" onClick={() => setSidebarOpen(false)} />}
     </div>

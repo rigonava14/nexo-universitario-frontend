@@ -1,9 +1,13 @@
 {
-  "name": "universidad-frontend",
+  "name": "campusone-frontend",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "api": "node --env-file-if-exists=.env server/index.mjs",
+    "test:school": "node --test scripts/school.test.mjs",
+    "test:directory": "node scripts/check-directory.cjs",
+    "test:operations": "node scripts/check-operations.cjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview"

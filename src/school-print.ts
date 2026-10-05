@@ -1,0 +1,8 @@
+export function printSchoolDocument(title: string, institution: string, student: string, headers: string[], rows: (string | number)[][]) {
+  const escape = (value: string | number) => String(value).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]!))
+  const frame = document.createElement('iframe')
+  frame.title = 'Impresión de documento escolar'; frame.style.position = 'fixed'; frame.style.width = '1px'; frame.style.height = '1px'; frame.style.border = '0'; frame.style.bottom = '0'
+  frame.onload = () => { frame.contentWindow?.addEventListener('afterprint', () => frame.remove(), { once: true }); frame.contentWindow?.focus(); frame.contentWindow?.print() }
+  frame.srcdoc = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${escape(title)}</title><style>body{font:12px Arial;color:#172b3a;margin:35px}h1{font-size:22px}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{border:1px solid #bbb;padding:9px;text-align:left}footer{margin-top:30px;color:#666}tr{break-inside:avoid}@page{size:A4;margin:18mm}</style></head><body><h2>${escape(institution)}</h2><h1>${escape(title)}</h1><p>${escape(student)}</p><table><thead><tr>${headers.map((header) => `<th>${escape(header)}</th>`).join('')}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${escape(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table><footer>CampusOne · Documento de demostración, sin firma ni validez institucional. Puede guardarse como PDF desde la ventana de impresión.</footer></body></html>`
+  document.body.append(frame)
+}

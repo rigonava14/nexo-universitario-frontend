@@ -1,6 +1,8 @@
 import { FormEvent, useState } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { getRole, signOut } from './auth'
+import { getCurrentEmail, getRole, signOut } from './auth'
+import { loadDirectory } from './directory'
+import DocumentFiles from './DocumentFiles'
 import { loadInstitutionSettings } from './institution'
 import FadeContent from './components/FadeContent'
 import {
@@ -78,7 +80,7 @@ const news = [
 type NoticeSetter = (message: string) => void
 
 function StudentSidebar({ active, open, onClose, onNavigate, onLogout }: { active: string; open: boolean; onClose: () => void; onNavigate: (slug: string) => void; onLogout: () => void }) {
-  return <aside className={`student-sidebar ${open ? 'open' : ''}`}><div className="student-side-brand"><span><GraduationCap size={23} /></span><div><strong>Nexo</strong><small>Portal de estudiantes</small></div><button onClick={onClose}><X size={19} /></button></div><div className="student-mini-profile"><div>AM</div><strong>Ana Martínez López</strong><span>Ing. en Sistemas · 6° semestre</span></div><nav>{studentNavigation.map((item) => { const Icon = item.icon; return <button className={active === item.slug ? 'active' : ''} key={item.slug} onClick={() => { onNavigate(item.slug); onClose() }}><Icon size={18} /><span>{item.label}</span></button> })}</nav><button className="student-logout" onClick={onLogout}><LogOut size={17} /> Cerrar sesión</button></aside>
+  return <aside className={`student-sidebar ${open ? 'open' : ''}`}><div className="student-side-brand"><span><GraduationCap size={23} /></span><div><strong>CampusOne</strong><small>Portal de estudiantes</small></div><button onClick={onClose}><X size={19} /></button></div><div className="student-mini-profile"><div>AM</div><strong>Ana Martínez López</strong><span>Ing. en Sistemas · 6° semestre</span></div><nav>{studentNavigation.map((item) => { const Icon = item.icon; return <button className={active === item.slug ? 'active' : ''} key={item.slug} onClick={() => { onNavigate(item.slug); onClose() }}><Icon size={18} /><span>{item.label}</span></button> })}</nav><button className="student-logout" onClick={onLogout}><LogOut size={17} /> Cerrar sesión</button></aside>
 }
 
 function PageHeading({ eyebrow, title, description, action }: { eyebrow: string; title: string; description: string; action?: React.ReactNode }) {
@@ -138,6 +140,7 @@ export default function StudentPortal() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [notice, setNotice] = useState('')
   const active = location.pathname.split('/')[2] || 'inicio'
+  const [linkedStudent] = useState(() => loadDirectory('students').records.find((item) => item.email.toLowerCase() === getCurrentEmail()?.toLowerCase()))
 
   function notify(message: string) { setNotice(message); window.setTimeout(() => setNotice(''), 2800) }
   function logout() { signOut(); navigate('/') }
@@ -154,7 +157,7 @@ export default function StudentPortal() {
   else if (active === 'tramites') content = <ProceduresPage notify={notify} />
   else if (active === 'procesos') content = <ProcessesPage notify={notify} />
   else if (active === 'noticias') content = <NewsPage />
-  else if (active === 'perfil') content = <ProfilePage notify={notify} />
+  else if (active === 'perfil') content = <><ProfilePage notify={notify} />{linkedStudent ? <DocumentFiles key={linkedStudent.id} ownerType="student" ownerId={linkedStudent.id} administrative={false} /> : <p className="directory-local">Para subir documentos, Control escolar debe vincular un alumno con el correo de esta sesión. Los datos del perfil superior son de demostración.</p>}</>
   else content = <StudentHome go={go} notify={notify} />
 
   return <div className="student-shell"><StudentSidebar active={active} open={menuOpen} onClose={() => setMenuOpen(false)} onNavigate={go} onLogout={logout} /><div className="student-main"><header className="student-topbar"><button className="student-menu-button" onClick={() => setMenuOpen(true)}><Menu size={20} /></button><div><strong>{loadInstitutionSettings().name}</strong><span>Periodo 2026-2</span></div><div><button className="student-notification"><Bell size={19} /><i /></button><div className="student-top-avatar">AM</div></div></header><main className="student-content"><FadeContent key={active} blur>{content}</FadeContent></main></div>{menuOpen && <button className="student-menu-overlay" onClick={() => setMenuOpen(false)} />}{notice && <div className="toast"><CheckCircle2 size={17} /> {notice}</div>}</div>

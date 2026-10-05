@@ -1,4 +1,6 @@
-# Nexo Universitario — Frontend
+# CampusOne — Frontend
+
+Inventario de módulos faltantes y secuencia de trabajo: [MODULOS.md](MODULOS.md).
 
 Primera base visual para una plataforma integral de gestión universitaria.
 
@@ -31,6 +33,8 @@ Folio de demostración con proceso aceptado: `ASP-2026-0148`.
 
 ## Portal de estudiantes
 
+Administración de alumnos: `/admin/alumnos`, con búsqueda, filtros por programa y estado, alta, edición y consulta del expediente. Los registros se guardan localmente; aún no están vinculados con el portal estudiantil.
+
 - `/alumnos` — portal del estudiante; sin sesión redirige al acceso único.
 - `/alumnos/inicio` — resumen académico y próximas clases.
 - `/alumnos/clases` y `/alumnos/horario` — materias, docentes, aulas y agenda semanal.
@@ -43,6 +47,8 @@ Folio de demostración con proceso aceptado: `ASP-2026-0148`.
 Cuenta de demostración: `alumno@universidad.edu.mx`.
 
 ## Portal docente
+
+Directorio administrativo: `/admin/docentes`, con búsqueda, filtros por departamento y estado, alta, edición y expediente profesional. Los registros se guardan localmente; la asignación de grupos y conexión con el portal docente quedan pendientes.
 
 - `/docentes` — portal exclusivo para profesores; sin sesión redirige al acceso único.
 - `/docentes/inicio` — clases del día, grupos y evaluaciones pendientes.
@@ -64,7 +70,28 @@ Cuenta de demostración: `docente@universidad.edu.mx`.
 
 Las cuentas de demostración son `instituto@universidad.edu.mx`, `admin@universidad.edu.mx`, `docente@universidad.edu.mx` y `alumno@universidad.edu.mx`; todas usan la contraseña `universidad`. La sesión y los roles son solo una simulación del frontend, no seguridad real. La personalización se guarda en `localStorage` de este navegador, no se publica a otros usuarios. Para un despliegue real faltan autenticación, autorización y almacenamiento compartido en backend.
 
-## Pendiente
+## Gestión universitaria y reportes
+
+- `/admin/residencias` — proyectos, empresa, asesor, fechas, horas, referencia de evidencia y seguimiento.
+- `/admin/titulacion` — modalidad, asesor, revisión de requisitos, fecha del acto y expediente.
+- `/admin/academias` — responsables, integrantes y acuerdos.
+- `/admin/ingles` — grupos, niveles, inscripción, cupos, evaluación, asistencia y acreditación.
+- `/admin/reportes` — consultas y exportación CSV de los directorios y los módulos anteriores, restringidas por los permisos de demostración.
+- `/admin/configuracion` — reglas de residencia e Inglés y modalidades de titulación.
+
+Los módulos se vinculan con los directorios administrativos de alumnos y docentes. Sus datos se guardan en este navegador y todavía no se sincronizan con los portales. Las referencias de evidencia no sustituyen una carga de archivos ni su validación institucional.
+
+Verificación local: `npm run build`, `npm run test:directory` y `npm run test:operations`. Los scripts de prueba requieren Node 24, que incluye el soporte para quitar tipos de TypeScript usado por las verificaciones.
+
+## Control escolar, documentos y horarios
+
+`/admin/control-escolar` integra materias, carreras y planes, grupos e inscripción, expediente, kárdex, revalidaciones, bloqueos y movimientos. `/admin/coordinacion` prepara la oferta del semestre, disponibilidad, cargas y horarios revisables en tablas. Los reportes incluyen estos registros. Los archivos se guardan localmente en IndexedDB.
+
+OpenAI se consulta desde un backend local: configurar `OPENAI_API_KEY` en `.env` usando `.env.example`, iniciar `npm run api` y mantener `npm run dev` en otra terminal. Nunca usar una variable `VITE_*` para la clave. La IA se activa cuando el servidor tiene configuración; se dispone además de generación local. No se ha probado una llamada real sin clave.
+
+Consultar [CONTROL_ESCOLAR.md](CONTROL_ESCOLAR.md) para relaciones, flujo, validaciones y límites. Ejecutar también `npm run test:school`.
+
+### Pendiente de producción
 
 - Integración con una API real.
 - Autenticación y permisos persistentes.
