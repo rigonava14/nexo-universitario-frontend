@@ -39,9 +39,13 @@ Node 24 (`.nvmrc`). Antes de abrir un PR corre `npm run check` y, si tocaste pan
 
 ```
 src/
-  main.tsx, App.tsx       # arranque; App.tsx contiene shell admin y ruteo (fase 0 lo pasa a src/routes)
-  routes/                 # rutas declaradas y guardas de permisos (fase 0, tarea 0.9-0.10)
-  services/               # interfaces de acceso a datos por dominio + adaptadores (0.11-0.12)
+  main.tsx, App.tsx       # arranque: QueryClientProvider, Suspense, estado compartido y rutas
+  routes/                 # rutas declaradas con carga diferida y guardas de permisos
+  admin/                  # login, layout, menú y resumen del panel de administración
+  services/index.ts       # interfaces por dominio y registro `services` (único punto para cambiar adaptador)
+  services/local/         # adaptadores del navegador: el ÚNICO lugar con localStorage, sessionStorage e IndexedDB
+  hooks/                  # TanStack Query: data.ts (hooks por dominio), useVersionedStore (guardado optimista)
+  app-state.tsx           # institución y aspirantes compartidos entre portales
   school.ts, operations.ts, directory.ts, admissions.ts, scheduling.ts   # reglas de negocio puras
   institution.ts, access-control.ts, auth.ts                             # configuración, permisos, sesión demo
   *.tsx                   # pantallas por módulo
