@@ -4,14 +4,14 @@ Inventario del frontend revisado el 5 de octubre de 2026. La presencia de una pa
 
 ## Nuevos módulos administrativos implementados
 
-| Módulo | Ruta | Primera entrega | Pendiente de integración |
-| --- | --- | --- | --- |
-| Residencias | `/admin/residencias` | Proyectos por alumno, empresa, asesor, fechas, horas, estados y referencia de evidencia | Carga real de archivos y conexión con el portal estudiantil |
-| Titulación | `/admin/titulacion` | Modalidades configurables, asesor, revisión de requisitos, fecha y seguimiento de expediente | Documentos verificables, firmas y conexión con Control escolar |
-| Academias | `/admin/academias` | Responsables, integrantes del directorio docente y registro editable de acuerdos | Historial individual de acuerdos y conexión con la programación académica |
-| Inglés | `/admin/ingles` | Grupos por nivel y periodo, docente, horario, aula, cupo, inscripción, bajas, calificación, asistencia y acreditación | Vincular sus resultados con el kárdex y gestionar conflictos de horario |
-| Reportes | `/admin/reportes` | Consulta y exportación CSV filtrada de Alumnos, Docentes, Residencias, Titulación, Academias e inscripciones de Inglés según permisos | Reportes consolidados de Finanzas y Admisiones; servidor y formatos oficiales |
-| Configuración | `/admin/configuracion` | Horas mínimas de residencia, calificación/asistencia de Inglés y catálogo de modalidades de titulación | Compartir y auditar reglas institucionales desde backend |
+| Módulo        | Ruta                   | Primera entrega                                                                                                                       | Pendiente de integración                                                      |
+| ------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Residencias   | `/admin/residencias`   | Proyectos por alumno, empresa, asesor, fechas, horas, estados y referencia de evidencia                                               | Carga real de archivos y conexión con el portal estudiantil                   |
+| Titulación    | `/admin/titulacion`    | Modalidades configurables, asesor, revisión de requisitos, fecha y seguimiento de expediente                                          | Documentos verificables, firmas y conexión con Control escolar                |
+| Academias     | `/admin/academias`     | Responsables, integrantes del directorio docente y registro editable de acuerdos                                                      | Historial individual de acuerdos y conexión con la programación académica     |
+| Inglés        | `/admin/ingles`        | Grupos por nivel y periodo, docente, horario, aula, cupo, inscripción, bajas, calificación, asistencia y acreditación                 | Vincular sus resultados con el kárdex y gestionar conflictos de horario       |
+| Reportes      | `/admin/reportes`      | Consulta y exportación CSV filtrada de Alumnos, Docentes, Residencias, Titulación, Academias e inscripciones de Inglés según permisos | Reportes consolidados de Finanzas y Admisiones; servidor y formatos oficiales |
+| Configuración | `/admin/configuracion` | Horas mínimas de residencia, calificación/asistencia de Inglés y catálogo de modalidades de titulación                                | Compartir y auditar reglas institucionales desde backend                      |
 
 Las seis secciones cuentan con rutas propias, selección de menú derivada de la ruta y controles de permisos de demostración. Los expedientes operativos empiezan vacíos: el usuario registra datos vinculados con los directorios de Alumnos y Docentes. Todo se guarda localmente. Si los datos guardados están corruptos o cambian en otra pestaña, se bloquea la escritura para evitar sobrescribirlos.
 
@@ -19,20 +19,20 @@ Residencias exige las horas configuradas y una referencia de evidencia antes de 
 
 ## Módulos existentes que necesitan completarse
 
-| Módulo | Base disponible | Pendiente |
-| --- | --- | --- |
-| Alumnos | Directorio, expediente de Control escolar, inscripción y documentos locales | Pagos y sincronización completa del portal |
-| Docentes administrativos | `/admin/docentes`: directorio, alta, edición, departamento, grado y expediente local | Asignación real de grupos y vinculación con el portal docente |
-| Aspirantes y admisiones | Registro, seguimiento, fichas y archivos digitales locales | Pagos verificados y conversión a alumno |
-| Control escolar | Materias, grupos e inscripción, expediente, kárdex, revalidación, bloqueos, bajas, cambios y justificantes | Persistencia compartida, cierres institucionales y auditoría de servidor |
-| Oferta académica | Carreras y planes relacionados con materias, grupos y expedientes | Versiones históricas de planes por alumno |
-| Coordinación académica | Áreas, encargados, clases del semestre, docentes, disponibilidad, cargas y propuestas de horario | Configurar clave OpenAI y probar llamada real; autorización de servidor y reglas avanzadas de aulas |
-| Finanzas | Cargos, cobros y catálogos de demostración | Exportaciones efectivas, conciliación y conexión con pagos reales |
-| Becas | Interfaz administrativa y configuración | Conectar solicitudes del portal estudiantil con revisión y aplicación financiera |
-| Usuarios y permisos | Usuarios, roles y permisos locales | Autenticación real y autorización validada en el servidor |
-| Portal estudiantil | Pantallas académicas, pagos, trámites y procesos | Datos por usuario; solicitudes, evidencias y descargas efectivas |
-| Portal docente | Grupos, evaluación, asistencia, actas y reportes | Persistencia compartida, cierres, expedientes y descargas efectivas |
-| Resumen | Indicadores y actividad de ejemplo | Calcular indicadores a partir de los datos operativos |
+| Módulo                   | Base disponible                                                                                            | Pendiente                                                                                           |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Alumnos                  | Directorio, expediente de Control escolar, inscripción y documentos locales                                | Pagos y sincronización completa del portal                                                          |
+| Docentes administrativos | `/admin/docentes`: directorio, alta, edición, departamento, grado y expediente local                       | Asignación real de grupos y vinculación con el portal docente                                       |
+| Aspirantes y admisiones  | Registro, seguimiento, fichas y archivos digitales locales                                                 | Pagos verificados y conversión a alumno                                                             |
+| Control escolar          | Materias, grupos e inscripción, expediente, kárdex, revalidación, bloqueos, bajas, cambios y justificantes | Persistencia compartida, cierres institucionales y auditoría de servidor                            |
+| Oferta académica         | Carreras y planes relacionados con materias, grupos y expedientes                                          | Versiones históricas de planes por alumno                                                           |
+| Coordinación académica   | Áreas, encargados, clases del semestre, docentes, disponibilidad, cargas y propuestas de horario           | Configurar clave OpenAI y probar llamada real; autorización de servidor y reglas avanzadas de aulas |
+| Finanzas                 | Cargos, cobros y catálogos de demostración                                                                 | Exportaciones efectivas, conciliación y conexión con pagos reales                                   |
+| Becas                    | Interfaz administrativa y configuración                                                                    | Conectar solicitudes del portal estudiantil con revisión y aplicación financiera                    |
+| Usuarios y permisos      | Usuarios, roles y permisos locales                                                                         | Autenticación real y autorización validada en el servidor                                           |
+| Portal estudiantil       | Pantallas académicas, pagos, trámites y procesos                                                           | Datos por usuario; solicitudes, evidencias y descargas efectivas                                    |
+| Portal docente           | Grupos, evaluación, asistencia, actas y reportes                                                           | Persistencia compartida, cierres, expedientes y descargas efectivas                                 |
+| Resumen                  | Indicadores y actividad de ejemplo                                                                         | Calcular indicadores a partir de los datos operativos                                               |
 
 ## Dependencias para producción
 

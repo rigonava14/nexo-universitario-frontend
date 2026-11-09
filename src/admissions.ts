@@ -10,7 +10,7 @@ export const admissionStatuses = [
   'Inscrito',
 ] as const
 
-export type AdmissionStatus = typeof admissionStatuses[number]
+export type AdmissionStatus = (typeof admissionStatuses)[number]
 
 export type Applicant = {
   id: string
@@ -112,13 +112,17 @@ export function saveApplicants(applicants: Applicant[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants))
 }
 
-export function createApplicant(data: Pick<Applicant, 'name' | 'email' | 'phone' | 'curp' | 'career' | 'campus'>): Applicant {
+export function createApplicant(
+  data: Pick<Applicant, 'name' | 'email' | 'phone' | 'curp' | 'career' | 'campus'>,
+): Applicant {
   const number = Math.floor(160 + Math.random() * 800)
   return {
     ...data,
     id: `ASP-2026-${number.toString().padStart(4, '0')}`,
     status: 'Documentos en revisión',
-    registeredAt: new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date()),
+    registeredAt: new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'short', year: 'numeric' }).format(
+      new Date(),
+    ),
     dataValidated: false,
   }
 }

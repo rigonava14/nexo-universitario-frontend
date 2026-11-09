@@ -1,0 +1,38 @@
+.fade-content {
+  animation: fade-content-in var(--fade-duration, 0.45s) ease-out var(--fade-delay, 0s) both;
+}
+
+.fade-content--blur {
+  animation-name: fade-content-in-blur;
+}
+
+@keyframes fade-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-content-in-blur {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-content,
+  .fade-content--blur {
+    animation: none;
+  }
+}
