@@ -13,12 +13,12 @@ CampusOne es un SaaS multi-institución para escuelas de media superior y superi
 2. Lee `CLAUDE.md` (reglas no negociables) y `docs/TRABAJO.md` (flujo, commits, PR).
 3. Carga la referencia que aplique:
 
-| Si la tarea toca… | Lee |
-| --- | --- |
-| Términos escolares o fiscales (RVOE, kárdex, IEDU, 911…) | `references/glosario.md` |
-| Un módulo nuevo o la migración de uno existente | `references/patron-modulo.md` |
-| SEP, SAT, IMSS o datos personales | `references/normativa.md` |
-| Revisar un PR o cerrar una historia | `references/verificacion.md` |
+| Si la tarea toca…                                        | Lee                           |
+| -------------------------------------------------------- | ----------------------------- |
+| Términos escolares o fiscales (RVOE, kárdex, IEDU, 911…) | `references/glosario.md`      |
+| Un módulo nuevo o la migración de uno existente          | `references/patron-modulo.md` |
+| SEP, SAT, IMSS o datos personales                        | `references/normativa.md`     |
+| Revisar un PR o cerrar una historia                      | `references/verificacion.md`  |
 
 ## Modelo mental
 

@@ -71,5 +71,9 @@ export default function FadeContent({
     }
   }, [blur, delay, duration, ease, initialOpacity, threshold])
 
-  return <div ref={ref} className={className} style={style} {...props}>{children}</div>
+  return (
+    <div ref={ref} className={className} style={style} {...props}>
+      {children}
+    </div>
+  )
 }

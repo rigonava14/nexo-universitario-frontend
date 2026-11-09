@@ -33,18 +33,27 @@ export function signIn(email: string, password: string): Role | null {
   }
   try {
     const stored = localStorage.getItem(institutionKey)
-    const settings = stored ? JSON.parse(stored) as { accessControl?: { users?: Array<{ email: string; status: string }> } } : null
-    const user = settings?.accessControl?.users?.find((item) => item.email.toLowerCase() === normalizedEmail && item.status === 'Activo')
+    const settings = stored
+      ? (JSON.parse(stored) as { accessControl?: { users?: Array<{ email: string; status: string }> } })
+      : null
+    const user = settings?.accessControl?.users?.find(
+      (item) => item.email.toLowerCase() === normalizedEmail && item.status === 'Activo',
+    )
     if (user) {
       sessionStorage.setItem(key, 'admin')
       sessionStorage.setItem(emailKey, user.email)
       return 'admin'
     }
-  } catch { /* Ignore damaged local demo data. */ }
+  } catch {
+    /* Ignore damaged local demo data. */
+  }
   return null
 }
 
-export function signOut() { sessionStorage.removeItem(key); sessionStorage.removeItem(emailKey) }
+export function signOut() {
+  sessionStorage.removeItem(key)
+  sessionStorage.removeItem(emailKey)
+}
 
 export function routeForRole(role: Role) {
   if (role === 'student') return '/alumnos/inicio'

@@ -14,7 +14,7 @@ Qué se decidió, en una o dos frases.
 ## Alternativas consideradas
 
 | Opción | A favor | En contra |
-| --- | --- | --- |
+| ------ | ------- | --------- |
 
 ## Consecuencias
 

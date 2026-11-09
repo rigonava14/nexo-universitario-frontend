@@ -37,14 +37,14 @@ apps/web/src/services/api/<dominio>.ts   # adaptador API (cliente generado de Op
 
 ## Tabla de negocio estándar
 
-| Columna | Tipo | Nota |
-| --- | --- | --- |
-| `id` | uuid | Clave primaria |
-| `institution_id` | uuid | Obligatoria; política RLS |
-| `campus_id` | uuid nullable | Si aplica |
-| `created_at`, `updated_at` | timestamptz | |
-| `created_by`, `updated_by` | uuid | Usuario que hizo el cambio |
-| `deleted_at` | timestamptz nullable | Borrado lógico cuando el dato tiene historia |
+| Columna                    | Tipo                 | Nota                                         |
+| -------------------------- | -------------------- | -------------------------------------------- |
+| `id`                       | uuid                 | Clave primaria                               |
+| `institution_id`           | uuid                 | Obligatoria; política RLS                    |
+| `campus_id`                | uuid nullable        | Si aplica                                    |
+| `created_at`, `updated_at` | timestamptz          |                                              |
+| `created_by`, `updated_by` | uuid                 | Usuario que hizo el cambio                   |
+| `deleted_at`               | timestamptz nullable | Borrado lógico cuando el dato tiene historia |
 
 ## Endpoints estándar
 

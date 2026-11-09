@@ -15,15 +15,15 @@ Una persona dueña del proyecto + Claude Code. La persona decide, revisa y hace 
 
 ## Ramas
 
-| Prefijo | Uso | Ejemplo |
-| --- | --- | --- |
-| `feat/` | Funcionalidad nueva | `feat/rutas-lazy` |
-| `fix/` | Corrección | `fix/kardex-promedio` |
-| `chore/` | Mantenimiento, dependencias, configuración | `chore/fijar-versiones` |
-| `refactor/` | Reorganización sin cambio de comportamiento | `refactor/capa-servicios` |
-| `docs/` | Solo documentación | `docs/adr-multi-institucion` |
-| `test/` | Solo pruebas | `test/e2e-inscripcion` |
-| `claude/` | Ramas creadas automáticamente por sesiones de Claude Code | `claude/...` |
+| Prefijo     | Uso                                                       | Ejemplo                      |
+| ----------- | --------------------------------------------------------- | ---------------------------- |
+| `feat/`     | Funcionalidad nueva                                       | `feat/rutas-lazy`            |
+| `fix/`      | Corrección                                                | `fix/kardex-promedio`        |
+| `chore/`    | Mantenimiento, dependencias, configuración                | `chore/fijar-versiones`      |
+| `refactor/` | Reorganización sin cambio de comportamiento               | `refactor/capa-servicios`    |
+| `docs/`     | Solo documentación                                        | `docs/adr-multi-institucion` |
+| `test/`     | Solo pruebas                                              | `test/e2e-inscripcion`       |
+| `claude/`   | Ramas creadas automáticamente por sesiones de Claude Code | `claude/...`                 |
 
 `main` está protegida: solo recibe PR con CI en verde y aprobación.
 

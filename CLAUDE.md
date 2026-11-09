@@ -6,15 +6,15 @@ Antes de cualquier tarea no trivial, carga la skill del proyecto **`campusone-do
 
 ## Documentos que mandan
 
-| Documento | Para qué |
-| --- | --- |
-| `docs/PLAN.md` | Plan de implementación: fases, sprints, tareas numeradas (0.1, 0.2…), puertas de salida |
-| `docs/PROPUESTA.md` | Visión de producto, módulos, arquitectura objetivo, modelo comercial |
-| `docs/TRABAJO.md` | Cómo trabajamos: flujo de cada historia, ramas, commits, PR, definición de terminado |
-| `docs/BACKLOG.md` | Historias pendientes en orden de prioridad |
-| `docs/adr/` | Decisiones de arquitectura registradas (una por archivo) |
-| `DESIGN.md` | Estándar visual obligatorio (colores, tipografía, radio de 4px, componentes) |
-| `MODULOS.md`, `CONTROL_ESCOLAR.md` | Estado funcional de cada módulo y reglas de control escolar |
+| Documento                          | Para qué                                                                                |
+| ---------------------------------- | --------------------------------------------------------------------------------------- |
+| `docs/PLAN.md`                     | Plan de implementación: fases, sprints, tareas numeradas (0.1, 0.2…), puertas de salida |
+| `docs/PROPUESTA.md`                | Visión de producto, módulos, arquitectura objetivo, modelo comercial                    |
+| `docs/TRABAJO.md`                  | Cómo trabajamos: flujo de cada historia, ramas, commits, PR, definición de terminado    |
+| `docs/BACKLOG.md`                  | Historias pendientes en orden de prioridad                                              |
+| `docs/adr/`                        | Decisiones de arquitectura registradas (una por archivo)                                |
+| `DESIGN.md`                        | Estándar visual obligatorio (colores, tipografía, radio de 4px, componentes)            |
+| `MODULOS.md`, `CONTROL_ESCOLAR.md` | Estado funcional de cada módulo y reglas de control escolar                             |
 
 Si el código y un documento no coinciden, señálalo y propone actualizar el documento en el mismo PR.
 

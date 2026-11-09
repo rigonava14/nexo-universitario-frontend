@@ -4,22 +4,22 @@ Resumen de trabajo, no asesoría legal ni fiscal. **Antes de implementar cualqui
 
 ## SEP
 
-| Obligación | Qué implica para el sistema | Fuente a verificar |
-| --- | --- | --- |
-| RVOE por programa | Catálogo de RVOE con clave y fechas; aparece en documentos y CFDI | SEP / autoridad educativa estatal |
-| Normas de control escolar del subsistema | Reglas de evaluación, extraordinarios, bajas y documentos varían por subsistema (DGB, DGETI, CECyTE…) | dgair.sep.gob.mx |
-| Certificado electrónico de bachillerato | Tres tipos (terminación, formación profesional, parcial) con folio y QR, consultables en SIGED; aplica a generaciones del MCCEMS | siged.sep.gob.mx, DGAIR |
-| Título electrónico | XML firmado con e.firma de los responsables de la institución, registrado ante la DGP; obligatorio desde octubre de 2018 | DGP |
-| Formato 911 | Matrícula por sexo, edad, grado; egreso; inicio y fin de ciclo | SEP, estadística educativa |
+| Obligación                               | Qué implica para el sistema                                                                                                      | Fuente a verificar                |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| RVOE por programa                        | Catálogo de RVOE con clave y fechas; aparece en documentos y CFDI                                                                | SEP / autoridad educativa estatal |
+| Normas de control escolar del subsistema | Reglas de evaluación, extraordinarios, bajas y documentos varían por subsistema (DGB, DGETI, CECyTE…)                            | dgair.sep.gob.mx                  |
+| Certificado electrónico de bachillerato  | Tres tipos (terminación, formación profesional, parcial) con folio y QR, consultables en SIGED; aplica a generaciones del MCCEMS | siged.sep.gob.mx, DGAIR           |
+| Título electrónico                       | XML firmado con e.firma de los responsables de la institución, registrado ante la DGP; obligatorio desde octubre de 2018         | DGP                               |
+| Formato 911                              | Matrícula por sexo, edad, grado; egreso; inicio y fin de ciclo                                                                   | SEP, estadística educativa        |
 
 ## SAT
 
-| Obligación | Qué implica | Fuente a verificar |
-| --- | --- | --- |
-| CFDI 4.0 de colegiaturas | Complemento IEDU con nombre, CURP, nivel educativo del alumno y clave RVOE; uso D10. Aplica de preescolar a bachillerato y profesional técnico | sat.gob.mx (estándar iedu) |
-| Factura global y cancelación | Pagos sin datos fiscales van a factura global; cancelación con motivo | Anexo 20 SAT |
-| CFDI de nómina | Complemento de nómina 1.2; la revisión E rige desde el 1 de enero de 2026 | sat.gob.mx |
-| Catálogos SAT | Productos/servicios, régimen fiscal, uso de CFDI, formas de pago; cambian con frecuencia | Catálogos del Anexo 20 |
+| Obligación                   | Qué implica                                                                                                                                    | Fuente a verificar         |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| CFDI 4.0 de colegiaturas     | Complemento IEDU con nombre, CURP, nivel educativo del alumno y clave RVOE; uso D10. Aplica de preescolar a bachillerato y profesional técnico | sat.gob.mx (estándar iedu) |
+| Factura global y cancelación | Pagos sin datos fiscales van a factura global; cancelación con motivo                                                                          | Anexo 20 SAT               |
+| CFDI de nómina               | Complemento de nómina 1.2; la revisión E rige desde el 1 de enero de 2026                                                                      | sat.gob.mx                 |
+| Catálogos SAT                | Productos/servicios, régimen fiscal, uso de CFDI, formas de pago; cambian con frecuencia                                                       | Catálogos del Anexo 20     |
 
 Decisión del plan: el timbrado se hace con un PAC por API; CampusOne arma el XML y guarda el resultado. La nómina empieza como prenómina exportable (ver `docs/PLAN.md`, fase 4).
 

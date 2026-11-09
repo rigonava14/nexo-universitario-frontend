@@ -24,42 +24,42 @@ Este documento es la **norma visual obligatoria** de CampusOne. Todo módulo, pa
 
 ### 2.1 Paleta base (valores por defecto de `institution.json`)
 
-| Clave en `institution.json` | Variable CSS | Valor | Uso |
-|---|---|---|---|
-| `primary` | `--brand-violet`, `--blue`, `--paper-blue` | `#0075DE` | Botón principal, enlaces, foco, gráficas |
-| `secondary` | `--brand-coral` | `#F64932` | Alertas, notificaciones, acentos cálidos |
-| `accent` | `--brand-amber` | `#FFB110` | Indicadores de atención, paneles de acento |
-| `background` | `--campus-canvas`, `--brand-lavender` | `#F6F5F4` | Lienzo de página |
-| `surface` | `--campus-paper` | `#FFFFFF` | Tarjetas, paneles, formularios |
-| `text` | `--campus-ink`, `--brand-plum` | `#000000` | Texto principal |
-| `muted` | `--campus-muted` | `#615D59` | Texto secundario (gris cálido) |
-| `border` | `--campus-line` | `#E9E8E6` | Divisores sólidos |
-| `sidebar` | `--sidebar-bg` | `#EFEDEA` | Barra lateral (clara) |
-| `sidebarText` | `--sidebar-text` | `#000000` | Texto de la barra lateral |
+| Clave en `institution.json` | Variable CSS                               | Valor     | Uso                                        |
+| --------------------------- | ------------------------------------------ | --------- | ------------------------------------------ |
+| `primary`                   | `--brand-violet`, `--blue`, `--paper-blue` | `#0075DE` | Botón principal, enlaces, foco, gráficas   |
+| `secondary`                 | `--brand-coral`                            | `#F64932` | Alertas, notificaciones, acentos cálidos   |
+| `accent`                    | `--brand-amber`                            | `#FFB110` | Indicadores de atención, paneles de acento |
+| `background`                | `--campus-canvas`, `--brand-lavender`      | `#F6F5F4` | Lienzo de página                           |
+| `surface`                   | `--campus-paper`                           | `#FFFFFF` | Tarjetas, paneles, formularios             |
+| `text`                      | `--campus-ink`, `--brand-plum`             | `#000000` | Texto principal                            |
+| `muted`                     | `--campus-muted`                           | `#615D59` | Texto secundario (gris cálido)             |
+| `border`                    | `--campus-line`                            | `#E9E8E6` | Divisores sólidos                          |
+| `sidebar`                   | `--sidebar-bg`                             | `#EFEDEA` | Barra lateral (clara)                      |
+| `sidebarText`               | `--sidebar-text`                           | `#000000` | Texto de la barra lateral                  |
 
 > Los nombres de variable `--brand-violet`, `--brand-plum`, etc. son históricos; se conservan por compatibilidad. **Su significado es el rol de la tabla, no el color de su nombre.**
 
 ### 2.2 Tokens del tema
 
-| Variable | Valor | Uso |
-|---|---|---|
-| `--paper-hairline` | `rgba(0,0,0,.08)` | Borde de tarjetas y separadores |
-| `--paper-hairline-strong` | `rgba(0,0,0,.16)` | Borde de campos, hover de tarjetas, botón contorno |
-| `--paper-ink-95` | `rgba(0,0,0,.95)` | Etiquetas, títulos de lista |
-| `--paper-ink-60` | `rgba(0,0,0,.60)` | Kickers / eyebrows, navegación inactiva |
-| `--paper-ink-40` | `rgba(0,0,0,.40)` | Texto deshabilitado, ayudas mínimas |
-| `--paper-sky-tint` | 10% de `primary` sobre blanco | Fondo de botón secundario y de íconos informativos |
-| `--paper-midnight` | `#02093A` | Paneles oscuros (ver 5.6) |
+| Variable                  | Valor                         | Uso                                                |
+| ------------------------- | ----------------------------- | -------------------------------------------------- |
+| `--paper-hairline`        | `rgba(0,0,0,.08)`             | Borde de tarjetas y separadores                    |
+| `--paper-hairline-strong` | `rgba(0,0,0,.16)`             | Borde de campos, hover de tarjetas, botón contorno |
+| `--paper-ink-95`          | `rgba(0,0,0,.95)`             | Etiquetas, títulos de lista                        |
+| `--paper-ink-60`          | `rgba(0,0,0,.60)`             | Kickers / eyebrows, navegación inactiva            |
+| `--paper-ink-40`          | `rgba(0,0,0,.40)`             | Texto deshabilitado, ayudas mínimas                |
+| `--paper-sky-tint`        | 10% de `primary` sobre blanco | Fondo de botón secundario y de íconos informativos |
+| `--paper-midnight`        | `#02093A`                     | Paneles oscuros (ver 5.6)                          |
 
 ### 2.3 Colores semánticos de estado
 
 Se mantienen independientes de la marca para que su significado no cambie:
 
-| Estado | Texto | Fondo |
-|---|---|---|
-| Éxito / pagado | `#18734D` | `#E8F7EF` |
+| Estado            | Texto     | Fondo     |
+| ----------------- | --------- | --------- |
+| Éxito / pagado    | `#18734D` | `#E8F7EF` |
 | Pendiente / aviso | `#94600F` | `#FFF4D9` |
-| Error / vencido | `#AC3542` | `#FEECEF` |
+| Error / vencido   | `#AC3542` | `#FEECEF` |
 
 ### 2.4 Reglas
 
@@ -73,17 +73,17 @@ Se mantienen independientes de la marca para que su significado no cambie:
 
 ## 3. Tipografía
 
-| Rol | Familia | Peso | Tamaño | Interlineado | Tracking |
-|---|---|---|---|---|---|
-| Display (hero) | Inter | 700 | `clamp(48px, 6vw, 78px)` | 1.04 | `-0.035em` |
-| Título de página (`h1`) | Inter | 700 | `clamp(30px, 2.4vw, 38px)` | 1.04 | `-0.035em` |
-| Título de sección (`h2` público) | Inter | 700 | 38–50px | 1.04 | `-0.035em` |
-| Título de panel | Inter | 600 | 17px | 1.27 | `-0.011em` |
-| Cifra de indicador | Inter | 600 | 28px | 1.1 | `-0.03em` |
-| Cuerpo | Inter | 400 | 14–16px | 1.5 | normal |
-| Etiqueta / navegación | Inter | 500 | 13–14px | 1.43 | normal |
-| Kicker / eyebrow | Inter | 500 | 11–12px, MAYÚSCULAS | 1.33 | `+0.06em` |
-| Subtítulo editorial | Source Serif 4 | 400 | 18px | 1.56 | normal |
+| Rol                              | Familia        | Peso | Tamaño                     | Interlineado | Tracking   |
+| -------------------------------- | -------------- | ---- | -------------------------- | ------------ | ---------- |
+| Display (hero)                   | Inter          | 700  | `clamp(48px, 6vw, 78px)`   | 1.04         | `-0.035em` |
+| Título de página (`h1`)          | Inter          | 700  | `clamp(30px, 2.4vw, 38px)` | 1.04         | `-0.035em` |
+| Título de sección (`h2` público) | Inter          | 700  | 38–50px                    | 1.04         | `-0.035em` |
+| Título de panel                  | Inter          | 600  | 17px                       | 1.27         | `-0.011em` |
+| Cifra de indicador               | Inter          | 600  | 28px                       | 1.1          | `-0.03em`  |
+| Cuerpo                           | Inter          | 400  | 14–16px                    | 1.5          | normal     |
+| Etiqueta / navegación            | Inter          | 500  | 13–14px                    | 1.43         | normal     |
+| Kicker / eyebrow                 | Inter          | 500  | 11–12px, MAYÚSCULAS        | 1.33         | `+0.06em`  |
+| Subtítulo editorial              | Source Serif 4 | 400  | 18px                       | 1.56         | normal     |
 
 - Fuente cargada desde Google Fonts en `src/styles.css`: Inter 400/500/600/700 y Source Serif 4 400.
 - Pila de respaldo: `'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif`.
@@ -100,36 +100,36 @@ Se mantienen independientes de la marca para que su significado no cambie:
 
 `4 · 8 · 12 · 16 · 20 · 24 · 32 · 42 · 64 · 80`
 
-| Contexto | Valor |
-|---|---|
-| Separación entre elementos en línea | 8px |
-| Separación en rejillas de tarjetas | 20–22px |
-| Padding de tarjeta | 22–26px |
-| Padding de contenido de página | `42px 46px 72px` (escritorio), `30px 22px 55px` (≤900px) |
-| Separación entre secciones públicas | 72–105px |
-| Ancho máximo de contenido | 1580px (privado), 1200–1240px (público) |
+| Contexto                            | Valor                                                    |
+| ----------------------------------- | -------------------------------------------------------- |
+| Separación entre elementos en línea | 8px                                                      |
+| Separación en rejillas de tarjetas  | 20–22px                                                  |
+| Padding de tarjeta                  | 22–26px                                                  |
+| Padding de contenido de página      | `42px 46px 72px` (escritorio), `30px 22px 55px` (≤900px) |
+| Separación entre secciones públicas | 72–105px                                                 |
+| Ancho máximo de contenido           | 1580px (privado), 1200–1240px (público)                  |
 
 ### 4.2 Radio
 
-| Elemento | Radio |
-|---|---|
-| Tarjetas, paneles, modales, drawers | `var(--paper-radius)` = **4px** |
-| Botones, campos, selects, pestañas | **4px** |
-| Avatares, pasos numerados, notificación | `50%` / `9999px` |
-| Píldoras de estado | `9999px` |
+| Elemento                                | Radio                           |
+| --------------------------------------- | ------------------------------- |
+| Tarjetas, paneles, modales, drawers     | `var(--paper-radius)` = **4px** |
+| Botones, campos, selects, pestañas      | **4px**                         |
+| Avatares, pasos numerados, notificación | `50%` / `9999px`                |
+| Píldoras de estado                      | `9999px`                        |
 
 - ✅ Todo radio nuevo se escribe como `var(--paper-radius)`; no se escriben valores en px.
 - ❌ Nada de 8, 12, 16 o 24px en contenedores rectangulares.
 
 ### 4.3 Bordes y sombras
 
-| Elemento | Tratamiento |
-|---|---|
-| Tarjeta | `1px solid var(--paper-hairline)`, **sin sombra** |
-| Tarjeta en hover | Solo cambia el borde a `--paper-hairline-strong`; sin `transform` |
-| Barra superior (fija) | `--paper-nav-shadow` |
-| Maqueta de producto / tarjeta flotante del hero | `--paper-mockup-shadow` (único uso permitido de sombra visible) |
-| Menú lateral abierto en móvil | `0 4px 24px rgba(0,0,0,.08)` |
+| Elemento                                        | Tratamiento                                                       |
+| ----------------------------------------------- | ----------------------------------------------------------------- |
+| Tarjeta                                         | `1px solid var(--paper-hairline)`, **sin sombra**                 |
+| Tarjeta en hover                                | Solo cambia el borde a `--paper-hairline-strong`; sin `transform` |
+| Barra superior (fija)                           | `--paper-nav-shadow`                                              |
+| Maqueta de producto / tarjeta flotante del hero | `--paper-mockup-shadow` (único uso permitido de sombra visible)   |
+| Menú lateral abierto en móvil                   | `0 4px 24px rgba(0,0,0,.08)`                                      |
 
 ---
 
@@ -137,12 +137,12 @@ Se mantienen independientes de la marca para que su significado no cambie:
 
 ### 5.1 Botones
 
-| Variante | Clases | Estilo |
-|---|---|---|
-| Principal | `.primary-button`, `.public-primary`, `.student-primary-button`, `.teacher-primary` | Fondo `--paper-blue`, texto `#fff`, peso 500, radio 4px. Hover: 86% del azul + negro. **Uno por vista.** |
-| Secundario | `.public-secondary` | Fondo `--paper-sky-tint`, texto `--paper-blue`, sin borde |
-| Contorno | `.outline-link` | Transparente, borde `--paper-hairline-strong`, texto tinta 95% |
-| Texto | enlaces "Ver todo" | Sin fondo, texto `--paper-blue`, peso 500 |
+| Variante   | Clases                                                                              | Estilo                                                                                                   |
+| ---------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Principal  | `.primary-button`, `.public-primary`, `.student-primary-button`, `.teacher-primary` | Fondo `--paper-blue`, texto `#fff`, peso 500, radio 4px. Hover: 86% del azul + negro. **Uno por vista.** |
+| Secundario | `.public-secondary`                                                                 | Fondo `--paper-sky-tint`, texto `--paper-blue`, sin borde                                                |
+| Contorno   | `.outline-link`                                                                     | Transparente, borde `--paper-hairline-strong`, texto tinta 95%                                           |
+| Texto      | enlaces "Ver todo"                                                                  | Sin fondo, texto `--paper-blue`, peso 500                                                                |
 
 Foco visible en todos: `outline: 2px solid var(--paper-blue); outline-offset: 2px`.
 
@@ -191,11 +191,11 @@ Para paneles destacados (`.login-brand-panel`, `.payroll-strip`, `.balance-card`
 
 ## 6. Diseño adaptable
 
-| Punto de corte | Comportamiento |
-|---|---|
-| ≤1180px | Rejillas de indicadores y programas a 2 columnas |
-| ≤900px | Barra lateral oculta (se abre encima); hero a una columna |
-| ≤640px | Rejillas a 1 columna; acciones del hero apiladas; título 30px |
+| Punto de corte | Comportamiento                                                |
+| -------------- | ------------------------------------------------------------- |
+| ≤1180px        | Rejillas de indicadores y programas a 2 columnas              |
+| ≤900px         | Barra lateral oculta (se abre encima); hero a una columna     |
+| ≤640px         | Rejillas a 1 columna; acciones del hero apiladas; título 30px |
 
 - Margen lateral mínimo en móvil: 16–22px.
 - **Sin desplazamiento horizontal** a 390px de ancho.
@@ -211,7 +211,7 @@ Para paneles destacados (`.login-brand-panel`, `.payroll-strip`, `.balance-card`
 - [ ] Un solo botón principal azul por vista.
 - [ ] Texto en tinta (opacidades del negro), no en azul.
 - [ ] Inter ≤700; Source Serif solo en subtítulos editoriales.
-- [ ] Colores vía variables; los cambios de marca funcionan desde *Personalización institucional*.
+- [ ] Colores vía variables; los cambios de marca funcionan desde _Personalización institucional_.
 - [ ] Contraste AA y foco visible.
 - [ ] Sin scroll horizontal a 390px.
 - [ ] Estilos nuevos que sobrescriben tema van en `src/paper-theme.css` o respetan sus tokens.

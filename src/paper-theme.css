@@ -8,15 +8,15 @@
   --paper-blue: var(--brand-violet);
   --paper-sky-tint: color-mix(in srgb, var(--brand-violet) 10%, white);
   --paper-midnight: #02093a;
-  --paper-hairline: rgba(0, 0, 0, .08);
-  --paper-hairline-strong: rgba(0, 0, 0, .16);
-  --paper-ink-95: rgba(0, 0, 0, .95);
-  --paper-ink-60: rgba(0, 0, 0, .6);
-  --paper-ink-40: rgba(0, 0, 0, .4);
+  --paper-hairline: rgba(0, 0, 0, 0.08);
+  --paper-hairline-strong: rgba(0, 0, 0, 0.16);
+  --paper-ink-95: rgba(0, 0, 0, 0.95);
+  --paper-ink-60: rgba(0, 0, 0, 0.6);
+  --paper-ink-40: rgba(0, 0, 0, 0.4);
   --paper-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
-  --paper-nav-shadow: 0 .7px 1.462px rgba(0, 0, 0, .015), 0 3px 9px rgba(0, 0, 0, .03);
+  --paper-nav-shadow: 0 0.7px 1.462px rgba(0, 0, 0, 0.015), 0 3px 9px rgba(0, 0, 0, 0.03);
   --paper-radius: 4px;
-  --paper-mockup-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  --paper-mockup-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
   --campus-shadow-sm: none;
   --campus-shadow-md: none;
@@ -25,33 +25,79 @@
   --campus-radius-lg: var(--paper-radius);
 }
 
-body { background: var(--campus-canvas); -webkit-font-smoothing: antialiased; }
-::selection { color: #fff; background: var(--paper-blue); }
-:where(button, a, input, select, textarea):focus-visible { outline: 2px solid var(--paper-blue); outline-offset: 2px; }
-button, a, input, select, textarea { transition-duration: .2s; transition-timing-function: ease; }
-button:not(:disabled):active, a:active { transform: none; }
+body {
+  background: var(--campus-canvas);
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  color: #fff;
+  background: var(--paper-blue);
+}
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--paper-blue);
+  outline-offset: 2px;
+}
+button,
+a,
+input,
+select,
+textarea {
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+button:not(:disabled):active,
+a:active {
+  transform: none;
+}
 
 /* ---------- Shell ---------- */
-.app-shell, .student-shell, .teacher-shell { background: var(--campus-canvas); }
+.app-shell,
+.student-shell,
+.teacher-shell {
+  background: var(--campus-canvas);
+}
 
-.sidebar, .student-sidebar, .teacher-sidebar {
+.sidebar,
+.student-sidebar,
+.teacher-sidebar {
   background: var(--sidebar-bg);
   border-right: 1px solid var(--paper-hairline);
   box-shadow: none;
 }
-.sidebar::before, .student-sidebar::before, .teacher-sidebar::before { display: none; }
-.sidebar-brand, .student-side-brand, .teacher-brand { border-bottom-color: var(--paper-hairline); }
-.sidebar-brand .brand-mark, .student-side-brand > span, .teacher-brand > span {
+.sidebar::before,
+.student-sidebar::before,
+.teacher-sidebar::before {
+  display: none;
+}
+.sidebar-brand,
+.student-side-brand,
+.teacher-brand {
+  border-bottom-color: var(--paper-hairline);
+}
+.sidebar-brand .brand-mark,
+.student-side-brand > span,
+.teacher-brand > span {
   border: 0;
   border-radius: var(--paper-radius, 4px);
   color: #fff;
   background: var(--paper-blue);
   box-shadow: none;
 }
-.sidebar-brand strong, .student-side-brand strong, .teacher-brand strong { font-weight: 600; letter-spacing: -.02em; }
+.sidebar-brand strong,
+.student-side-brand strong,
+.teacher-brand strong {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
 
-.nav-section > p { color: color-mix(in srgb, var(--sidebar-text) 40%, transparent); letter-spacing: .08em; font-weight: 500; }
-.nav-section button, .student-sidebar nav button, .teacher-sidebar nav button {
+.nav-section > p {
+  color: color-mix(in srgb, var(--sidebar-text) 40%, transparent);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+.nav-section button,
+.student-sidebar nav button,
+.teacher-sidebar nav button {
   min-height: 36px;
   margin: 1px 0;
   padding: 8px 12px;
@@ -59,70 +105,162 @@ button:not(:disabled):active, a:active { transform: none; }
   color: color-mix(in srgb, var(--sidebar-text) 60%, transparent);
   font-weight: 500;
 }
-.nav-section button:hover, .student-sidebar nav button:hover, .teacher-sidebar nav button:hover {
+.nav-section button:hover,
+.student-sidebar nav button:hover,
+.teacher-sidebar nav button:hover {
   color: var(--sidebar-text);
   background: color-mix(in srgb, var(--sidebar-text) 5%, transparent);
 }
-.nav-section button.active, .student-sidebar nav button.active, .teacher-sidebar nav button.active {
+.nav-section button.active,
+.student-sidebar nav button.active,
+.teacher-sidebar nav button.active {
   color: var(--sidebar-text);
   background: color-mix(in srgb, var(--sidebar-text) 7%, transparent);
   box-shadow: none;
 }
-.student-mini-profile > div, .teacher-card > div { border: 1px solid var(--paper-hairline); background: var(--campus-paper); color: var(--sidebar-text); }
+.student-mini-profile > div,
+.teacher-card > div {
+  border: 1px solid var(--paper-hairline);
+  background: var(--campus-paper);
+  color: var(--sidebar-text);
+}
 
-.app-content > header, .student-topbar, .teacher-topbar {
+.app-content > header,
+.student-topbar,
+.teacher-topbar {
   border-bottom: 1px solid var(--paper-hairline);
   background: color-mix(in srgb, var(--campus-canvas) 88%, transparent);
   box-shadow: var(--paper-nav-shadow);
 }
-.search-box { border: 1px solid var(--paper-hairline); border-radius: var(--paper-radius, 4px); box-shadow: none; }
-.search-box:focus-within { border-color: color-mix(in srgb, var(--paper-blue) 45%, transparent); }
-.notification, .student-notification, .teacher-notification, .header-avatar, .student-top-avatar, .teacher-avatar { border-radius: 9999px; }
-.header-avatar, .student-top-avatar, .teacher-avatar { font-weight: 600; }
+.search-box {
+  border: 1px solid var(--paper-hairline);
+  border-radius: var(--paper-radius, 4px);
+  box-shadow: none;
+}
+.search-box:focus-within {
+  border-color: color-mix(in srgb, var(--paper-blue) 45%, transparent);
+}
+.notification,
+.student-notification,
+.teacher-notification,
+.header-avatar,
+.student-top-avatar,
+.teacher-avatar {
+  border-radius: 9999px;
+}
+.header-avatar,
+.student-top-avatar,
+.teacher-avatar {
+  font-weight: 600;
+}
 
 /* ---------- Headings: tight display tracking, editorial subhead ---------- */
-.welcome-row h1, .student-page-heading h1, .teacher-heading h1, .module-heading h1 {
+.welcome-row h1,
+.student-page-heading h1,
+.teacher-heading h1,
+.module-heading h1 {
   font-weight: 700;
-  letter-spacing: -.035em;
+  letter-spacing: -0.035em;
   line-height: 1.04;
 }
-.date-label, .student-page-heading p, .teacher-heading p, .eyebrow, .public-eyebrow, .student-kicker, .teacher-eyebrow {
-  letter-spacing: .06em;
+.date-label,
+.student-page-heading p,
+.teacher-heading p,
+.eyebrow,
+.public-eyebrow,
+.student-kicker,
+.teacher-eyebrow {
+  letter-spacing: 0.06em;
   font-weight: 500;
 }
-.date-label, .student-page-heading p, .teacher-heading p { color: var(--paper-ink-60) !important; }
-.welcome-row p, .student-page-heading span, .teacher-heading span, .module-heading > div > p:last-child { color: var(--campus-muted); }
+.date-label,
+.student-page-heading p,
+.teacher-heading p {
+  color: var(--paper-ink-60) !important;
+}
+.welcome-row p,
+.student-page-heading span,
+.teacher-heading span,
+.module-heading > div > p:last-child {
+  color: var(--campus-muted);
+}
 
 /* ---------- Cards: white on paper, hairline, no shadow ---------- */
-.panel, .stat-card, .student-panel, .teacher-panel,
-.admission-stats article, .student-summary-grid article, .teacher-metrics article,
-.subject-grid article, .teacher-group-grid article, .process-overview-grid article,
-.student-news-grid article, .next-step-card, .documents-card,
-.student-table-panel, .teacher-grade-table, .payment-concepts, .report-cards article,
-.registration-form, .public-benefits {
+.panel,
+.stat-card,
+.student-panel,
+.teacher-panel,
+.admission-stats article,
+.student-summary-grid article,
+.teacher-metrics article,
+.subject-grid article,
+.teacher-group-grid article,
+.process-overview-grid article,
+.student-news-grid article,
+.next-step-card,
+.documents-card,
+.student-table-panel,
+.teacher-grade-table,
+.payment-concepts,
+.report-cards article,
+.registration-form,
+.public-benefits {
   border: 1px solid var(--paper-hairline);
   border-radius: var(--paper-radius, 4px);
   background: var(--campus-paper);
   box-shadow: none;
 }
-.panel:hover, .student-summary-grid article:hover, .teacher-metrics article:hover,
-.subject-grid article:hover, .teacher-group-grid article:hover, .student-news-grid article:hover,
+.panel:hover,
+.student-summary-grid article:hover,
+.teacher-metrics article:hover,
+.subject-grid article:hover,
+.teacher-group-grid article:hover,
+.student-news-grid article:hover,
 .public-programs article:hover {
   border-color: var(--paper-hairline-strong);
   box-shadow: none;
   transform: none;
 }
-.stat-card > strong, .student-summary-grid strong, .teacher-metrics strong, .admission-stats strong { font-weight: 600; letter-spacing: -.03em; }
-.panel-heading h3, .student-panel-title h2, .teacher-panel-title h2 { font-weight: 600; letter-spacing: -.011em; }
-.student-metric, .teacher-metrics article > span, .metric-icon { border-radius: var(--paper-radius, 4px); }
+.stat-card > strong,
+.student-summary-grid strong,
+.teacher-metrics strong,
+.admission-stats strong {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.panel-heading h3,
+.student-panel-title h2,
+.teacher-panel-title h2 {
+  font-weight: 600;
+  letter-spacing: -0.011em;
+}
+.student-metric,
+.teacher-metrics article > span,
+.metric-icon {
+  border-radius: var(--paper-radius, 4px);
+}
 
 /* Accent swatches: flat fills that read like sticky notes */
-.student-metric.amber, .teacher-metrics .amber { color: #000; background: var(--brand-amber); }
-.student-metric.green, .teacher-metrics .green { color: var(--paper-blue); background: var(--paper-sky-tint); }
+.student-metric.amber,
+.teacher-metrics .amber {
+  color: #000;
+  background: var(--brand-amber);
+}
+.student-metric.green,
+.teacher-metrics .green {
+  color: var(--paper-blue);
+  background: var(--paper-sky-tint);
+}
 
 /* ---------- Buttons ---------- */
-.primary-button, .student-primary-button, .teacher-primary, .teacher-primary-button, .public-primary,
-.login-page .primary-button, .student-login-card form button, .teacher-login form > button {
+.primary-button,
+.student-primary-button,
+.teacher-primary,
+.teacher-primary-button,
+.public-primary,
+.login-page .primary-button,
+.student-login-card form button,
+.teacher-login form > button {
   border: 0;
   border-radius: var(--paper-radius, 4px);
   color: #fff;
@@ -130,8 +268,13 @@ button:not(:disabled):active, a:active { transform: none; }
   box-shadow: none;
   font-weight: 500;
 }
-.primary-button:hover, .student-primary-button:hover, .teacher-primary-button:hover, .teacher-primary:hover, .public-primary:hover,
-.student-login-card form button:hover, .teacher-login form > button:hover {
+.primary-button:hover,
+.student-primary-button:hover,
+.teacher-primary-button:hover,
+.teacher-primary:hover,
+.public-primary:hover,
+.student-login-card form button:hover,
+.teacher-login form > button:hover {
   background: color-mix(in srgb, var(--paper-blue) 86%, black);
 }
 .public-secondary {
@@ -141,101 +284,220 @@ button:not(:disabled):active, a:active { transform: none; }
   background: var(--paper-sky-tint);
   font-weight: 500;
 }
-.public-secondary:hover { background: color-mix(in srgb, var(--paper-blue) 16%, white); }
-.outline-link { border-radius: 4px; border-color: var(--paper-hairline-strong); color: var(--paper-ink-95); }
-.demo-accounts button, .header-signout { color: var(--paper-blue); }
+.public-secondary:hover {
+  background: color-mix(in srgb, var(--paper-blue) 16%, white);
+}
+.outline-link {
+  border-radius: 4px;
+  border-color: var(--paper-hairline-strong);
+  color: var(--paper-ink-95);
+}
+.demo-accounts button,
+.header-signout {
+  color: var(--paper-blue);
+}
 
 /* Inputs */
-.registration-form input:not([type='checkbox']), .registration-form select,
-.student-login-card form input, .teacher-login form input {
+.registration-form input:not([type='checkbox']),
+.registration-form select,
+.student-login-card form input,
+.teacher-login form input {
   border: 1px solid var(--paper-hairline-strong);
   border-radius: var(--paper-radius, 4px);
 }
 
 /* ---------- Pills ---------- */
-.admission-status, .public-status, .news-list i, .admin-owner-note i, .teacher-profile-card > span { border-radius: 9999px; }
+.admission-status,
+.public-status,
+.news-list i,
+.admin-owner-note i,
+.teacher-profile-card > span {
+  border-radius: 9999px;
+}
 
 /* ---------- Dark feature cards (midnight islands) ----------
    Scoped variable overrides keep descendant colour-mix() text readable. */
-.login-brand-panel, .student-login > aside, .teacher-login > aside,
-.payroll-strip, .admin-owner-note, .scholarship-insight, .portal-copy-preview,
-.balance-card, .scholarship-banner {
+.login-brand-panel,
+.student-login > aside,
+.teacher-login > aside,
+.payroll-strip,
+.admin-owner-note,
+.scholarship-insight,
+.portal-copy-preview,
+.balance-card,
+.scholarship-banner {
   --sidebar-bg: var(--paper-midnight);
   --sidebar-text: #fff;
-  --campus-muted: rgba(255, 255, 255, .64);
-  --campus-line: rgba(255, 255, 255, .78);
+  --campus-muted: rgba(255, 255, 255, 0.64);
+  --campus-line: rgba(255, 255, 255, 0.78);
   color: #fff;
   background: var(--paper-midnight);
   box-shadow: none;
 }
-.payroll-strip, .admin-owner-note, .scholarship-insight, .portal-copy-preview,
-.balance-card, .scholarship-banner { border-radius: var(--paper-radius, 4px); }
-.payroll-strip button, .balance-card button, .scholarship-banner > button { border-radius: var(--paper-radius, 4px); color: var(--paper-midnight); background: #fff; }
-.login-brand-panel h1, .teacher-login-message h1, .student-login-quote blockquote { font-weight: 700; letter-spacing: -.035em; }
-.login-intro { font-family: var(--paper-serif); font-size: 18px; line-height: 1.56; }
-.brand-mark--light { border-radius: var(--paper-radius, 4px); }
-.teacher-login > aside::after { border-color: rgba(255, 255, 255, .08); }
+.payroll-strip,
+.admin-owner-note,
+.scholarship-insight,
+.portal-copy-preview,
+.balance-card,
+.scholarship-banner {
+  border-radius: var(--paper-radius, 4px);
+}
+.payroll-strip button,
+.balance-card button,
+.scholarship-banner > button {
+  border-radius: var(--paper-radius, 4px);
+  color: var(--paper-midnight);
+  background: #fff;
+}
+.login-brand-panel h1,
+.teacher-login-message h1,
+.student-login-quote blockquote {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+.login-intro {
+  font-family: var(--paper-serif);
+  font-size: 18px;
+  line-height: 1.56;
+}
+.brand-mark--light {
+  border-radius: var(--paper-radius, 4px);
+}
+.teacher-login > aside::after {
+  border-color: rgba(255, 255, 255, 0.08);
+}
 
 /* ---------- Public admissions ---------- */
-.public-page { background: var(--campus-paper); }
-.public-page--soft { background: var(--campus-canvas); }
+.public-page {
+  background: var(--campus-paper);
+}
+.public-page--soft {
+  background: var(--campus-canvas);
+}
 .public-header {
   border-bottom: 1px solid var(--paper-hairline);
   background: color-mix(in srgb, var(--campus-canvas) 90%, transparent);
   box-shadow: var(--paper-nav-shadow);
 }
-.public-brand > span { border-radius: var(--paper-radius, 4px); }
-.public-header nav a { color: var(--paper-ink-60); font-weight: 500; }
-.public-header nav a:hover { color: #000; }
-.public-header nav a::after { display: none; }
+.public-brand > span {
+  border-radius: var(--paper-radius, 4px);
+}
+.public-header nav a {
+  color: var(--paper-ink-60);
+  font-weight: 500;
+}
+.public-header nav a:hover {
+  color: #000;
+}
+.public-header nav a::after {
+  display: none;
+}
 
-.admissions-hero { background: var(--campus-canvas); }
-.admissions-hero::before { display: none; }
-.hero-copy h1, .registration-layout > section h1, .tracking-intro h1 {
+.admissions-hero {
+  background: var(--campus-canvas);
+}
+.admissions-hero::before {
+  display: none;
+}
+.hero-copy h1,
+.registration-layout > section h1,
+.tracking-intro h1 {
   color: #000;
   font-weight: 700;
-  letter-spacing: -.035em;
+  letter-spacing: -0.035em;
   line-height: 1.04;
 }
-.hero-copy > p:nth-child(3), .registration-layout > section > p:nth-child(3), .tracking-intro > p:nth-child(3) {
+.hero-copy > p:nth-child(3),
+.registration-layout > section > p:nth-child(3),
+.tracking-intro > p:nth-child(3) {
   color: var(--campus-muted);
   font-family: var(--paper-serif);
   font-size: 18px;
   line-height: 1.56;
 }
-.public-eyebrow { color: var(--paper-ink-60); }
-.process-card { border: 1px solid var(--paper-hairline); border-radius: var(--paper-radius, 4px); box-shadow: var(--paper-mockup-shadow); }
+.public-eyebrow {
+  color: var(--paper-ink-60);
+}
+.process-card {
+  border: 1px solid var(--paper-hairline);
+  border-radius: var(--paper-radius, 4px);
+  box-shadow: var(--paper-mockup-shadow);
+}
 
-.public-benefits { margin-top: 32px; }
-.public-programs h2 { font-weight: 700; letter-spacing: -.035em; line-height: 1.04; }
+.public-benefits {
+  margin-top: 32px;
+}
+.public-programs h2 {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
 .public-programs article {
   border: 1px solid var(--paper-hairline);
   border-radius: var(--paper-radius, 4px);
   background: var(--campus-paper);
   box-shadow: none;
 }
-.public-programs article > span { color: var(--brand-coral); font-weight: 500; }
-.public-programs article a { color: var(--paper-blue); font-weight: 500; }
+.public-programs article > span {
+  color: var(--brand-coral);
+  font-weight: 500;
+}
+.public-programs article a {
+  color: var(--paper-blue);
+  font-weight: 500;
+}
 
 /* ---------- Text stays ink; blue is reserved for actions and links ---------- */
-.login-card > label, .student-login-card form label, .teacher-login form label,
-.teacher-profile-form > label, .teacher-profile-form .two-fields label,
-.sidebar-footer strong, .activity-list strong, .student strong, .applicant-person strong,
-.generated-file strong, .process-card-top strong, .mini-step strong, .public-benefits strong,
-.validation-banner small, .institution-selector {
+.login-card > label,
+.student-login-card form label,
+.teacher-login form label,
+.teacher-profile-form > label,
+.teacher-profile-form .two-fields label,
+.sidebar-footer strong,
+.activity-list strong,
+.student strong,
+.applicant-person strong,
+.generated-file strong,
+.process-card-top strong,
+.mini-step strong,
+.public-benefits strong,
+.validation-banner small,
+.institution-selector {
   color: var(--paper-ink-95);
 }
-.drawer-header p, .eyebrow--dark, .student-kicker, .teacher-eyebrow { color: var(--paper-ink-60) !important; }
-.login-card > label, .student-login-card form label, .teacher-login form label { font-weight: 500; }
+.drawer-header p,
+.eyebrow--dark,
+.student-kicker,
+.teacher-eyebrow {
+  color: var(--paper-ink-60) !important;
+}
+.login-card > label,
+.student-login-card form label,
+.teacher-login form label {
+  font-weight: 500;
+}
 
 /* ---------- Charts: flat fills ---------- */
-.bar-chart i { background: var(--paper-blue); }
-#area stop { stop-color: var(--paper-blue); }
-.chart-line { stroke: var(--paper-blue); stroke-width: 2; }
+.bar-chart i {
+  background: var(--paper-blue);
+}
+#area stop {
+  stop-color: var(--paper-blue);
+}
+.chart-line {
+  stroke: var(--paper-blue);
+  stroke-width: 2;
+}
 
 @media (max-width: 900px) {
-  .sidebar.sidebar--open, .student-sidebar.open, .teacher-sidebar.open { box-shadow: 0 4px 24px rgba(0, 0, 0, .08); }
+  .sidebar.sidebar--open,
+  .student-sidebar.open,
+  .teacher-sidebar.open {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  }
 }
 @media (max-width: 640px) {
-  .public-benefits { margin-top: 24px; }
+  .public-benefits {
+    margin-top: 24px;
+  }
 }

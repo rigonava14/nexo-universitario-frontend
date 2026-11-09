@@ -4,7 +4,6 @@ Versión: 9 de noviembre de 2026
 
 > Documento vivo: la versión editable está en [CampusOne — Propuesta](https://claude.ai/artifact/T2wM6Y3YcmBcXE2ZF3qcNZ). Esta copia en el repositorio es la referencia de trabajo; actualízala cuando cambie el plan.
 
-
 ## Resumen ejecutivo
 
 CampusOne puede convertirse en una **plataforma SaaS de gestión integral para bachilleratos y universidades mexicanas**, pero hoy es un prototipo de frontend: todo vive en el navegador y no hay seguridad real. Antes de vender hacen falta backend, base de datos multi-institución y los procesos que exige la ley mexicana (CFDI, nómina, título y certificado electrónicos, datos personales).
@@ -36,15 +35,15 @@ CampusOne ya tiene un recorrido de producto muy completo (unas 25 pantallas y 4 
 
 ### Qué está roto o es solo demostración
 
-| Área | Situación hoy | Riesgo para vender |
-| --- | --- | --- |
-| Persistencia | `localStorage` e IndexedDB por navegador (`campusone-school-v1`, `campusone-operations-v1`) | Dos usuarios nunca ven los mismos datos |
-| Autenticación | Rol guardado en `sessionStorage`; contraseña única `universidad` | Cualquiera puede hacerse administrador desde la consola |
-| Permisos | Validados solo en el frontend | No hay seguridad real |
-| Portales alumno y docente | Datos de ejemplo fijos, no conectados al directorio | El alumno no ve su kárdex real |
-| Finanzas y becas | Cargos y catálogos de demostración | No cobra ni factura |
-| Indicadores del Resumen | Números fijos | Pierde credibilidad en una demo |
-| Documentos | Imprimibles sin firma, sello ni folio verificable | No tienen validez oficial |
+| Área                      | Situación hoy                                                                               | Riesgo para vender                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| Persistencia              | `localStorage` e IndexedDB por navegador (`campusone-school-v1`, `campusone-operations-v1`) | Dos usuarios nunca ven los mismos datos                 |
+| Autenticación             | Rol guardado en `sessionStorage`; contraseña única `universidad`                            | Cualquiera puede hacerse administrador desde la consola |
+| Permisos                  | Validados solo en el frontend                                                               | No hay seguridad real                                   |
+| Portales alumno y docente | Datos de ejemplo fijos, no conectados al directorio                                         | El alumno no ve su kárdex real                          |
+| Finanzas y becas          | Cargos y catálogos de demostración                                                          | No cobra ni factura                                     |
+| Indicadores del Resumen   | Números fijos                                                                               | Pierde credibilidad en una demo                         |
+| Documentos                | Imprimibles sin firma, sello ni folio verificable                                           | No tienen validez oficial                               |
 
 ### Deuda técnica que frena crecer
 
@@ -79,28 +78,28 @@ Para venderse en México, CampusOne tiene que cubrir tres frentes legales que ho
 
 ### Diferencias por nivel
 
-| Tema | Media superior (bachillerato) | Superior (licenciatura y posgrado) |
-| --- | --- | --- |
-| Marco curricular | Marco Curricular Común (MCCEMS), con normas de control escolar de cada subsistema (DGB, DGETI, DGETA, CECyTE, incorporadas) | Planes propios autorizados por RVOE (SEP o estado) o por autonomía |
-| Periodos | Semestres, ciclo escolar agosto–julio | Semestres, cuatrimestres o trimestres; modalidades escolarizada, mixta y en línea |
-| Evaluación | Parciales, promedios por semestre, recuperación y extraordinarios | Créditos, seriación, extraordinarios, oportunidades limitadas |
-| Documento final | Certificado electrónico SEP con QR, consultable en SIGED: terminación, formación profesional y parcial | Certificado de estudios y título electrónico XML firmado, registrado ante la DGP |
-| Padres o tutores | Indispensables: avisos, boletas, autorización de salidas, pagos | Opcionales |
-| Requisitos extra | Servicio social del bachillerato (según subsistema), orientación educativa, prevención de abandono | Servicio social, residencias o prácticas, titulación, idioma |
-| Facturación | CFDI con complemento IEDU (deducible) | CFDI con complemento IEDU solo hasta profesional técnico; licenciatura sin complemento de deducción |
+| Tema             | Media superior (bachillerato)                                                                                               | Superior (licenciatura y posgrado)                                                                  |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Marco curricular | Marco Curricular Común (MCCEMS), con normas de control escolar de cada subsistema (DGB, DGETI, DGETA, CECyTE, incorporadas) | Planes propios autorizados por RVOE (SEP o estado) o por autonomía                                  |
+| Periodos         | Semestres, ciclo escolar agosto–julio                                                                                       | Semestres, cuatrimestres o trimestres; modalidades escolarizada, mixta y en línea                   |
+| Evaluación       | Parciales, promedios por semestre, recuperación y extraordinarios                                                           | Créditos, seriación, extraordinarios, oportunidades limitadas                                       |
+| Documento final  | Certificado electrónico SEP con QR, consultable en SIGED: terminación, formación profesional y parcial                      | Certificado de estudios y título electrónico XML firmado, registrado ante la DGP                    |
+| Padres o tutores | Indispensables: avisos, boletas, autorización de salidas, pagos                                                             | Opcionales                                                                                          |
+| Requisitos extra | Servicio social del bachillerato (según subsistema), orientación educativa, prevención de abandono                          | Servicio social, residencias o prácticas, titulación, idioma                                        |
+| Facturación      | CFDI con complemento IEDU (deducible)                                                                                       | CFDI con complemento IEDU solo hasta profesional técnico; licenciatura sin complemento de deducción |
 
 ### Obligaciones oficiales que el sistema debe automatizar
 
-| Obligación | Qué pide | Qué debe hacer CampusOne |
-| --- | --- | --- |
-| Certificado electrónico de bachillerato | Formatos SEP con folio y QR, validables en SIGED; aplican a generaciones del MCCEMS | Generar los datos del certificado desde el kárdex y exportarlos en el formato del subsistema |
-| Título electrónico | XML firmado con e.firma (FIEL) de los responsables de la institución, enviado a la DGP; obligatorio desde octubre de 2018 | Armar el XML, firmarlo con la e.firma del rector y del responsable de control escolar, y llevar el estado del registro |
-| RVOE | Clave por plan y nivel; vigente y visible en documentos y facturas | Catálogo de RVOE por programa con fechas y alertas de vencimiento |
-| Estadística 911 | Cuestionarios SEP de inicio y fin de ciclo | Reporte prellenado con matrícula por sexo, edad, grado y egreso |
-| CFDI 4.0 de colegiaturas | Complemento IEDU con nombre, CURP, nivel educativo del alumno y clave del RVOE; uso D10 | Facturación automática por pago con datos del alumno ya capturados |
-| CFDI de nómina | Complemento de nómina 1.2, revisión E vigente desde el 1 de enero de 2026 | Timbrado de nómina por pago, asimilados incluidos |
-| Seguridad social | Altas, bajas y modificaciones ante el IMSS (IDSE), cálculo de cuotas (SUA) e INFONAVIT | Exportar movimientos afiliatorios y cálculos para IDSE/SUA |
-| Datos personales | Nueva LFPDPPP publicada el 20 de marzo de 2025; la Secretaría Anticorrupción y Buen Gobierno sustituye al INAI | Aviso de privacidad por institución, consentimiento, derechos ARCO, bitácora de accesos y datos sensibles (salud, discapacidad) cifrados |
+| Obligación                              | Qué pide                                                                                                                  | Qué debe hacer CampusOne                                                                                                                 |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Certificado electrónico de bachillerato | Formatos SEP con folio y QR, validables en SIGED; aplican a generaciones del MCCEMS                                       | Generar los datos del certificado desde el kárdex y exportarlos en el formato del subsistema                                             |
+| Título electrónico                      | XML firmado con e.firma (FIEL) de los responsables de la institución, enviado a la DGP; obligatorio desde octubre de 2018 | Armar el XML, firmarlo con la e.firma del rector y del responsable de control escolar, y llevar el estado del registro                   |
+| RVOE                                    | Clave por plan y nivel; vigente y visible en documentos y facturas                                                        | Catálogo de RVOE por programa con fechas y alertas de vencimiento                                                                        |
+| Estadística 911                         | Cuestionarios SEP de inicio y fin de ciclo                                                                                | Reporte prellenado con matrícula por sexo, edad, grado y egreso                                                                          |
+| CFDI 4.0 de colegiaturas                | Complemento IEDU con nombre, CURP, nivel educativo del alumno y clave del RVOE; uso D10                                   | Facturación automática por pago con datos del alumno ya capturados                                                                       |
+| CFDI de nómina                          | Complemento de nómina 1.2, revisión E vigente desde el 1 de enero de 2026                                                 | Timbrado de nómina por pago, asimilados incluidos                                                                                        |
+| Seguridad social                        | Altas, bajas y modificaciones ante el IMSS (IDSE), cálculo de cuotas (SUA) e INFONAVIT                                    | Exportar movimientos afiliatorios y cálculos para IDSE/SUA                                                                               |
+| Datos personales                        | Nueva LFPDPPP publicada el 20 de marzo de 2025; la Secretaría Anticorrupción y Buen Gobierno sustituye al INAI            | Aviso de privacidad por institución, consentimiento, derechos ARCO, bitácora de accesos y datos sensibles (salud, discapacidad) cifrados |
 
 Antes de construir cada obligación hay que validar la versión vigente con la fuente oficial (DGAIR, DGP y SAT) y con un contador o abogado. Las reglas cambian cada año y difieren entre subsistemas y estados.
 
@@ -117,16 +116,16 @@ Fuentes consultadas: [certificados electrónicos de bachillerato (El Universal)]
 
 El mercado está partido en dos: **ERPs globales caros y complejos** para universidades grandes, y **sistemas mexicanos sencillos** que cubren control escolar y cobranza pero no SEP electrónico, nómina ni sitio web. El hueco para CampusOne es la escuela mediana de 300 a 8,000 alumnos que quiere todo en un solo lugar, en español y con cumplimiento mexicano.
 
-| Sistema | Tipo | Fuerte en | Débil para una escuela mexicana mediana |
-| --- | --- | --- | --- |
-| Ellucian Banner / Colleague | ERP universitario global | Procesos completos de universidades grandes | Implementación de meses, costo alto, adaptación a SEP y SAT por consultoría |
-| PowerSchool | SIS K-12 | Escuelas básicas y padres | Pensado para EUA; poco de superior y de normativa mexicana |
-| [Classter](https://www.comparasoftware.com/administracion-escolar?page=2) / Classe365 | SaaS integral (SIS, LMS, ERP, CRM) | Amplitud de módulos | Genéricos internacionales; sin CFDI, título electrónico ni 911 |
-| [Servoescolar](https://www.capterra.com/p/241784/Servoescolar/alternatives/) | SaaS mexicano | Control escolar, pagos en línea | Orientado a escuelas pequeñas (perfiles de 2 a 200 usuarios) |
-| [Saeko](https://www.comparasoftware.com/administracion-escolar) y otros sistemas locales | Software mexicano de control escolar | Conocen la normativa local | Interfaces anticuadas, poca personalización, portales limitados |
-| Odoo (módulos educativos) | ERP abierto | Contabilidad, RH, inventario | Lo académico es de terceros; requiere integrador |
-| Moodle, Google Classroom, Canvas | LMS | Clases y tareas en línea | No son control escolar; se integran, no compiten |
-| Desarrollos propios (p. ej. SII en Tecnológicos) | Sistemas internos | Ajustados a su institución | Caros de mantener; oportunidad de reemplazo |
+| Sistema                                                                                  | Tipo                                 | Fuerte en                                   | Débil para una escuela mexicana mediana                                     |
+| ---------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------- | --------------------------------------------------------------------------- |
+| Ellucian Banner / Colleague                                                              | ERP universitario global             | Procesos completos de universidades grandes | Implementación de meses, costo alto, adaptación a SEP y SAT por consultoría |
+| PowerSchool                                                                              | SIS K-12                             | Escuelas básicas y padres                   | Pensado para EUA; poco de superior y de normativa mexicana                  |
+| [Classter](https://www.comparasoftware.com/administracion-escolar?page=2) / Classe365    | SaaS integral (SIS, LMS, ERP, CRM)   | Amplitud de módulos                         | Genéricos internacionales; sin CFDI, título electrónico ni 911              |
+| [Servoescolar](https://www.capterra.com/p/241784/Servoescolar/alternatives/)             | SaaS mexicano                        | Control escolar, pagos en línea             | Orientado a escuelas pequeñas (perfiles de 2 a 200 usuarios)                |
+| [Saeko](https://www.comparasoftware.com/administracion-escolar) y otros sistemas locales | Software mexicano de control escolar | Conocen la normativa local                  | Interfaces anticuadas, poca personalización, portales limitados             |
+| Odoo (módulos educativos)                                                                | ERP abierto                          | Contabilidad, RH, inventario                | Lo académico es de terceros; requiere integrador                            |
+| Moodle, Google Classroom, Canvas                                                         | LMS                                  | Clases y tareas en línea                    | No son control escolar; se integran, no compiten                            |
+| Desarrollos propios (p. ej. SII en Tecnológicos)                                         | Sistemas internos                    | Ajustados a su institución                  | Caros de mantener; oportunidad de reemplazo                                 |
 
 Nota: las descripciones de Ellucian, PowerSchool, Odoo y los LMS vienen de conocimiento general del mercado, no de fuentes abiertas para este documento. Conviene validarlas con demos antes de usarlas en material de venta.
 
@@ -145,17 +144,17 @@ La propuesta organiza CampusOne en **un núcleo obligatorio y 11 suites activabl
 
 ### 0. Núcleo de plataforma (siempre incluido)
 
-| Módulo | Qué incluye | Estado |
-| --- | --- | --- |
-| Institución y campus | Datos fiscales, RVOE por programa, campus, niveles, ciclos y calendario oficial | Parcial |
-| Identidad y accesos | Login único, SSO con Google/Microsoft, 2FA, recuperación por correo y SMS, sesiones | Parcial (demo) |
-| Roles y permisos | Roles por plantilla y personalizados, permisos por campus y programa | Parcial (solo frontend) |
-| Personas | Una ficha por persona con varios roles (alumno, padre, docente, empleado, egresado) | Nuevo |
-| Catálogos | Países, estados, municipios, escuelas de procedencia, motivos de baja, documentos | Parcial |
-| Auditoría | Bitácora de quién cambió qué y cuándo, exportable | Nuevo |
-| Notificaciones | Correo, push, WhatsApp y SMS con plantillas | Nuevo |
-| Archivos | Almacenamiento seguro de documentos con versiones y visor | Parcial (local) |
-| Importación | Carga masiva desde Excel con validación y vista previa | Nuevo |
+| Módulo               | Qué incluye                                                                         | Estado                  |
+| -------------------- | ----------------------------------------------------------------------------------- | ----------------------- |
+| Institución y campus | Datos fiscales, RVOE por programa, campus, niveles, ciclos y calendario oficial     | Parcial                 |
+| Identidad y accesos  | Login único, SSO con Google/Microsoft, 2FA, recuperación por correo y SMS, sesiones | Parcial (demo)          |
+| Roles y permisos     | Roles por plantilla y personalizados, permisos por campus y programa                | Parcial (solo frontend) |
+| Personas             | Una ficha por persona con varios roles (alumno, padre, docente, empleado, egresado) | Nuevo                   |
+| Catálogos            | Países, estados, municipios, escuelas de procedencia, motivos de baja, documentos   | Parcial                 |
+| Auditoría            | Bitácora de quién cambió qué y cuándo, exportable                                   | Nuevo                   |
+| Notificaciones       | Correo, push, WhatsApp y SMS con plantillas                                         | Nuevo                   |
+| Archivos             | Almacenamiento seguro de documentos con versiones y visor                           | Parcial (local)         |
+| Importación          | Carga masiva desde Excel con validación y vista previa                              | Nuevo                   |
 
 ### 1. Sitio web institucional (constructor)
 
@@ -168,49 +167,49 @@ La propuesta organiza CampusOne en **un núcleo obligatorio y 11 suites activabl
 
 ### 2. Atracción y admisiones
 
-| Módulo | Qué incluye | Estado |
-| --- | --- | --- |
-| CRM de prospectos | Embudo por campaña, seguimiento por asesor, WhatsApp, recordatorios, conversión | Nuevo |
-| Convocatorias | Fechas, cupos por programa, requisitos, costo de ficha | Existe |
-| Registro de aspirantes | Validación de CURP con RENAPO, documentos, folio | Existe |
-| Examen de admisión | Banco de reactivos, examen en línea con tiempo, calificación automática, carga de resultados externos | Parcial (constructor) |
-| Resultados y propedeútico | Listas de aceptados, curso de inducción, conversión automática a alumno | Nuevo |
+| Módulo                    | Qué incluye                                                                                           | Estado                |
+| ------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
+| CRM de prospectos         | Embudo por campaña, seguimiento por asesor, WhatsApp, recordatorios, conversión                       | Nuevo                 |
+| Convocatorias             | Fechas, cupos por programa, requisitos, costo de ficha                                                | Existe                |
+| Registro de aspirantes    | Validación de CURP con RENAPO, documentos, folio                                                      | Existe                |
+| Examen de admisión        | Banco de reactivos, examen en línea con tiempo, calificación automática, carga de resultados externos | Parcial (constructor) |
+| Resultados y propedeútico | Listas de aceptados, curso de inducción, conversión automática a alumno                               | Nuevo                 |
 
 ### 3. Control escolar
 
-| Módulo | Qué incluye | Estado |
-| --- | --- | --- |
-| Oferta académica | Programas, planes versionados, materias, créditos, seriación, equivalencias | Existe |
-| Inscripción y reinscripción | En línea por el alumno con validación de adeudos y seriación | Parcial |
-| Grupos y horarios | Generador automático por restricciones, aulas con capacidad y equipo | Existe |
-| Evaluación | Parciales, ponderaciones configurables, extraordinarios, actas firmadas, cierre de periodo | Parcial |
-| Asistencia | Por clase, QR o lista, alertas de faltas | Parcial |
-| Kárdex y trayectoria | Historial, promedios, avance de créditos, riesgo académico | Existe |
-| Movimientos | Bajas, reingresos, cambios de carrera, revalidaciones, bloqueos | Existe |
-| Documentos oficiales | Constancias con QR verificable, boletas, certificado de bachillerato, certificado y título electrónico XML para DGP | Parcial (imprimibles demo) |
-| Estadística oficial | Formato 911 prellenado, indicadores de deserción y eficiencia terminal | Nuevo |
+| Módulo                      | Qué incluye                                                                                                         | Estado                     |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| Oferta académica            | Programas, planes versionados, materias, créditos, seriación, equivalencias                                         | Existe                     |
+| Inscripción y reinscripción | En línea por el alumno con validación de adeudos y seriación                                                        | Parcial                    |
+| Grupos y horarios           | Generador automático por restricciones, aulas con capacidad y equipo                                                | Existe                     |
+| Evaluación                  | Parciales, ponderaciones configurables, extraordinarios, actas firmadas, cierre de periodo                          | Parcial                    |
+| Asistencia                  | Por clase, QR o lista, alertas de faltas                                                                            | Parcial                    |
+| Kárdex y trayectoria        | Historial, promedios, avance de créditos, riesgo académico                                                          | Existe                     |
+| Movimientos                 | Bajas, reingresos, cambios de carrera, revalidaciones, bloqueos                                                     | Existe                     |
+| Documentos oficiales        | Constancias con QR verificable, boletas, certificado de bachillerato, certificado y título electrónico XML para DGP | Parcial (imprimibles demo) |
+| Estadística oficial         | Formato 911 prellenado, indicadores de deserción y eficiencia terminal                                              | Nuevo                      |
 
 ### 4. Vida académica y egreso
 
-- **Servicio social**: dependencias, convocatorias, horas, reportes bimestrales, carta de liberación. *Nuevo.*
-- **Prácticas y residencias**: empresas, convenios, asesores, evidencias. *Existe.*
-- **Titulación**: modalidades, requisitos, sinodales, acta de examen y título electrónico. *Existe.*
-- **Idiomas y créditos complementarios**: niveles, acreditación, actividades culturales y deportivas. *Existe (inglés).*
-- **Tutorías y orientación**: tutor asignado, bitácora de sesiones, canalización a psicología. *Nuevo.*
-- **Egresados**: directorio, encuestas, bolsa de trabajo, constancias para posgrado. *Nuevo.*
+- **Servicio social**: dependencias, convocatorias, horas, reportes bimestrales, carta de liberación. _Nuevo._
+- **Prácticas y residencias**: empresas, convenios, asesores, evidencias. _Existe._
+- **Titulación**: modalidades, requisitos, sinodales, acta de examen y título electrónico. _Existe._
+- **Idiomas y créditos complementarios**: niveles, acreditación, actividades culturales y deportivas. _Existe (inglés)._
+- **Tutorías y orientación**: tutor asignado, bitácora de sesiones, canalización a psicología. _Nuevo._
+- **Egresados**: directorio, encuestas, bolsa de trabajo, constancias para posgrado. _Nuevo._
 
 ### 5. Finanzas y facturación
 
-| Módulo | Qué incluye | Estado |
-| --- | --- | --- |
-| Planes de pago | Colegiaturas, inscripciones, cuotas por programa, campus y generación | Parcial |
-| Cargos y recargos | Generación mensual automática, recargos y descuentos por pronto pago | Parcial |
-| Pagos en línea | Tarjeta, SPEI con referencia, OXXO, domiciliación (Stripe, Openpay, Conekta, Mercado Pago) | Nuevo |
-| Facturación CFDI 4.0 | Timbrado automático por pago con IEDU, notas de crédito, cancelación, factura global | Nuevo |
-| Becas y convenios | Solicitud, comité, aplicación automática al cargo, renovación por promedio | Parcial |
-| Cobranza | Estados de cuenta, recordatorios por WhatsApp, convenios, bloqueo automático por adeudo | Parcial |
-| Conciliación y tesorería | Lectura de estados bancarios, cortes de caja, póliza contable exportable | Nuevo |
-| Punto de venta | Caja para uniformes, libros, credenciales y cafetería | Nuevo |
+| Módulo                   | Qué incluye                                                                                | Estado  |
+| ------------------------ | ------------------------------------------------------------------------------------------ | ------- |
+| Planes de pago           | Colegiaturas, inscripciones, cuotas por programa, campus y generación                      | Parcial |
+| Cargos y recargos        | Generación mensual automática, recargos y descuentos por pronto pago                       | Parcial |
+| Pagos en línea           | Tarjeta, SPEI con referencia, OXXO, domiciliación (Stripe, Openpay, Conekta, Mercado Pago) | Nuevo   |
+| Facturación CFDI 4.0     | Timbrado automático por pago con IEDU, notas de crédito, cancelación, factura global       | Nuevo   |
+| Becas y convenios        | Solicitud, comité, aplicación automática al cargo, renovación por promedio                 | Parcial |
+| Cobranza                 | Estados de cuenta, recordatorios por WhatsApp, convenios, bloqueo automático por adeudo    | Parcial |
+| Conciliación y tesorería | Lectura de estados bancarios, cortes de caja, póliza contable exportable                   | Nuevo   |
+| Punto de venta           | Caja para uniformes, libros, credenciales y cafetería                                      | Nuevo   |
 
 ### 6. Recursos humanos y nómina
 
@@ -221,18 +220,18 @@ La propuesta organiza CampusOne en **un núcleo obligatorio y 11 suites activabl
 - **IMSS**: archivos para IDSE (altas, bajas, modificaciones) y SUA.
 - **Evaluación docente**: encuesta de alumnos, autoevaluación y resultados por periodo.
 
-Todo este bloque es *Nuevo*, salvo el directorio docente que ya existe.
+Todo este bloque es _Nuevo_, salvo el directorio docente que ya existe.
 
 ### 7. Portales y comunicación
 
-| Portal | Qué debe ofrecer | Estado |
-| --- | --- | --- |
-| Alumno (web y app) | Horario, calificaciones, kárdex, pagos y facturas, trámites, credencial digital, avisos | Parcial (demo) |
-| Padres o tutores | Hijos vinculados, calificaciones, asistencia, pagos, avisos, autorizaciones | Nuevo |
-| Docente | Grupos, listas, calificaciones, actas, planeación, recibos de nómina | Parcial (demo) |
-| Empleado | Recibos, vacaciones, incidencias, documentos | Nuevo |
-| Mensajería y avisos | Comunicados segmentados por grupo, nivel o rol con confirmación de lectura | Parcial |
-| Trámites en línea | Constancias, credenciales, reposiciones, pago y entrega digital | Parcial |
+| Portal              | Qué debe ofrecer                                                                        | Estado         |
+| ------------------- | --------------------------------------------------------------------------------------- | -------------- |
+| Alumno (web y app)  | Horario, calificaciones, kárdex, pagos y facturas, trámites, credencial digital, avisos | Parcial (demo) |
+| Padres o tutores    | Hijos vinculados, calificaciones, asistencia, pagos, avisos, autorizaciones             | Nuevo          |
+| Docente             | Grupos, listas, calificaciones, actas, planeación, recibos de nómina                    | Parcial (demo) |
+| Empleado            | Recibos, vacaciones, incidencias, documentos                                            | Nuevo          |
+| Mensajería y avisos | Comunicados segmentados por grupo, nivel o rol con confirmación de lectura              | Parcial        |
+| Trámites en línea   | Constancias, credenciales, reposiciones, pago y entrega digital                         | Parcial        |
 
 ### 8. Operación del campus
 
@@ -266,17 +265,17 @@ La regla es **configurar, no programar**: todo lo que cambia entre escuelas vive
 
 ### Qué se configura
 
-| Capa | Ejemplos | Dónde se guarda |
-| --- | --- | --- |
-| Marca | Logo, colores (los tokens de `DESIGN.md`), tipografía, dominio, correo remitente | Tabla `institution_settings` |
-| Estructura | Campus, niveles, modalidades, periodos (semestre, cuatrimestre), turnos | Catálogos por institución |
-| Reglas académicas | Escala de calificación, mínimo aprobatorio, decimales, número de parciales y ponderaciones, extraordinarios permitidos, faltas máximas | Reglas por nivel y programa |
-| Documentos | Plantillas de constancia, boleta, credencial y kardex con firmas y sellos | Plantillas editables (el `ReportDesigner` actual es la base) |
-| Flujos | Pasos de admisión, requisitos de titulación, aprobaciones de becas | Flujos configurables con estados y responsables |
-| Finanzas | Conceptos, precios, recargos, descuentos, datos fiscales y certificados de sello digital (CSD) | Configuración fiscal cifrada |
-| Campos extra | Datos propios de cada escuela (tipo de sangre, religión, talla de uniforme) | Campos personalizados por entidad |
-| Módulos | Qué suites están activas y qué menús ve cada rol | Banderas por institución y plan |
-| Idioma y textos | Llamar "carrera" o "programa", "semestre" o "grado" | Diccionario de etiquetas por institución |
+| Capa              | Ejemplos                                                                                                                               | Dónde se guarda                                              |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Marca             | Logo, colores (los tokens de `DESIGN.md`), tipografía, dominio, correo remitente                                                       | Tabla `institution_settings`                                 |
+| Estructura        | Campus, niveles, modalidades, periodos (semestre, cuatrimestre), turnos                                                                | Catálogos por institución                                    |
+| Reglas académicas | Escala de calificación, mínimo aprobatorio, decimales, número de parciales y ponderaciones, extraordinarios permitidos, faltas máximas | Reglas por nivel y programa                                  |
+| Documentos        | Plantillas de constancia, boleta, credencial y kardex con firmas y sellos                                                              | Plantillas editables (el `ReportDesigner` actual es la base) |
+| Flujos            | Pasos de admisión, requisitos de titulación, aprobaciones de becas                                                                     | Flujos configurables con estados y responsables              |
+| Finanzas          | Conceptos, precios, recargos, descuentos, datos fiscales y certificados de sello digital (CSD)                                         | Configuración fiscal cifrada                                 |
+| Campos extra      | Datos propios de cada escuela (tipo de sangre, religión, talla de uniforme)                                                            | Campos personalizados por entidad                            |
+| Módulos           | Qué suites están activas y qué menús ve cada rol                                                                                       | Banderas por institución y plan                              |
+| Idioma y textos   | Llamar "carrera" o "programa", "semestre" o "grado"                                                                                    | Diccionario de etiquetas por institución                     |
 
 ### Plantillas por tipo de institución
 
@@ -304,23 +303,23 @@ Recomendación: **mantener React + TypeScript en el frontend, construir la API e
 
 ### Stack recomendado
 
-| Capa | Elección | Por qué | Alternativa |
-| --- | --- | --- | --- |
-| Repositorio | Monorepo con pnpm y Turborepo | Comparte tipos, validaciones y componentes entre web, API y sitio | Repos separados |
-| Panel y portales | React 19 + Vite + React Router (rutas declaradas) + TanStack Query | Ya está hecho en React; TanStack Query reemplaza el `localStorage` con caché de servidor | — |
-| Sitio web institucional | Astro (o Next.js) renderizando por dominio | SEO y velocidad para la página pública; lee el contenido del constructor | Next.js si se quiere todo en React |
-| App móvil | PWA primero; React Native/Expo después | El portal ya es adaptable; la PWA permite notificaciones push sin tiendas | — |
-| API | NestJS (Node 24) con módulos por suite | Estructura clara por dominio, inyección de dependencias, guardas de permisos | Fastify puro si el equipo es pequeño |
-| Validación | Zod en un paquete compartido | Las mismas reglas en el formulario y en el servidor | — |
-| Base de datos | PostgreSQL 17 | Relacional (el dominio escolar lo es), JSONB para campos personalizados, Row Level Security para aislar instituciones | MySQL |
-| ORM y migraciones | Drizzle ORM (o Prisma) | Tipado completo y migraciones versionadas | Kysely |
-| Trabajos en segundo plano | Redis + BullMQ | Timbrado CFDI, nómina, correos, generación de PDF y horarios sin bloquear la API | — |
-| Archivos | Almacenamiento compatible con S3 (Cloudflare R2, Backblaze B2 o MinIO) | Barato, sin costo de salida en R2, cifrado | Disco del servidor (no escala) |
-| Identidad | Better Auth o Keycloak con OIDC (Google, Microsoft) y 2FA | SSO con las cuentas institucionales que ya tienen las escuelas | Auth0 (caro por usuario) |
-| PDF y documentos | Plantillas HTML a PDF con Playwright/Chromium en un worker | Reutiliza el diseño web para constancias y boletas | — |
-| Timbrado CFDI | Un PAC por API (p. ej. Facturama, SW Sapien, Finkok) | El PAC timbra; nosotros armamos el XML con IEDU y nómina | — |
-| Pagos | Stripe, Openpay, Conekta o Mercado Pago con webhooks | Tarjeta, SPEI y OXXO, conciliados automáticamente | — |
-| Observabilidad | Sentry, logs estructurados, métricas con Grafana | Saber qué falla antes de que llame el cliente | — |
+| Capa                      | Elección                                                               | Por qué                                                                                                               | Alternativa                          |
+| ------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| Repositorio               | Monorepo con pnpm y Turborepo                                          | Comparte tipos, validaciones y componentes entre web, API y sitio                                                     | Repos separados                      |
+| Panel y portales          | React 19 + Vite + React Router (rutas declaradas) + TanStack Query     | Ya está hecho en React; TanStack Query reemplaza el `localStorage` con caché de servidor                              | —                                    |
+| Sitio web institucional   | Astro (o Next.js) renderizando por dominio                             | SEO y velocidad para la página pública; lee el contenido del constructor                                              | Next.js si se quiere todo en React   |
+| App móvil                 | PWA primero; React Native/Expo después                                 | El portal ya es adaptable; la PWA permite notificaciones push sin tiendas                                             | —                                    |
+| API                       | NestJS (Node 24) con módulos por suite                                 | Estructura clara por dominio, inyección de dependencias, guardas de permisos                                          | Fastify puro si el equipo es pequeño |
+| Validación                | Zod en un paquete compartido                                           | Las mismas reglas en el formulario y en el servidor                                                                   | —                                    |
+| Base de datos             | PostgreSQL 17                                                          | Relacional (el dominio escolar lo es), JSONB para campos personalizados, Row Level Security para aislar instituciones | MySQL                                |
+| ORM y migraciones         | Drizzle ORM (o Prisma)                                                 | Tipado completo y migraciones versionadas                                                                             | Kysely                               |
+| Trabajos en segundo plano | Redis + BullMQ                                                         | Timbrado CFDI, nómina, correos, generación de PDF y horarios sin bloquear la API                                      | —                                    |
+| Archivos                  | Almacenamiento compatible con S3 (Cloudflare R2, Backblaze B2 o MinIO) | Barato, sin costo de salida en R2, cifrado                                                                            | Disco del servidor (no escala)       |
+| Identidad                 | Better Auth o Keycloak con OIDC (Google, Microsoft) y 2FA              | SSO con las cuentas institucionales que ya tienen las escuelas                                                        | Auth0 (caro por usuario)             |
+| PDF y documentos          | Plantillas HTML a PDF con Playwright/Chromium en un worker             | Reutiliza el diseño web para constancias y boletas                                                                    | —                                    |
+| Timbrado CFDI             | Un PAC por API (p. ej. Facturama, SW Sapien, Finkok)                   | El PAC timbra; nosotros armamos el XML con IEDU y nómina                                                              | —                                    |
+| Pagos                     | Stripe, Openpay, Conekta o Mercado Pago con webhooks                   | Tarjeta, SPEI y OXXO, conciliados automáticamente                                                                     | —                                    |
+| Observabilidad            | Sentry, logs estructurados, métricas con Grafana                       | Saber qué falla antes de que llame el cliente                                                                         | —                                    |
 
 Los proveedores de PAC y pagos se mencionan como ejemplos del mercado mexicano; hay que comparar precio por timbre y comisiones antes de elegir.
 
@@ -365,22 +364,22 @@ Recomendación: **no montar un VPS por institución desde el inicio**. Una sola 
 
 ### Tres modalidades de despliegue
 
-| Modalidad | Para quién | Cómo funciona | Costo de infraestructura aproximado |
-| --- | --- | --- | --- |
-| Compartida (por defecto) | Escuelas de hasta unos 5,000 alumnos | Mismo clúster, datos aislados con Row Level Security, dominio propio por institución | 100 a 250 USD al mes para las primeras 20 a 50 instituciones en total |
-| Dedicada | Universidades grandes o que exigen aislamiento | VPS o base propia por institución, mismo código, desplegado automáticamente | 40 a 120 USD al mes por institución |
-| Datos en México | Instituciones públicas o con requisito de residencia | Despliegue dedicado en una región de Querétaro | 1.5 a 3 veces el costo de un VPS equivalente |
+| Modalidad                | Para quién                                           | Cómo funciona                                                                        | Costo de infraestructura aproximado                                   |
+| ------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
+| Compartida (por defecto) | Escuelas de hasta unos 5,000 alumnos                 | Mismo clúster, datos aislados con Row Level Security, dominio propio por institución | 100 a 250 USD al mes para las primeras 20 a 50 instituciones en total |
+| Dedicada                 | Universidades grandes o que exigen aislamiento       | VPS o base propia por institución, mismo código, desplegado automáticamente          | 40 a 120 USD al mes por institución                                   |
+| Datos en México          | Instituciones públicas o con requisito de residencia | Despliegue dedicado en una región de Querétaro                                       | 1.5 a 3 veces el costo de un VPS equivalente                          |
 
 Los costos son estimaciones de mercado sin cotización; hay que validarlos con los precios vigentes de cada proveedor.
 
 ### Dónde hostear
 
-| Proveedor | Ventaja | Cuándo usarlo |
-| --- | --- | --- |
-| Hetzner Cloud (centros de datos en EUA y Europa) | El mejor precio por CPU y memoria | Plataforma compartida y despliegues dedicados económicos |
-| DigitalOcean o Vultr | Bases de datos y Redis administrados, simple de operar | Si el equipo no quiere administrar PostgreSQL |
-| [AWS México (mx-central-1)](https://mexicoindustry.com/noticia/centros-de-datos-en-mexico-donde-estan-y-por-que-estan-creciendo), [Azure Mexico Central](https://www.azurespeed.com/Information/AzureRegions/MexicoCentral) o [Google Cloud northamerica-south1](https://datacenterdynamics.com/en/news/google-launches-mexican-cloud-region-in-queretaro) | Regiones en Querétaro con tres zonas de disponibilidad | Clientes que exigen datos en territorio mexicano |
-| Cloudflare | DNS, SSL automático para dominios de clientes, protección DDoS, almacenamiento R2 | Siempre, delante de la plataforma |
+| Proveedor                                                                                                                                                                                                                                                                                                                                                  | Ventaja                                                                           | Cuándo usarlo                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Hetzner Cloud (centros de datos en EUA y Europa)                                                                                                                                                                                                                                                                                                           | El mejor precio por CPU y memoria                                                 | Plataforma compartida y despliegues dedicados económicos |
+| DigitalOcean o Vultr                                                                                                                                                                                                                                                                                                                                       | Bases de datos y Redis administrados, simple de operar                            | Si el equipo no quiere administrar PostgreSQL            |
+| [AWS México (mx-central-1)](https://mexicoindustry.com/noticia/centros-de-datos-en-mexico-donde-estan-y-por-que-estan-creciendo), [Azure Mexico Central](https://www.azurespeed.com/Information/AzureRegions/MexicoCentral) o [Google Cloud northamerica-south1](https://datacenterdynamics.com/en/news/google-launches-mexican-cloud-region-in-queretaro) | Regiones en Querétaro con tres zonas de disponibilidad                            | Clientes que exigen datos en territorio mexicano         |
+| Cloudflare                                                                                                                                                                                                                                                                                                                                                 | DNS, SSL automático para dominios de clientes, protección DDoS, almacenamiento R2 | Siempre, delante de la plataforma                        |
 
 ### Cómo se despliega
 
@@ -406,11 +405,11 @@ La [nueva LFPDPPP](https://www.garrigues.com/es_ES/noticia/mexico-nueva-ley-fede
 
 Propuesta: **suscripción anual por alumno activo, con tres planes y una cuota de implementación**. Cobrar por alumno escala con el tamaño de la escuela y es fácil de explicar a un director. Los precios son una propuesta inicial para validar con 5 a 10 escuelas piloto, no precios de mercado investigados.
 
-| Plan | Incluye | Precio propuesto (MXN por alumno al mes, anual) | Mínimo mensual |
-| --- | --- | --- | --- |
-| Esencial | Núcleo, sitio web, admisiones, control escolar, portales de alumno, padres y docente | 25 a 35 | 3,500 |
-| Profesional | Esencial + finanzas, pagos en línea, facturación CFDI, becas, documentos con QR, reportes | 45 a 60 | 7,000 |
-| Institucional | Profesional + RH y nómina, título electrónico, tablero de calidad, IA, despliegue dedicado opcional | 70 a 95 | 15,000 |
+| Plan          | Incluye                                                                                             | Precio propuesto (MXN por alumno al mes, anual) | Mínimo mensual |
+| ------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------- | -------------- |
+| Esencial      | Núcleo, sitio web, admisiones, control escolar, portales de alumno, padres y docente                | 25 a 35                                         | 3,500          |
+| Profesional   | Esencial + finanzas, pagos en línea, facturación CFDI, becas, documentos con QR, reportes           | 45 a 60                                         | 7,000          |
+| Institucional | Profesional + RH y nómina, título electrónico, tablero de calidad, IA, despliegue dedicado opcional | 70 a 95                                         | 15,000         |
 
 ### Ingresos adicionales
 
@@ -451,22 +450,22 @@ Ya tienes activas la mayoría de las skills útiles; la de mayor impacto sería 
 
 ### Ya disponibles en tu cuenta
 
-| Skill | Para qué la usarías en CampusOne |
-| --- | --- |
-| `website-design:landing-page` y `website-design:web-design-system` | Diseñar las plantillas del sitio web institucional por tipo de escuela |
-| `frontend-design:frontend-design` | Pantallas nuevas (portal de padres, nómina) con criterio visual propio |
-| `design-skills:accessibility-audit` y `design:accessibility-review` | Auditoría WCAG antes de vender a instituciones públicas |
-| `design-skills:ux-writing` y `design:ux-copy` | Textos de formularios, errores y avisos en español claro |
-| `design-skills:journey-mapping` | Mapas del recorrido de aspirante, alumno y padre para el material de venta |
-| `design-skills:ux-research` y `design:user-research` | Guiones de entrevista para las escuelas piloto |
-| `code-review`, `security-review` y `simplify` | Revisar cada PR, sobre todo permisos y aislamiento entre instituciones |
-| `run` | Levantar la app y verificar flujos en navegador |
-| `dataviz` | Tableros de rectoría, finanzas y calidad |
-| `anthropic-skills:xlsx` | Plantillas de importación de alumnos y adeudos desde Excel |
-| `anthropic-skills:pdf` y `anthropic-skills:docx` | Plantillas de constancias, contratos y manuales de usuario |
-| `anthropic-skills:pptx` | Presentación comercial para directores |
-| `anthropic-skills:skill-creator` | Crear la skill propia de CampusOne (abajo) |
-| `session-start-hook` | Preparar automáticamente el entorno (dependencias, base de prueba) en sesiones en la nube |
+| Skill                                                               | Para qué la usarías en CampusOne                                                          |
+| ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `website-design:landing-page` y `website-design:web-design-system`  | Diseñar las plantillas del sitio web institucional por tipo de escuela                    |
+| `frontend-design:frontend-design`                                   | Pantallas nuevas (portal de padres, nómina) con criterio visual propio                    |
+| `design-skills:accessibility-audit` y `design:accessibility-review` | Auditoría WCAG antes de vender a instituciones públicas                                   |
+| `design-skills:ux-writing` y `design:ux-copy`                       | Textos de formularios, errores y avisos en español claro                                  |
+| `design-skills:journey-mapping`                                     | Mapas del recorrido de aspirante, alumno y padre para el material de venta                |
+| `design-skills:ux-research` y `design:user-research`                | Guiones de entrevista para las escuelas piloto                                            |
+| `code-review`, `security-review` y `simplify`                       | Revisar cada PR, sobre todo permisos y aislamiento entre instituciones                    |
+| `run`                                                               | Levantar la app y verificar flujos en navegador                                           |
+| `dataviz`                                                           | Tableros de rectoría, finanzas y calidad                                                  |
+| `anthropic-skills:xlsx`                                             | Plantillas de importación de alumnos y adeudos desde Excel                                |
+| `anthropic-skills:pdf` y `anthropic-skills:docx`                    | Plantillas de constancias, contratos y manuales de usuario                                |
+| `anthropic-skills:pptx`                                             | Presentación comercial para directores                                                    |
+| `anthropic-skills:skill-creator`                                    | Crear la skill propia de CampusOne (abajo)                                                |
+| `session-start-hook`                                                | Preparar automáticamente el entorno (dependencias, base de prueba) en sesiones en la nube |
 
 ### Plugins del directorio que valen la pena
 

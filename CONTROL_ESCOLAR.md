@@ -2,15 +2,15 @@
 
 ## Relaciones implementadas
 
-| Registro | Relaciones y reglas |
-| --- | --- |
-| Carrera y plan | Catálogo institucional existente; un plan vigente por carrera, materias por semestre |
-| Materia | Una clave única y un identificador compartido entre los planes que la utilizan |
-| Alumno | Directorio existente, carrera vinculada, kárdex, documentos, bloqueos y movimientos |
-| Grupo | Carrera, semestre, periodo y cupo; inscripción de alumnos activos de esa carrera, sin duplicar grupo en el periodo |
-| Clase del semestre | Grupo, materia del semestre de su plan, docente, aula y horas semanales |
-| Coordinación | Área, correo del encargado y carreras a cargo; requiere permiso Coordinación académica |
-| Horario | Propuesta por periodo, sesiones de una hora y copia de las clases al guardar |
+| Registro           | Relaciones y reglas                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Carrera y plan     | Catálogo institucional existente; un plan vigente por carrera, materias por semestre                               |
+| Materia            | Una clave única y un identificador compartido entre los planes que la utilizan                                     |
+| Alumno             | Directorio existente, carrera vinculada, kárdex, documentos, bloqueos y movimientos                                |
+| Grupo              | Carrera, semestre, periodo y cupo; inscripción de alumnos activos de esa carrera, sin duplicar grupo en el periodo |
+| Clase del semestre | Grupo, materia del semestre de su plan, docente, aula y horas semanales                                            |
+| Coordinación       | Área, correo del encargado y carreras a cargo; requiere permiso Coordinación académica                             |
+| Horario            | Propuesta por periodo, sesiones de una hora y copia de las clases al guardar                                       |
 
 Las carreras y planes se administran en **Control escolar → Carreras y planes**. **Oferta académica** abre la misma gestión. Crear una materia no la asigna automáticamente a todos los planes: primero agregarla al plan y semestre, después asignarla al grupo desde Coordinación.
 

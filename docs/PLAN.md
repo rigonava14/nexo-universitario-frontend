@@ -4,7 +4,6 @@ Versión: 9 de noviembre de 2026
 
 > Documento vivo: la versión editable está en [CampusOne — Propuesta](https://claude.ai/artifact/T2wM6Y3YcmBcXE2ZF3qcNZ). Esta copia en el repositorio es la referencia de trabajo; actualízala cuando cambie el plan.
 
-
 El plan convierte el prototipo actual en producto **sin tirar lo que ya funciona**: el frontend de React se conserva y se conecta poco a poco a una API nueva, módulo por módulo, detrás de una capa de servicios. Lo ejecuta **una sola persona con Claude Code**, en 26 sprints de 3 semanas (unos 18 meses) para las fases 0 a 4 y 6 meses más para la fase 5. Es una estimación: al cierre del sprint 2 se recalcula con la velocidad real.
 
 ## Cómo vamos a trabajar: tú y Claude Code
@@ -14,7 +13,7 @@ Tú decides, revisas y validas; **Claude Code escribe la mayor parte del código
 ### Reparto del trabajo
 
 | Tarea                              | Tú                                       | Claude Code                                                           |
-|------------------------------------|------------------------------------------|-----------------------------------------------------------------------|
+| ---------------------------------- | ---------------------------------------- | --------------------------------------------------------------------- |
 | Qué se construye y en qué orden    | Priorizas el backlog                     | Redacta las historias y criterios de aceptación a partir de este plan |
 | Arquitectura y modelo de datos     | Apruebas en modo plan                    | Propone esquema, migraciones y registro de decisiones (`docs/adr/`)   |
 | Código                             | Revisas el diff                          | Escribe API, pantallas, migraciones y scripts                         |
@@ -143,7 +142,7 @@ Objetivo: dejar el código actual estable, ordenado y listo para conectarse a un
 ### Semanas 1 y 2 — Estabilizar
 
 | \#  | Tarea                                                                                        | Archivos                            | Resultado verificable                               |
-|-----|----------------------------------------------------------------------------------------------|-------------------------------------|-----------------------------------------------------|
+| --- | -------------------------------------------------------------------------------------------- | ----------------------------------- | --------------------------------------------------- |
 | 0.1 | Fusionar el PR del tema visual y `DESIGN.md`                                                 | PR \#1                              | `main` con el estilo actual                         |
 | 0.2 | Fijar versiones exactas de todas las dependencias y generar lockfile limpio                  | `package.json`, `package-lock.json` | Ningún `latest`; `npm ci && npm run build` pasa     |
 | 0.3 | Fijar Node 24 en `.nvmrc` y `engines`                                                        | `.nvmrc`, `package.json`            | Mismo Node en local, CI y servidor                  |
@@ -156,7 +155,7 @@ Objetivo: dejar el código actual estable, ordenado y listo para conectarse a un
 ### Semana 3 — Ordenar y preparar la conexión
 
 | \#   | Tarea                                                                                                                                                                    | Archivos                       | Resultado verificable                                                                     |
-|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|-------------------------------------------------------------------------------------------|
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ----------------------------------------------------------------------------------------- |
 | 0.9  | Pasar el ruteo a rutas declaradas de React Router con `lazy()` por portal (público, admin, alumno, docente)                                                              | `src/App.tsx` → `src/routes/*` | Sin comparaciones `pathname ===`; paquete inicial menor a 250 kB                          |
 | 0.10 | Proteger rutas con un componente `RequirePermission` que lea `access-control.ts`                                                                                         | `src/routes/guards.tsx`        | Un rol sin permiso ve "Sin acceso", no la pantalla                                        |
 | 0.11 | Crear la capa de servicios: interfaces `SchoolService`, `OperationsService`, `DirectoryService`, `AdmissionsService`, `InstitutionService`, `DocumentService`            | `src/services/*.ts`            | Una interfaz por dominio con sus métodos                                                  |
@@ -264,7 +263,7 @@ Cada archivo actual tiene un destino. Las **reglas de negocio se mueven, no se r
 ### Lógica y datos
 
 | Archivo actual                                | Destino                                       | Tablas                                                                                                                   | Endpoints principales                                                                   | Sprint  |
-|-----------------------------------------------|-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|---------|
+| --------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------- |
 | `school.ts`                                   | `packages/domain/school`                      | `program`, `plan_version`, `subject`, `school_group`, `enrollment`, `grade`, `movement`, `student_block`, `revalidation` | `/programs`, `/groups`, `/enrollments`, `/students/:id/kardex`, `/movements`, `/blocks` | S4 y S5 |
 | `operations.ts`                               | `packages/domain/operations`                  | `residency`, `graduation`, `academy`, `english_group`, `english_enrollment`, `operating_settings`                        | `/residencies`, `/graduations`, `/academies`, `/english/*`, `/settings/operations`      | S5      |
 | `directory.ts`                                | `packages/domain/directory` + API             | `person`, `student`, `teacher`                                                                                           | `/students`, `/teachers`                                                                | S4      |
@@ -279,7 +278,7 @@ Cada archivo actual tiene un destino. Las **reglas de negocio se mueven, no se r
 ### Pantallas
 
 | Pantalla actual                                                                       | Qué cambia                                                               | Sprint    |
-|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------|-----------|
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | --------- |
 | `PeopleDirectory.tsx`                                                                 | Usa `DirectoryService` de la API; paginación en servidor                 | S4        |
 | `AcademicOffer.tsx`                                                                   | Planes versionados; un plan nuevo no reemplaza al anterior               | S4        |
 | `SchoolControl.tsx`, `SchoolWorkspace.tsx`, `SchoolStudentFile.tsx`                   | Grupos, kárdex, movimientos y bloqueos desde la API; acciones auditadas  | S4 y S5   |
@@ -302,7 +301,7 @@ Cada archivo actual tiene un destino. Las **reglas de negocio se mueven, no se r
 Objetivo: **una escuela real opera un periodo completo en CampusOne** para admisiones, control escolar, portales y documentos. Se elige la escuela piloto en la semana 19 y se firma un convenio con alcance, fechas y aviso de privacidad.
 
 | Sprint | Semanas | Entregables                                                                                                                                                                                                                  | Criterio de aceptación                                                         |
-|--------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| ------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | S6     | 19 a 21 | Convocatorias y aspirantes en la API; registro público con validación de formato de CURP; carga de documentos del aspirante a S3; correo de confirmación con folio                                                           | Un aspirante se registra desde el celular y el administrador lo ve al instante |
 | S7     | 22 a 24 | Conversión de aspirante aceptado a alumno con matrícula; portal del alumno parte 1: perfil, horario, kárdex y documentos reales                                                                                              | El alumno ve solo sus datos; no puede abrir los de otro cambiando la URL       |
 | S8     | 25 a 27 | Portal docente: grupos asignados, listas, asistencia, captura de parciales con ponderaciones configurables, cierre y firma de acta; portal del alumno parte 2: calificaciones y asistencia                                   | Un acta cerrada ya no se edita sin un movimiento autorizado y auditado         |
@@ -332,7 +331,7 @@ Objetivo: **una escuela real opera un periodo completo en CampusOne** para admis
 Objetivo: **la escuela cobra, factura y publica su sitio desde CampusOne**, y se cierra la primera venta a una segunda institución. Esta fase convierte el sistema en algo por lo que una escuela paga.
 
 | Sprint | Semanas | Entregables                                                                                                                                                                                            | Criterio de aceptación                                                                        |
-|--------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
 | S13    | 40 a 42 | Modelo financiero: conceptos, listas de precios por programa y generación, planes de pago, cargos mensuales automáticos, recargos y descuentos por pronto pago, estado de cuenta                       | Los cargos del mes se generan solos y coinciden con la lista de precios                       |
 | S14    | 43 a 45 | Pagos en línea con una pasarela: tarjeta, referencia SPEI y OXXO; webhooks; recibo automático; caja para pagos en ventanilla; corte de caja                                                            | Un pago con tarjeta liquida el cargo en menos de un minuto                                    |
 | S15    | 46 a 48 | CFDI 4.0 con un PAC: carga cifrada del CSD, datos fiscales del pagador, complemento IEDU con CURP, nivel y RVOE, factura por pago, cancelación y factura global; descarga de XML y PDF en el portal    | Un contador valida 20 facturas de prueba timbradas en el ambiente de pruebas del PAC          |
@@ -357,7 +356,7 @@ Objetivo: **la escuela cobra, factura y publica su sitio desde CampusOne**, y se
 Objetivo: **10 instituciones activas** y alta de una escuela nueva en días. Se suman RH y nómina, el CRM de admisiones y las plantillas por tipo de institución.
 
 | Sprint | Semanas | Entregables                                                                                                                                                                                                | Criterio de aceptación                                                         |
-|--------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| ------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | S19    | 58 a 60 | RH: expediente del personal, contratos, plazas, horas frente a grupo calculadas desde horarios, asistencia del personal con QR, incidencias y vacaciones; portal del empleado                              | Las horas de un docente por hora salen de su horario sin captura manual        |
 | S20    | 61 a 63 | Asistente de alta de institución (7 pasos) y plantillas: bachillerato general, bachillerato tecnológico, universidad privada, tecnológico público, posgrado                                                | Una escuela nueva queda configurada en menos de 1 día hábil                    |
 | S21    | 64 a 66 | CRM de prospectos (embudo, asesores, seguimiento por WhatsApp) y examen de admisión en línea desde `AdmissionExamBuilder.tsx`                                                                              | Un prospecto del sitio web llega al CRM y se convierte en aspirante            |
@@ -373,7 +372,7 @@ Objetivo: **10 instituciones activas** y alta de una escuela nueva en días. Se 
 El orden de los bloques se ajusta según lo que pidan los clientes; cada bloque dura de 3 a 6 semanas.
 
 | Bloque                          | Mes      | Contenido                                                                                                                                     | Dependencia                                                        |
-|---------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| ------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | A. Título electrónico           | 19 y 20  | XML del título según el estándar DGP, firma con e.firma de los responsables (llaves en almacén de secretos), envío y seguimiento del registro | Validar especificación vigente con la DGP y una escuela que titule |
 | B. Certificados de bachillerato | 20       | Datos del certificado electrónico (terminación, formación profesional y parcial) en el formato del subsistema                                 | Validar con DGAIR y un subsistema                                  |
 | C. Calidad y alertas            | 21       | Tablero de rectoría, indicadores COPAES, CIEES y FIMPES, alertas tempranas de abandono                                                        | Un año de datos de al menos 3 escuelas                             |
@@ -389,7 +388,7 @@ La calidad se protege con **cuatro niveles de prueba que corren solos en cada PR
 ### Niveles de prueba
 
 | Nivel                   | Qué cubre                                                                         | Herramienta                            | Dónde corre                                | Meta                                             |
-|-------------------------|-----------------------------------------------------------------------------------|----------------------------------------|--------------------------------------------|--------------------------------------------------|
+| ----------------------- | --------------------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------ | ------------------------------------------------ |
 | Reglas de dominio       | Inscripción, kárdex, movimientos, acreditación, recargos, cálculo de nómina       | Vitest (las pruebas actuales migradas) | Cada PR                                    | 90% de cobertura en `packages/domain`            |
 | API e integración       | Endpoints con base real en contenedor, permisos y aislamiento entre instituciones | Vitest + Testcontainers                | Cada PR                                    | Cada endpoint con un caso permitido y uno negado |
 | Flujos de punta a punta | Admisión, inscripción, calificación, pago, factura, emisión de constancia         | Playwright                             | Cada PR (rápidos) y cada noche (completos) | Los 10 flujos de venta siempre en verde          |
@@ -418,7 +417,7 @@ La calidad se protege con **cuatro niveles de prueba que corren solos en cada PR
 ### Criterios de aceptación comunes a todo módulo
 
 | Criterio                    | Cómo se comprueba                                                      |
-|-----------------------------|------------------------------------------------------------------------|
+| --------------------------- | ---------------------------------------------------------------------- |
 | Aislamiento por institución | Prueba automática de acceso cruzado negado                             |
 | Permisos en servidor        | Prueba de endpoint con rol sin permiso que devuelve 403                |
 | Auditoría                   | Cada cambio sensible deja registro con usuario, fecha y valor anterior |
@@ -432,7 +431,7 @@ La calidad se protege con **cuatro niveles de prueba que corren solos en cada PR
 El mayor riesgo es **seguir agregando pantallas antes de tener backend**: cada pantalla nueva sobre `localStorage` es trabajo que habrá que rehacer. Por eso la fase 1 no tiene pantallas nuevas.
 
 | Riesgo                                                                                  | Probabilidad | Impacto | Mitigación                                                                                                                                                                                                           | Señal de alerta                                                      |
-|-----------------------------------------------------------------------------------------|--------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| --------------------------------------------------------------------------------------- | ------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | Fuga de datos entre instituciones                                                       | Baja         | Crítico | RLS en la base, prueba automática de acceso cruzado, auditoría externa en S25                                                                                                                                        | Una consulta sin `institution_id` en revisión                        |
 | Errores en CFDI o nómina                                                                | Media        | Alto    | Ambiente de pruebas del PAC, validación con contador antes de producción, catálogos del SAT actualizados por tarea programada                                                                                        | Rechazos de timbrado mayores a 1%                                    |
 | Cambios de normativa SEP o SAT                                                          | Alta         | Medio   | Reglas como configuración versionada, no en código; revisión trimestral de DOF y portales oficiales                                                                                                                  | Nueva revisión de complemento publicada                              |

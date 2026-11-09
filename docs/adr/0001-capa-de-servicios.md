@@ -13,10 +13,10 @@ Toda lectura y escritura de datos de negocio pasa por `src/services/`: una inter
 
 ## Alternativas consideradas
 
-| Opción | A favor | En contra |
-| --- | --- | --- |
-| Migrar cada pantalla directo a la API en la fase 1 | Menos código intermedio | Cada pantalla se toca dos veces; mezcla migración con refactor |
-| Capa de servicios ahora (elegida) | Un solo punto de cambio; pruebas e2e estables durante la migración | Trabajo previo sin cambio visible |
+| Opción                                             | A favor                                                            | En contra                                                      |
+| -------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------- |
+| Migrar cada pantalla directo a la API en la fase 1 | Menos código intermedio                                            | Cada pantalla se toca dos veces; mezcla migración con refactor |
+| Capa de servicios ahora (elegida)                  | Un solo punto de cambio; pruebas e2e estables durante la migración | Trabajo previo sin cambio visible                              |
 
 ## Consecuencias
 
