@@ -1,72 +1,72 @@
 /* Shared Campus violet / One coral palette across every public and private portal. */
 :root {
-  --brand-violet: #4c1d95;
-  --brand-coral: #f05d5e;
-  --brand-amber: #fbbf24;
-  --brand-lavender: #f5f3ff;
-  --brand-plum: #241535;
-  --brand-white: #ffffff;
+  --color-primary: #4c1d95;
+  --color-secondary: #f05d5e;
+  --color-accent: #fbbf24;
+  --color-canvas: #f5f3ff;
+  --color-text: #241535;
+  --color-white: #ffffff;
 }
 
 body {
-  color: var(--brand-plum);
-  background: var(--brand-lavender);
+  color: var(--color-text);
+  background: var(--color-canvas);
 }
 ::selection {
-  color: var(--brand-white);
-  background: var(--brand-violet);
+  color: var(--color-white);
+  background: var(--color-primary);
 }
 :where(button, a, input, select, textarea):focus-visible {
-  outline: 2px solid var(--brand-coral);
+  outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
 .login-brand-panel {
   background:
-    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--brand-violet) 72%, white), transparent 38%),
-    linear-gradient(140deg, var(--brand-violet), var(--brand-plum));
+    radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--color-primary) 72%, white), transparent 38%),
+    linear-gradient(140deg, var(--color-primary), var(--color-text));
 }
 .brand-mark,
 .student-side-brand > span,
 .teacher-side-brand > span {
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .login-page .primary-button,
 .student-primary-button,
 .teacher-primary,
 .public-primary {
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .nav-section button.active,
 .student-sidebar nav button.active,
 .teacher-sidebar nav button.active {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .student-shell,
 .teacher-shell,
 .app-shell {
-  background: var(--brand-lavender);
+  background: var(--color-canvas);
 }
 .student-page-heading h1,
 .teacher-page-heading h1,
 .module-heading h1 {
-  color: var(--brand-plum);
+  color: var(--color-text);
 }
 .demo-accounts button,
 .header-signout {
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .primary-button:hover {
-  background: color-mix(in srgb, var(--brand-violet) 82%, black);
+  background: color-mix(in srgb, var(--color-primary) 82%, black);
 }
 .student-primary-button:hover,
 .teacher-primary-button:hover {
-  background: color-mix(in srgb, var(--brand-violet) 82%, black);
+  background: color-mix(in srgb, var(--color-primary) 82%, black);
 }
 .student-notification i,
 .teacher-notification i {
-  background: var(--brand-coral);
+  background: var(--color-secondary);
 }
 .student-metric.amber,
 .grade-preview span.amber,
@@ -76,16 +76,16 @@ body {
 .evaluation-summary span.amber,
 .stat-dot--amber,
 .change--amber {
-  color: color-mix(in srgb, var(--brand-amber) 55%, black);
-  background: color-mix(in srgb, var(--brand-amber) 22%, var(--campus-paper));
+  color: color-mix(in srgb, var(--color-accent) 55%, black);
+  background: color-mix(in srgb, var(--color-accent) 22%, var(--color-surface));
 }
 .student-metric.amber,
 .teacher-metrics .amber {
-  color: var(--brand-plum);
-  background: var(--brand-amber);
+  color: var(--color-text);
+  background: var(--color-accent);
 }
 .stat-dot--amber {
-  background: var(--brand-amber);
+  background: var(--color-accent);
 }
 .student-metric.green,
 .grade-preview span.green,
@@ -95,19 +95,19 @@ body {
 .evaluation-summary span.green,
 .change--green,
 .stat-dot--green {
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 12%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface));
 }
 .stat-dot--green {
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .cms-success,
 .status--active,
 .public-status.success {
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .status--pending,
 .public-status.warning {
-  color: color-mix(in srgb, var(--brand-amber) 55%, black);
-  background: color-mix(in srgb, var(--brand-amber) 22%, var(--campus-paper));
+  color: color-mix(in srgb, var(--color-accent) 55%, black);
+  background: color-mix(in srgb, var(--color-accent) 22%, var(--color-surface));
 }

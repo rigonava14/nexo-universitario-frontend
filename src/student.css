@@ -1,7 +1,7 @@
 .student-access-link {
   display: block;
   margin-top: 16px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   text-align: center;
   text-decoration: none;
   font-size: 11px;
@@ -11,7 +11,7 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .student-login-card {
   width: min(430px, calc(100% - 50px));
@@ -32,8 +32,8 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
 }
 .student-login-brand strong,
 .student-login-brand small,
@@ -43,37 +43,37 @@
 }
 .student-login-brand strong,
 .student-side-brand strong {
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 18px Inter;
 }
 .student-login-brand small,
 .student-side-brand small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .student-kicker {
   margin: 0 0 14px !important;
-  color: var(--brand-violet) !important;
+  color: var(--color-primary) !important;
   font-size: 9px !important;
   font-weight: 700;
   letter-spacing: 0.15em;
 }
 .student-login-card > h1 {
   margin: 0 0 10px;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 39px Inter;
   letter-spacing: -0.04em;
 }
 .student-login-card > p {
   margin: 0 0 32px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 13px;
   line-height: 1.65;
 }
 .student-login-card form label {
   display: block;
   margin-bottom: 17px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
   font-weight: 600;
 }
@@ -81,10 +81,10 @@
   width: 100%;
   margin-top: 8px;
   padding: 13px 14px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
   outline: 0;
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .student-login-card form button {
   width: 100%;
@@ -96,22 +96,22 @@
   padding: 14px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 11px;
   font-weight: 700;
 }
 .student-demo {
   display: block;
   margin-top: 14px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   text-align: center;
   font-size: 8px;
 }
 .student-login-card > a {
   display: block;
   margin-top: 30px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   text-align: center;
   text-decoration: none;
   font-size: 9px;
@@ -120,18 +120,18 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 25% 25%, var(--brand-violet) 0, transparent 36%),
-    linear-gradient(145deg, var(--brand-plum), var(--brand-plum));
+    radial-gradient(circle at 25% 25%, var(--color-primary) 0, transparent 36%),
+    linear-gradient(145deg, var(--color-text), var(--color-text));
 }
 .student-login-quote {
   position: absolute;
   left: 12%;
   right: 12%;
   bottom: 13%;
-  color: var(--campus-paper);
+  color: var(--color-surface);
 }
 .student-login-quote > span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font: 700 70px/1 Inter;
 }
 .student-login-quote blockquote {
@@ -141,12 +141,12 @@
   letter-spacing: -0.04em;
 }
 .student-login-quote p {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 11px;
 }
 .student-shell {
   min-height: 100vh;
-  background: var(--brand-lavender);
+  background: var(--color-canvas);
 }
 .student-sidebar {
   position: fixed;
@@ -155,8 +155,8 @@
   width: 245px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--campus-line);
-  background: var(--campus-paper);
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .student-side-brand {
   height: 72px;
@@ -164,7 +164,7 @@
   align-items: center;
   gap: 10px;
   padding: 0 20px;
-  border-bottom: 1px solid var(--brand-lavender);
+  border-bottom: 1px solid var(--color-canvas);
 }
 .student-side-brand > span {
   width: 38px;
@@ -174,7 +174,7 @@
   display: none;
   margin-left: auto;
   border: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
 }
 .student-mini-profile {
@@ -188,8 +188,8 @@
   place-items: center;
   margin: 0 auto 9px;
   border-radius: 50%;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 12px;
   font-weight: 700;
 }
@@ -198,12 +198,12 @@
   display: block;
 }
 .student-mini-profile strong {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
 }
 .student-mini-profile span {
   margin-top: 4px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .student-sidebar nav {
@@ -220,14 +220,14 @@
   padding: 9px 11px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 10px;
   text-align: left;
 }
 .student-sidebar nav button.active {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-weight: 700;
 }
 .student-logout {
@@ -237,8 +237,8 @@
   margin: 11px 14px;
   padding: 10px;
   border: 0;
-  border-top: 1px solid var(--brand-lavender);
-  color: var(--campus-muted);
+  border-top: 1px solid var(--color-canvas);
+  color: var(--color-muted);
   background: transparent;
   font-size: 9px;
 }
@@ -255,20 +255,20 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  border-bottom: 1px solid var(--campus-line);
-  background: var(--campus-paper) F0;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface) F0;
 }
 .student-topbar > div:first-of-type strong,
 .student-topbar > div:first-of-type span {
   display: block;
 }
 .student-topbar > div:first-of-type strong {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
 }
 .student-topbar > div:first-of-type span {
   margin-top: 3px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .student-topbar > div:last-child {
@@ -282,10 +282,10 @@
   height: 36px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
-  background: var(--campus-paper);
+  color: var(--color-muted);
+  background: var(--color-surface);
 }
 .student-notification i {
   position: absolute;
@@ -294,7 +294,7 @@
   top: 6px;
   right: 7px;
   border-radius: 50%;
-  background: var(--brand-coral);
+  background: var(--color-secondary);
 }
 .student-top-avatar {
   width: 36px;
@@ -302,15 +302,15 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 9px;
   font-weight: 700;
 }
 .student-menu-button {
   display: none;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
 }
 .student-content {
@@ -327,19 +327,19 @@
 }
 .student-page-heading p {
   margin: 0 0 7px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
 .student-page-heading h1 {
   margin: 0 0 6px;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 27px Inter;
   letter-spacing: -0.035em;
 }
 .student-page-heading span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 10px;
 }
 .student-primary-button,
@@ -355,16 +355,16 @@
 }
 .student-primary-button {
   border: 0;
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
 }
 .student-primary-button.full {
   width: 100%;
 }
 .student-outline-button {
-  border: 1px solid var(--campus-line);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  background: var(--color-surface);
 }
 .student-summary-grid {
   display: grid;
@@ -377,9 +377,9 @@
   align-items: center;
   gap: 12px;
   padding: 17px 18px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .student-metric {
   width: 37px;
@@ -392,26 +392,26 @@
 .student-metric.blue,
 .grade-preview span.blue,
 .grade-subject span.blue {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .student-metric.green,
 .grade-preview span.green,
 .grade-subject span.green {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .student-metric.amber,
 .grade-preview span.amber,
 .grade-subject span.amber {
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
 }
 .student-metric.violet,
 .grade-preview span.violet,
 .grade-subject span.violet {
-  color: var(--campus-muted);
-  background: var(--brand-lavender);
+  color: var(--color-muted);
+  background: var(--color-canvas);
 }
 .student-summary-grid small,
 .student-summary-grid strong,
@@ -419,12 +419,12 @@
   display: block;
 }
 .student-summary-grid small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .student-summary-grid strong {
   margin-top: 2px;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 19px Inter;
 }
 .student-summary-grid p,
@@ -432,12 +432,12 @@
   margin: 3px 0 0;
   padding: 0;
   border: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
   font-size: 7px;
 }
 .student-summary-grid button {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-weight: 700;
 }
 .student-home-grid {
@@ -447,9 +447,9 @@
   margin-bottom: 17px;
 }
 .student-panel {
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .student-panel-title {
   display: flex;
@@ -460,17 +460,17 @@
 }
 .student-panel-title h2 {
   margin: 0 0 4px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font: 700 12px Inter;
 }
 .student-panel-title p {
   margin: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .student-panel-title button {
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
   font-weight: 700;
@@ -485,14 +485,14 @@
   margin-left: 21px;
 }
 .class-code {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
 }
 .next-class > h3 {
   margin-top: 5px;
   margin-bottom: 14px;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 18px Inter;
 }
 .next-class > p {
@@ -501,7 +501,7 @@
   gap: 7px;
   margin-top: 7px;
   margin-bottom: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .next-class > button {
@@ -511,13 +511,13 @@
   margin-top: 18px;
   padding: 0;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
   font-weight: 700;
 }
 .today-schedule .student-panel-title {
-  border-bottom: 1px solid var(--brand-lavender);
+  border-bottom: 1px solid var(--color-canvas);
 }
 .today-item {
   display: grid;
@@ -526,7 +526,7 @@
   align-items: center;
   margin: 0 21px;
   padding: 13px 0;
-  border-bottom: 1px solid var(--brand-lavender);
+  border-bottom: 1px solid var(--color-canvas);
 }
 .today-item time {
   font-size: 9px;
@@ -534,10 +534,10 @@
 }
 .today-item i {
   height: 30px;
-  background: var(--campus-muted);
+  background: var(--color-muted);
 }
 .today-item i.amber {
-  background: var(--brand-coral);
+  background: var(--color-secondary);
 }
 .today-item strong,
 .today-item small {
@@ -546,7 +546,7 @@
 }
 .today-item small {
   margin-top: 4px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .grade-preview > div:not(.student-panel-title) {
@@ -555,7 +555,7 @@
   gap: 10px;
   margin: 0 21px;
   padding: 10px 0;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .grade-preview > div:not(.student-panel-title) > span,
 .grade-subject > span {
@@ -576,11 +576,11 @@
   font-size: 8px;
 }
 .grade-preview small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .grade-preview b {
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .quick-actions > div:last-child {
   display: grid;
@@ -594,14 +594,14 @@
   align-items: center;
   gap: 9px;
   padding: 12px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   text-align: left;
 }
 .quick-actions span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
 }
 .news-strip > div:last-child {
@@ -610,23 +610,23 @@
 }
 .news-strip article {
   padding: 4px 21px 21px;
-  border-right: 1px solid var(--brand-lavender);
+  border-right: 1px solid var(--color-canvas);
 }
 .news-strip article > span {
   padding: 4px 7px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .news-strip h3 {
   margin: 9px 0 5px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 9px;
 }
 .news-strip article p {
   margin: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .subject-grid {
@@ -637,9 +637,9 @@
 .subject-grid article {
   position: relative;
   padding: 21px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .subject-accent {
   position: absolute;
@@ -647,30 +647,30 @@
   width: 4px;
 }
 .subject-accent.blue {
-  background: var(--campus-muted);
+  background: var(--color-muted);
 }
 .subject-accent.violet {
-  background: var(--campus-muted);
+  background: var(--color-muted);
 }
 .subject-accent.amber {
-  background: var(--brand-coral);
+  background: var(--color-secondary);
 }
 .subject-accent.green {
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .subject-card-top {
   display: flex;
   justify-content: space-between;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .subject-card-top b {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 12px;
 }
 .subject-grid h2 {
   margin: 10px 0 16px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font: 700 15px Inter;
 }
 .subject-grid p {
@@ -678,7 +678,7 @@
   align-items: center;
   gap: 7px;
   margin: 7px 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .subject-grid article > div:last-child {
@@ -691,10 +691,10 @@
   align-items: center;
   gap: 5px;
   padding: 8px 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 8px;
 }
 .subject-grid article > div:last-child button:first-child {
@@ -709,21 +709,21 @@
 .weekly-schedule article {
   min-height: 315px;
   padding: 15px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .weekly-schedule h3 {
   text-align: center;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
 }
 .weekly-schedule article > div {
   margin-bottom: 10px;
   padding: 11px;
-  border-left: 3px solid var(--campus-muted);
+  border-left: 3px solid var(--color-muted);
   border-radius: var(--paper-radius, 4px);
-  background: var(--brand-lavender);
+  background: var(--color-canvas);
 }
 .weekly-schedule time,
 .weekly-schedule strong,
@@ -731,25 +731,25 @@
   display: block;
 }
 .weekly-schedule time {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
 }
 .weekly-schedule strong {
   margin-top: 6px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
 }
 .weekly-schedule small {
   margin-top: 5px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .schedule-legend {
   display: flex;
   justify-content: space-between;
   margin-top: 14px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .schedule-legend p {
@@ -765,9 +765,9 @@
 .grade-overview > div,
 .kardex-overview > div {
   padding: 18px 20px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .grade-overview small,
 .grade-overview strong,
@@ -788,13 +788,13 @@
   display: block;
   height: 6px;
   border-radius: 4px;
-  background: var(--brand-lavender);
+  background: var(--color-canvas);
 }
 .grade-progress em {
   display: block;
   width: 68%;
   height: 100%;
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .kardex-overview {
   grid-template-columns: repeat(4, 1fr);
@@ -804,7 +804,7 @@
   display: block;
 }
 .kardex-overview small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .kardex-overview strong {
@@ -813,15 +813,15 @@
 }
 .student-table-panel {
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .student-table-panel td > span {
   padding: 4px 7px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .grade-subject {
@@ -835,7 +835,7 @@
   font-size: 8px;
 }
 .grade-subject small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .payment-layout {
@@ -847,11 +847,11 @@
 .balance-card {
   padding: 25px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: linear-gradient(140deg, var(--brand-plum), var(--brand-plum));
+  color: var(--color-surface);
+  background: linear-gradient(140deg, var(--color-text), var(--color-text));
 }
 .balance-card p {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .balance-card strong {
@@ -860,7 +860,7 @@
 }
 .balance-card span {
   display: block;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .balance-card button {
@@ -871,15 +871,15 @@
   padding: 10px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   font-size: 8px;
 }
 .payment-concepts {
   padding: 23px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .payment-concepts h2 {
   font: 700 12px Inter;
@@ -889,7 +889,7 @@
   align-items: center;
   gap: 11px;
   padding: 13px;
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .payment-concepts > div > div {
   flex: 1;
@@ -900,14 +900,14 @@
   font-size: 9px;
 }
 .payment-concepts small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .payment-history td button {
   display: flex;
   gap: 5px;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
 }
@@ -922,7 +922,7 @@
   position: absolute;
   inset: 0;
   border: 0;
-  background: var(--brand-plum) 75;
+  background: var(--color-text) 75;
 }
 .student-modal {
   position: relative;
@@ -931,7 +931,7 @@
   padding: 30px;
   border-radius: var(--paper-radius, 4px);
   text-align: center;
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .modal-close {
   position: absolute;
@@ -947,8 +947,8 @@
   place-items: center;
   margin: 0 auto;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .student-modal h2 {
   font: 700 20px Inter;
@@ -973,8 +973,8 @@
   gap: 6px;
   margin: 15px 0;
   padding: 10px;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .scholarship-banner {
@@ -985,8 +985,8 @@
   margin-bottom: 16px;
   padding: 22px 24px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: linear-gradient(130deg, var(--brand-violet), var(--brand-plum));
+  color: var(--color-surface);
+  background: linear-gradient(130deg, var(--color-primary), var(--color-text));
 }
 .scholarship-banner > div {
   display: flex;
@@ -994,7 +994,7 @@
 }
 .scholarship-banner p,
 .scholarship-banner small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .scholarship-banner h2 {
@@ -1004,8 +1004,8 @@
   padding: 10px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   font-size: 8px;
 }
 .procedure-grid {
@@ -1020,7 +1020,7 @@
   gap: 10px;
   margin: 0 20px;
   padding: 12px 0;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .document-request > div,
 .request-status section {
@@ -1035,14 +1035,14 @@
 }
 .document-request small,
 .request-status small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .document-request button {
   padding: 7px;
-  border: 1px solid var(--campus-line);
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .process-overview-grid {
@@ -1054,9 +1054,9 @@
 .process-overview-grid article {
   position: relative;
   padding: 21px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .process-icon {
   width: 36px;
@@ -1067,18 +1067,18 @@
 }
 .process-icon.green,
 .process-pill.green {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .process-icon.blue,
 .process-pill.blue {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .process-icon.violet,
 .process-pill.violet {
-  color: var(--campus-muted);
-  background: var(--brand-lavender);
+  color: var(--color-muted);
+  background: var(--color-canvas);
 }
 .process-pill {
   position: absolute;
@@ -1092,7 +1092,7 @@
   font: 700 13px Inter;
 }
 .process-overview-grid p {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .process-progress {
@@ -1103,16 +1103,16 @@
 .process-progress > i {
   flex: 1;
   height: 5px;
-  background: var(--brand-lavender);
+  background: var(--color-canvas);
 }
 .process-progress em {
   display: block;
   height: 100%;
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .process-overview-grid article > button {
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
 }
@@ -1122,7 +1122,7 @@
   gap: 11px;
   margin: 0 21px;
   padding: 13px 0;
-  border-bottom: 1px solid var(--brand-lavender);
+  border-bottom: 1px solid var(--color-canvas);
 }
 .upload-row > div {
   flex: 1;
@@ -1133,7 +1133,7 @@
   font-size: 9px;
 }
 .upload-row small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .upload-row > label,
@@ -1141,10 +1141,10 @@
   display: flex;
   gap: 6px;
   padding: 8px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .upload-row input {
@@ -1157,9 +1157,9 @@
 }
 .student-news-grid article {
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .news-visual {
   height: 92px;
@@ -1168,20 +1168,20 @@
   padding: 17px;
 }
 .news-visual.blue {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .news-visual.green {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .news-visual.violet {
-  color: var(--campus-muted);
-  background: var(--brand-lavender);
+  color: var(--color-muted);
+  background: var(--color-canvas);
 }
 .news-visual.amber {
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
 }
 .student-news-grid article > div:last-child {
   padding: 18px;
@@ -1190,12 +1190,12 @@
   font: 700 12px Inter;
 }
 .student-news-grid p {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .student-news-grid button {
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
 }
@@ -1216,8 +1216,8 @@
   place-items: center;
   margin: auto;
   border-radius: 50%;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font: 700 18px Inter;
 }
 .profile-card h2 {
@@ -1230,8 +1230,8 @@
 }
 .profile-card > span {
   padding: 5px 8px;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .profile-card dl {
@@ -1239,7 +1239,7 @@
 }
 .profile-card dl > div {
   padding: 11px 0;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .profile-card dd {
   margin: 4px 0;
@@ -1251,7 +1251,7 @@
 .profile-form .two-fields label {
   display: block;
   margin: 0 21px 15px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
 }
 .profile-form .two-fields {
@@ -1264,7 +1264,7 @@
   width: 100%;
   margin-top: 7px;
   padding: 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
 }
 .profile-form > button {
@@ -1320,7 +1320,7 @@
     z-index: 25;
     display: block;
     border: 0;
-    background: var(--brand-plum) 66;
+    background: var(--color-text) 66;
   }
   .student-home-grid,
   .payment-layout,

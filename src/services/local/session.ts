@@ -2,16 +2,25 @@ import { demoAccounts, Role } from '../../auth'
 import type { SessionService } from '../index'
 import { readInstitutionSettings } from './institution'
 
-const roleKey = 'nexo-demo-role'
-const emailKey = 'nexo-demo-email'
+import { migrateLegacyKey } from './migrate'
+
+const roleKey = 'campusone-session-role'
+const emailKey = 'campusone-session-email'
+
+function migrateSession() {
+  migrateLegacyKey(sessionStorage, 'nexo-demo-role', roleKey)
+  migrateLegacyKey(sessionStorage, 'nexo-demo-email', emailKey)
+}
 
 /** Sesión de demostración en sessionStorage. Se reemplaza por Better Auth en el sprint 3. */
 export const localSessionService: SessionService = {
   getRole() {
+    migrateSession()
     const value = sessionStorage.getItem(roleKey)
     return demoAccounts.find((account) => account.role === value)?.role ?? null
   },
   getCurrentEmail() {
+    migrateSession()
     const stored = sessionStorage.getItem(emailKey)
     if (stored) return stored
     const role = this.getRole()

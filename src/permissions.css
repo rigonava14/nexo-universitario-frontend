@@ -14,10 +14,10 @@
   gap: 13px;
   min-height: 98px;
   padding: 18px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 .permissions-summary article > span {
   width: 42px;
@@ -25,8 +25,8 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 9%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface));
 }
 .permissions-summary small,
 .permissions-summary strong,
@@ -34,18 +34,18 @@
   display: block;
 }
 .permissions-summary small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 10px;
 }
 .permissions-summary strong {
   margin: 2px 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 23px Inter,
     sans-serif;
 }
 .permissions-summary em {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
   font-style: normal;
 }
@@ -57,11 +57,11 @@
   margin-bottom: 16px;
   padding: 15px 18px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--sidebar-text);
+  color: var(--color-sidebar-text);
   background: linear-gradient(
     120deg,
-    var(--sidebar-bg),
-    color-mix(in srgb, var(--sidebar-bg) 70%, var(--brand-violet))
+    var(--color-sidebar),
+    color-mix(in srgb, var(--color-sidebar) 70%, var(--color-primary))
   );
 }
 .admin-owner-note > span {
@@ -77,14 +77,14 @@
 }
 .admin-owner-note p {
   margin: 3px 0 0;
-  color: color-mix(in srgb, var(--sidebar-text) 72%, transparent);
+  color: color-mix(in srgb, var(--color-sidebar-text) 72%, transparent);
   font-size: 9px;
 }
 .admin-owner-note i {
   padding: 6px 8px;
   border-radius: 99px;
-  color: var(--sidebar-bg);
-  background: var(--campus-paper);
+  color: var(--color-sidebar);
+  background: var(--color-surface);
   font-size: 8px;
   font-style: normal;
   font-weight: 700;
@@ -98,10 +98,10 @@
 .roles-panel,
 .permission-editor,
 .users-panel {
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 .roles-panel {
   overflow: hidden;
@@ -112,12 +112,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px;
-  border-bottom: 1px solid var(--campus-line);
+  border-bottom: 1px solid var(--color-border);
 }
 .roles-panel h2,
 .users-panel h2 {
   margin: 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 15px Inter,
     sans-serif;
@@ -125,7 +125,7 @@
 .roles-panel header p,
 .users-panel header p {
   margin: 3px 0 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .roles-panel header button {
@@ -133,9 +133,9 @@
   height: 34px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
 }
 .roles-panel > div {
@@ -154,7 +154,7 @@
   text-align: left;
 }
 .roles-panel > div > button.active {
-  background: color-mix(in srgb, var(--brand-violet) 8%, var(--campus-paper));
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
 }
 .roles-panel > div > button > span {
   width: 34px;
@@ -162,12 +162,12 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
-  background: var(--campus-canvas);
+  color: var(--color-muted);
+  background: var(--color-canvas);
 }
 .roles-panel > div > button.active > span {
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
 }
 .roles-panel p {
   margin: 0;
@@ -179,14 +179,14 @@
 }
 .roles-panel strong {
   overflow: hidden;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .roles-panel small {
   margin-top: 3px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .permission-editor {
@@ -197,10 +197,10 @@
   grid-template-columns: 1fr 125px;
   gap: 18px;
   padding: 20px;
-  border-bottom: 1px solid var(--campus-line);
+  border-bottom: 1px solid var(--color-border);
 }
 .permission-editor > header > div > span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.09em;
@@ -210,7 +210,7 @@
   margin-top: 5px;
   border: 0;
   outline: 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   background: transparent;
   font:
     700 19px Inter,
@@ -223,7 +223,7 @@
   border: 0;
   outline: 0;
   resize: none;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
   font:
     9px/1.5 Inter,
@@ -233,17 +233,17 @@
   display: grid;
   align-content: start;
   gap: 6px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
   font-weight: 700;
 }
 .permission-editor > header select {
   height: 38px;
   padding: 0 8px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
 }
 .permission-actions {
   display: flex;
@@ -253,12 +253,12 @@
   padding: 16px 20px;
 }
 .permission-actions strong {
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 11px;
 }
 .permission-actions p {
   margin: 3px 0 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .permission-actions > span {
@@ -267,9 +267,9 @@
 }
 .permission-actions button {
   padding: 7px 9px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
   font-weight: 700;
@@ -281,12 +281,12 @@
 }
 .permission-groups section {
   padding: 14px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
 }
 .permission-groups h3 {
   margin: 0 0 10px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -309,9 +309,9 @@
   gap: 6px;
   min-height: 38px;
   padding: 8px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .permission-groups label svg {
   opacity: 0.3;
@@ -320,9 +320,9 @@
   font-size: 8px;
 }
 .permission-groups input:checked + span {
-  color: var(--brand-violet);
-  border-color: color-mix(in srgb, var(--brand-violet) 35%, var(--campus-line));
-  background: color-mix(in srgb, var(--brand-violet) 7%, var(--campus-paper));
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
 }
 .permission-groups input:checked + span svg {
   opacity: 1;
@@ -344,9 +344,9 @@
   width: min(300px, 100%);
   height: 39px;
   padding: 0 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .users-panel > header input {
   width: 100%;
@@ -365,8 +365,8 @@
 }
 .users-table-wrap th {
   padding: 10px 17px;
-  color: var(--campus-muted);
-  background: color-mix(in srgb, var(--campus-canvas) 30%, var(--campus-paper));
+  color: var(--color-muted);
+  background: color-mix(in srgb, var(--color-canvas) 30%, var(--color-surface));
   font-size: 8px;
   text-align: left;
   text-transform: uppercase;
@@ -374,8 +374,8 @@
 }
 .users-table-wrap td {
   padding: 14px 17px;
-  border-top: 1px solid var(--campus-line);
-  color: var(--campus-muted);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
   font-size: 10px;
 }
 .users-table-wrap td strong,
@@ -383,7 +383,7 @@
   display: block;
 }
 .users-table-wrap td strong {
-  color: var(--campus-ink);
+  color: var(--color-text);
 }
 .users-table-wrap td small {
   margin-top: 3px;
@@ -393,17 +393,17 @@
   min-width: 180px;
   height: 36px;
   padding: 0 8px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
   font-size: 9px;
 }
 .users-table-wrap td > span {
   padding: 5px 7px;
   border-radius: 99px;
-  color: var(--campus-muted);
-  background: var(--campus-canvas);
+  color: var(--color-muted);
+  background: var(--color-canvas);
   font-size: 8px;
   font-weight: 700;
 }
@@ -420,14 +420,14 @@
   align-items: center;
   gap: 18px;
   padding: 10px 11px 10px 16px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--campus-paper) 94%, transparent);
-  box-shadow: var(--campus-shadow-md);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  box-shadow: var(--shadow-md);
   backdrop-filter: blur(12px);
 }
 .permissions-savebar span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .permissions-savebar button {
@@ -438,8 +438,8 @@
   padding: 0 13px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 10px;
   font-weight: 700;
 }
@@ -466,7 +466,7 @@
   gap: 14px;
   padding: 24px;
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
   box-shadow: 0 26px 70px rgba(31, 18, 42, 0.3);
 }
 .permission-modal header {
@@ -475,21 +475,21 @@
   gap: 14px;
 }
 .permission-modal header span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
 .permission-modal h2 {
   margin: 5px 0 2px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 20px Inter,
     sans-serif;
 }
 .permission-modal header p {
   margin: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .permission-modal header button {
@@ -497,16 +497,16 @@
   height: 37px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
 }
 .permission-modal > label,
 .permission-modal-fields label {
   display: grid;
   gap: 6px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 10px;
   font-weight: 700;
 }
@@ -516,10 +516,10 @@
   width: 100%;
   min-width: 0;
   padding: 0 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
 }
 .permission-modal input,
 .permission-modal select {
@@ -542,16 +542,16 @@
 .permission-modal > footer button {
   min-height: 40px;
   padding: 0 13px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
   font-weight: 700;
 }
 .permission-modal > footer button:last-child {
-  border-color: var(--brand-violet);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  border-color: var(--color-primary);
+  color: var(--color-surface);
+  background: var(--color-primary);
 }
 @media (max-width: 1150px) {
   .permission-groups section > div {

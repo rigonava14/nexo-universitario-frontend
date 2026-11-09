@@ -294,19 +294,15 @@ export function normalizeInstitutionSettings(value: unknown): InstitutionSetting
 
 export function applyInstitutionSettings(settings: InstitutionSettings) {
   const root = document.documentElement
-  root.style.setProperty('--brand-violet', settings.colors.primary)
-  root.style.setProperty('--brand-coral', settings.colors.secondary)
-  root.style.setProperty('--brand-amber', settings.colors.accent)
-  root.style.setProperty('--brand-lavender', settings.colors.background)
-  root.style.setProperty('--brand-plum', settings.colors.text)
-  root.style.setProperty('--campus-canvas', settings.colors.background)
-  root.style.setProperty('--campus-paper', settings.colors.surface)
-  root.style.setProperty('--campus-ink', settings.colors.text)
-  root.style.setProperty('--campus-muted', settings.colors.muted)
-  root.style.setProperty('--campus-line', settings.colors.border)
-  root.style.setProperty('--sidebar-bg', settings.colors.sidebar)
-  root.style.setProperty('--sidebar-text', settings.colors.sidebarText)
-  root.style.setProperty('--blue', settings.colors.primary)
-  root.style.setProperty('--navy', settings.colors.text)
+  root.style.setProperty('--color-primary', settings.colors.primary)
+  root.style.setProperty('--color-secondary', settings.colors.secondary)
+  root.style.setProperty('--color-accent', settings.colors.accent)
+  root.style.setProperty('--color-canvas', settings.colors.background)
+  root.style.setProperty('--color-text', settings.colors.text)
+  root.style.setProperty('--color-surface', settings.colors.surface)
+  root.style.setProperty('--color-muted', settings.colors.muted)
+  root.style.setProperty('--color-border', settings.colors.border)
+  root.style.setProperty('--color-sidebar', settings.colors.sidebar)
+  root.style.setProperty('--color-sidebar-text', settings.colors.sidebarText)
   document.title = `${settings.shortName} · CampusOne`
 }

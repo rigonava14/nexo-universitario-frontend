@@ -13,10 +13,10 @@
   gap: 13px;
   min-height: 92px;
   padding: 19px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 .school-control-summary article > span {
   width: 43px;
@@ -25,20 +25,20 @@
   place-items: center;
   flex: 0 0 auto;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 10%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
 }
 .school-control-summary small,
 .school-control-summary strong {
   display: block;
 }
 .school-control-summary small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 12px;
 }
 .school-control-summary strong {
   margin-top: 4px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 18px Inter,
     sans-serif;
@@ -53,26 +53,26 @@
   position: sticky;
   top: 105px;
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 .school-control-nav > div {
   padding: 20px;
-  border-bottom: 1px solid var(--campus-line);
+  border-bottom: 1px solid var(--color-border);
 }
 .school-control-nav > div strong,
 .school-control-nav > div small {
   display: block;
 }
 .school-control-nav > div strong {
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 15px;
 }
 .school-control-nav > div small {
   margin-top: 4px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 12px;
 }
 .school-control-nav button {
@@ -82,8 +82,8 @@
   gap: 12px;
   padding: 15px 18px;
   border: 0;
-  border-bottom: 1px solid var(--campus-line);
-  color: var(--campus-muted);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted);
   background: transparent;
   text-align: left;
 }
@@ -91,13 +91,13 @@
   border-bottom: 0;
 }
 .school-control-nav button:hover {
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 6%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface));
 }
 .school-control-nav button.active {
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 9%, var(--campus-paper));
-  box-shadow: inset 4px 0 var(--brand-violet);
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface));
+  box-shadow: inset 4px 0 var(--color-primary);
 }
 .school-control-nav button > span {
   min-width: 0;
@@ -107,12 +107,12 @@
   display: block;
 }
 .school-control-nav button strong {
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 13px;
 }
 .school-control-nav button small {
   margin-top: 3px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 11px;
   line-height: 1.35;
 }
@@ -124,10 +124,10 @@
 .school-control-card {
   scroll-margin-top: 105px;
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 .school-control-card > header {
   display: grid;
@@ -135,7 +135,7 @@
   align-items: center;
   gap: 13px;
   padding: 22px 24px;
-  border-bottom: 1px solid var(--campus-line);
+  border-bottom: 1px solid var(--color-border);
 }
 .school-control-card > header > span {
   width: 44px;
@@ -143,19 +143,19 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 10%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
 }
 .school-control-card h2 {
   margin: 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 20px Inter,
     sans-serif;
 }
 .school-control-card header p {
   margin: 5px 0 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 13px;
   line-height: 1.45;
 }
@@ -169,10 +169,10 @@
   gap: 7px;
   min-height: 42px;
   padding: 0 14px;
-  border: 1px solid var(--brand-violet);
+  border: 1px solid var(--color-primary);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   font-size: 13px;
   font-weight: 700;
 }
@@ -194,7 +194,7 @@
 .school-code-row label {
   display: grid;
   gap: 8px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 13px;
   font-weight: 700;
 }
@@ -206,10 +206,10 @@
   min-width: 0;
   height: 46px;
   padding: 0 13px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
   font:
     14px Inter,
     sans-serif;
@@ -224,8 +224,8 @@
 .school-fields input:focus,
 .school-fields select:focus,
 .school-code-row input:focus {
-  border-color: var(--brand-violet);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-violet) 13%, transparent);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 13%, transparent);
 }
 .school-codes {
   display: grid;
@@ -238,29 +238,29 @@
   align-items: end;
   gap: 11px;
   padding: 15px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--campus-canvas) 45%, var(--campus-paper));
+  background: color-mix(in srgb, var(--color-canvas) 45%, var(--color-surface));
 }
 .school-code-row > button {
   width: 44px;
   height: 44px;
   display: grid;
   place-items: center;
-  border: 1px solid color-mix(in srgb, var(--brand-coral) 35%, var(--campus-line));
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 35%, var(--color-border));
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-coral);
-  background: var(--campus-paper);
+  color: var(--color-secondary);
+  background: var(--color-surface);
 }
 .school-coming-soon > div {
   margin: 22px 24px 25px;
   padding: 17px 18px;
-  border: 1px dashed color-mix(in srgb, var(--brand-violet) 28%, var(--campus-line));
+  border: 1px dashed color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--brand-violet) 5%, var(--campus-paper));
+  background: color-mix(in srgb, var(--color-primary) 5%, var(--color-surface));
 }
 .school-coming-soon > div span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -268,7 +268,7 @@
 }
 .school-coming-soon > div p {
   margin: 6px 0 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 13px;
 }
 .school-control-footer {
@@ -280,10 +280,10 @@
   justify-content: space-between;
   gap: 16px;
   padding: 16px 18px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--campus-paper) 92%, transparent);
-  box-shadow: var(--campus-shadow-md);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  box-shadow: var(--shadow-md);
   backdrop-filter: blur(14px);
 }
 .school-message,
@@ -291,11 +291,11 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 12px;
 }
 .school-error {
-  color: color-mix(in srgb, var(--brand-coral) 72%, black);
+  color: color-mix(in srgb, var(--color-secondary) 72%, black);
 }
 .school-control-footer button {
   display: inline-flex;
@@ -306,8 +306,8 @@
   padding: 0 16px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 13px;
   font-weight: 700;
 }
@@ -321,10 +321,10 @@
   align-items: center;
   gap: 10px;
   padding: 12px 15px;
-  border: 1px solid color-mix(in srgb, var(--brand-violet) 20%, var(--campus-line));
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, var(--color-border));
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 7%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
 }
 .configuration-health strong,
 .configuration-health small {
@@ -335,7 +335,7 @@
 }
 .configuration-health small {
   margin-top: 2px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 10px;
 }
 .school-control-summary article:nth-child(2) strong {
@@ -357,7 +357,7 @@
   justify-content: space-between;
   min-height: 46px;
   padding: 8px 12px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
 }
 .switch-field span strong,
@@ -369,20 +369,20 @@
 }
 .switch-field span small {
   margin-top: 2px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .switch-field input {
   width: 18px;
   height: 18px;
-  accent-color: var(--brand-violet);
+  accent-color: var(--color-primary);
 }
 .portal-copy-preview {
   margin: 0 24px 24px;
   padding: 22px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: linear-gradient(135deg, var(--sidebar-bg), color-mix(in srgb, var(--brand-violet) 72%, black));
+  color: var(--color-surface);
+  background: linear-gradient(135deg, var(--color-sidebar), color-mix(in srgb, var(--color-primary) 72%, black));
 }
 .portal-copy-preview span,
 .portal-copy-preview small,
@@ -391,7 +391,7 @@
 }
 .portal-copy-preview span {
   margin-bottom: 18px;
-  color: color-mix(in srgb, var(--campus-paper) 70%, transparent);
+  color: color-mix(in srgb, var(--color-surface) 70%, transparent);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -424,15 +424,15 @@
   align-items: center;
   gap: 10px;
   padding: 8px 9px 8px 13px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .document-config-list input {
   height: 38px;
   border: 0;
   outline: 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   background: transparent;
   font-size: 13px;
 }
@@ -443,7 +443,7 @@
   place-items: center;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-coral);
+  color: var(--color-secondary);
   background: transparent;
 }
 .enrollment-windows {
@@ -454,14 +454,14 @@
 }
 .enrollment-windows article {
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
 }
 .enrollment-windows article > span {
   display: block;
   padding: 12px 16px;
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 7%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -480,24 +480,24 @@
   align-items: flex-start;
   gap: 9px;
   padding: 13px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
 }
 .exam-switches input {
   margin-top: 2px;
-  accent-color: var(--brand-violet);
+  accent-color: var(--color-primary);
 }
 .exam-switches strong,
 .exam-switches small {
   display: block;
 }
 .exam-switches strong {
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 11px;
 }
 .exam-switches small {
   margin-top: 3px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
   line-height: 1.35;
 }
@@ -514,20 +514,20 @@
 }
 .question-editor {
   padding: 16px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--campus-canvas) 45%, var(--campus-paper));
+  background: color-mix(in srgb, var(--color-canvas) 45%, var(--color-surface));
 }
 .question-editor-top {
   display: grid;
   grid-template-columns: 18px auto 1fr 85px 36px;
   align-items: end;
   gap: 10px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .question-editor-top > span {
   align-self: center;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -535,16 +535,16 @@
 .question-editor-top label {
   display: grid;
   gap: 5px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .question-editor-top input {
   width: 100%;
   height: 36px;
   padding: 0 9px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .question-editor-top button,
 .option-list button {
@@ -554,7 +554,7 @@
   place-items: center;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-coral);
+  color: var(--color-secondary);
   background: transparent;
 }
 .question-editor-top button:disabled,
@@ -565,10 +565,10 @@
   width: 100%;
   margin-top: 14px;
   padding: 12px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
   font:
     600 14px/1.5 Inter,
     sans-serif;
@@ -586,7 +586,7 @@
   gap: 7px;
 }
 .option-list > div > input[type='radio'] {
-  accent-color: var(--brand-violet);
+  accent-color: var(--color-primary);
 }
 .option-list > div > span {
   width: 27px;
@@ -594,17 +594,17 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 9%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface));
   font-size: 10px;
   font-weight: 700;
 }
 .option-list > div > input[type='text'] {
   height: 37px;
   padding: 0 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .add-option {
   display: inline-flex;
@@ -612,7 +612,7 @@
   gap: 5px;
   margin: 11px 0 0 53px;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 10px;
   font-weight: 700;
@@ -626,25 +626,25 @@
   align-items: center;
   gap: 7px;
   margin-bottom: 9px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 .exam-preview-paper {
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
 }
 .exam-preview-head {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   padding: 17px;
-  color: var(--campus-paper);
-  background: var(--sidebar-bg);
+  color: var(--color-surface);
+  background: var(--color-sidebar);
 }
 .exam-preview-head small,
 .exam-preview-head strong {
@@ -673,25 +673,25 @@
   width: 22%;
   height: 4px;
   border-radius: 4px;
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .exam-progress small {
   display: block;
   margin-top: 7px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .exam-question-preview {
   padding: 18px 17px 21px;
 }
 .exam-question-preview > span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
 }
 .exam-question-preview h3 {
   margin: 9px 0 16px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 15px/1.45 Inter,
     sans-serif;
@@ -702,9 +702,9 @@
   gap: 8px;
   margin-top: 7px;
   padding: 9px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 9px;
 }
 .exam-question-preview label i {
@@ -713,8 +713,8 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 8%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
   font-style: normal;
 }
 .exam-question-preview > button {
@@ -723,8 +723,8 @@
   margin-top: 15px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 10px;
   font-weight: 700;
 }
@@ -733,18 +733,18 @@
   grid-template-columns: 190px minmax(480px, 1fr) 190px;
   min-height: 700px;
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 .report-template-list,
 .report-help {
   padding: 16px;
-  background: color-mix(in srgb, var(--campus-canvas) 48%, var(--campus-paper));
+  background: color-mix(in srgb, var(--color-canvas) 48%, var(--color-surface));
 }
 .report-template-list {
-  border-right: 1px solid var(--campus-line);
+  border-right: 1px solid var(--color-border);
 }
 .report-template-list > div strong,
 .report-template-list > div small {
@@ -755,7 +755,7 @@
 }
 .report-template-list > div small {
   margin-top: 3px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .report-template-list > button:not(.new-template) {
@@ -771,9 +771,9 @@
   background: transparent;
 }
 .report-template-list > button.active {
-  border-color: var(--campus-line);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 .report-template-list button > span {
   width: 29px;
@@ -781,20 +781,20 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 9%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface));
 }
 .report-template-list button strong,
 .report-template-list button small {
   display: block;
 }
 .report-template-list button strong {
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 9px;
 }
 .report-template-list button small {
   margin-top: 2px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .new-template {
@@ -805,9 +805,9 @@
   gap: 5px;
   margin-top: 14px;
   padding: 9px;
-  border: 1px dashed var(--campus-line);
+  border: 1px dashed var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 9px;
   font-weight: 700;
@@ -824,14 +824,14 @@
   justify-content: center;
   gap: 4px;
   padding: 7px 4px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
-  background: var(--campus-paper);
+  color: var(--color-muted);
+  background: var(--color-surface);
   font-size: 8px;
 }
 .template-actions button:last-child {
-  color: var(--brand-coral);
+  color: var(--color-secondary);
 }
 .template-actions button:disabled {
   opacity: 0.35;
@@ -845,13 +845,13 @@
   grid-template-columns: 1.4fr 1fr 0.7fr 0.8fr;
   gap: 8px;
   padding: 12px;
-  border-bottom: 1px solid var(--campus-line);
-  background: var(--campus-paper);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .report-properties label {
   display: grid;
   gap: 4px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
   font-weight: 700;
 }
@@ -860,9 +860,9 @@
   min-width: 0;
   height: 32px;
   padding: 0 8px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
   font-size: 9px;
 }
 .document-toolbar {
@@ -870,8 +870,8 @@
   align-items: center;
   gap: 4px;
   padding: 7px 12px;
-  border-bottom: 1px solid var(--campus-line);
-  background: var(--campus-paper);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .document-toolbar button {
   min-width: 32px;
@@ -882,20 +882,20 @@
   gap: 5px;
   border: 1px solid transparent;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
+  color: var(--color-text);
   background: transparent;
 }
 .document-toolbar button:hover {
-  border-color: var(--campus-line);
-  background: var(--campus-canvas);
+  border-color: var(--color-border);
+  background: var(--color-canvas);
 }
 .document-toolbar > span {
   flex: 1;
 }
 .document-toolbar .print-report {
   padding-inline: 10px;
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 9px;
   font-weight: 700;
 }
@@ -904,15 +904,15 @@
   gap: 5px;
   overflow-x: auto;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--campus-line);
-  background: var(--campus-paper);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .token-strip > span {
   display: flex;
   align-items: center;
   gap: 4px;
   flex: 0 0 auto;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
   font-weight: 700;
 }
@@ -921,8 +921,8 @@
   padding: 5px 7px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 8%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
   font-size: 7px;
 }
 .document-canvas-wrap {
@@ -975,17 +975,17 @@
   margin: 0 0 14px;
 }
 .report-help {
-  border-left: 1px solid var(--campus-line);
+  border-left: 1px solid var(--color-border);
 }
 .report-help > div {
   margin-bottom: 13px;
   padding: 13px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .report-help svg {
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .report-help strong {
   display: block;
@@ -994,14 +994,14 @@
 }
 .report-help p {
   margin: 5px 0 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
   line-height: 1.55;
 }
 .report-help .api-ready {
-  color: var(--campus-paper);
+  color: var(--color-surface);
   border: 0;
-  background: var(--sidebar-bg);
+  background: var(--color-sidebar);
 }
 .api-ready span {
   font-size: 7px;
@@ -1009,7 +1009,7 @@
   letter-spacing: 0.08em;
 }
 .report-help .api-ready p {
-  color: color-mix(in srgb, var(--campus-paper) 72%, transparent);
+  color: color-mix(in srgb, var(--color-surface) 72%, transparent);
 }
 .report-style-settings {
   display: grid;
@@ -1017,14 +1017,14 @@
   align-items: end;
   gap: 7px;
   padding: 9px 12px;
-  border-bottom: 1px solid var(--campus-line);
-  background: color-mix(in srgb, var(--campus-canvas) 35%, var(--campus-paper));
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-canvas) 35%, var(--color-surface));
 }
 .report-style-settings label {
   position: relative;
   display: grid;
   gap: 4px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
   font-weight: 700;
 }
@@ -1034,10 +1034,10 @@
   min-width: 0;
   height: 30px;
   padding: 0 7px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
   font-size: 8px;
 }
 .report-style-settings input[type='color'] {
@@ -1055,18 +1055,18 @@
   gap: 5px;
   min-height: 30px;
   padding: 0 7px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .report-check input {
   width: 13px;
   height: 13px;
-  accent-color: var(--brand-violet);
+  accent-color: var(--color-primary);
 }
 .document-toolbar > i {
   height: 20px;
-  border-left: 1px solid var(--campus-line);
+  border-left: 1px solid var(--color-border);
 }
 .report-blocks {
   display: flex;
@@ -1074,12 +1074,12 @@
   gap: 5px;
   overflow-x: auto;
   padding: 7px 12px;
-  border-bottom: 1px solid var(--campus-line);
-  background: var(--campus-paper);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .report-blocks > span {
   margin-right: 3px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -1091,22 +1091,22 @@
   gap: 4px;
   height: 29px;
   padding: 0 8px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
   font-size: 8px;
 }
 .report-blocks label {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .report-blocks select {
   height: 29px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
   font-size: 8px;
 }
@@ -1120,7 +1120,7 @@
 }
 .token-group > small {
   padding-left: 5px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
   font-weight: 700;
 }
@@ -1130,8 +1130,8 @@
   justify-content: space-between;
   gap: 8px;
   padding: 7px 12px;
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 9%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface));
   font-size: 8px;
 }
 .report-notice button {
@@ -1233,27 +1233,27 @@
   align-items: center;
   gap: 9px;
   padding: 13px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 12px;
 }
 .acta-options input {
-  accent-color: var(--brand-violet);
+  accent-color: var(--color-primary);
 }
 .integration-note {
   margin: 0 24px 24px;
   padding: 16px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 7%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
 }
 .integration-note strong {
   font-size: 11px;
 }
 .integration-note p {
   margin: 5px 0 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 10px;
   line-height: 1.5;
 }
@@ -1325,7 +1325,7 @@
     gap: 8px;
     overflow-x: auto;
     border-right: 0;
-    border-bottom: 1px solid var(--campus-line);
+    border-bottom: 1px solid var(--color-border);
   }
   .report-template-list > div {
     min-width: 145px;
@@ -1354,7 +1354,7 @@
     grid-column: 1 / -1;
   }
   .school-control-nav button {
-    border-right: 1px solid var(--campus-line);
+    border-right: 1px solid var(--color-border);
   }
   .enrollment-windows,
   .exam-switches {
