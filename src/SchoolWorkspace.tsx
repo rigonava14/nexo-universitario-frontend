@@ -89,14 +89,13 @@ export default function SchoolWorkspace({
       },
     }
     if (!store.commit({ ...data, subjects })) return false
-    try {
-      onSave(next)
-      return true
-    } catch {
-      store.commit(data)
-      store.setError('No se pudo guardar la oferta; se restauró el catálogo anterior.')
-      return false
-    }
+    Promise.resolve()
+      .then(() => onSave(next))
+      .catch(() => {
+        store.commit(data)
+        store.setError('No se pudo guardar la oferta; se restauró el catálogo anterior.')
+      })
+    return true
   }
   function saveSubject(event: FormEvent) {
     event.preventDefault()
@@ -123,13 +122,13 @@ export default function SchoolWorkspace({
       },
     }
     if (!store.commit({ ...data, subjects })) return
-    try {
-      onSave(nextSettings)
-      setSubject(null)
-    } catch {
-      store.commit(data)
-      store.setError('No se pudo guardar la materia en los planes. Se restauró el catálogo.')
-    }
+    setSubject(null)
+    Promise.resolve()
+      .then(() => onSave(nextSettings))
+      .catch(() => {
+        store.commit(data)
+        store.setError('No se pudo guardar la materia en los planes. Se restauró el catálogo.')
+      })
   }
   function addToPlan(event: FormEvent) {
     event.preventDefault()

@@ -76,5 +76,6 @@ Agrega una entrada al cerrar cada sprint: fecha, qué se terminó, qué no, velo
 
 - Hecho: 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 0.10 y 0.15; estándares de trabajo (`CLAUDE.md`, skill, esta guía).
 - Corrección encontrada por las pruebas: el directorio de alumnos desbordaba la pantalla en móvil.
-- Siguiente: 0.11 y 0.12 (capa de servicios) en su propio PR; luego 0.13 y 0.14.
-- Pendiente de la persona dueña: 0.1 (merge) y 0.6 (proteger `main`).
+- Capa de servicios (0.11 a 0.13) en su propio PR: interfaces, adaptadores locales, TanStack Query y guardado optimista con versión (ADR 0002).
+- Siguiente: 0.14 (unificar nombres) y cierre del sprint 0.
+- La persona dueña fusionó los PR #1 y #2 y protegió `main` con un ruleset (0.1 y 0.6).

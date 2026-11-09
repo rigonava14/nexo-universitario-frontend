@@ -3,7 +3,6 @@ import { CheckCircle2, Download, GraduationCap, Palette, RotateCcw, Save, Upload
 import {
   defaultSettings,
   InstitutionSettings as Settings,
-  loadInstitutionSettings,
   normalizeInstitutionSettings,
   validInstitutionSettings,
 } from './institution'
@@ -172,7 +171,7 @@ export default function InstitutionSettings({ settings, onSave, onReset }: Props
   function reset() {
     if (!window.confirm('¿Restaurar la apariencia predeterminada en este navegador?')) return
     onReset()
-    setDraft(loadInstitutionSettings())
+    setDraft(defaultSettings)
     setError('')
     setMessage('Apariencia predeterminada restaurada.')
   }

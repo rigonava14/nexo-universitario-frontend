@@ -108,28 +108,6 @@ export function validDirectoryRecord(value: unknown): value is DirectoryRecord {
   )
 }
 
-export function loadDirectory(kind: DirectoryKind): { records: DirectoryRecord[]; error: string } {
-  try {
-    const saved = localStorage.getItem(`campusone-${kind}-v1`)
-    if (saved === null) return { records: directorySeeds[kind].map((item) => ({ ...item })), error: '' }
-    const records: unknown = JSON.parse(saved)
-    if (
-      !Array.isArray(records) ||
-      !records.every(validDirectoryRecord) ||
-      new Set(records.map((item) => item.id)).size !== records.length ||
-      new Set(records.map((item) => item.number.toLowerCase())).size !== records.length
-    )
-      throw new Error('Invalid directory')
-    return { records, error: '' }
-  } catch {
-    return {
-      records: [],
-      error:
-        'No se pudo leer el directorio guardado. Los datos existentes no se sobrescribirán. Revisa el almacenamiento del navegador antes de continuar.',
-    }
-  }
-}
-
 export function prepareDirectoryRecord(
   draft: DirectoryRecord,
   records: DirectoryRecord[],

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { getCurrentEmail, getRole } from './auth'
 import { Download, Search } from 'lucide-react'
-import { loadDirectory } from './directory'
-import { downloadCsv, englishResult, graduationRequirements, loadOperations } from './operations'
+import { downloadCsv, englishResult, graduationRequirements } from './operations'
 import { OperationEmpty, OperationFeedback, OperationSummary, personName } from './operation-ui'
 import './directory.css'
-import { loadInstitutionSettings } from './institution'
-import { effectiveStudentStatus, loadSchool } from './school'
+import { effectiveStudentStatus } from './school'
+import { useDirectoryRecords, useOperationsData, useSchoolData } from './hooks/data'
+import { useAppState } from './app-state'
 
 type Report = { name: string; headers: string[]; rows: (string | number | null)[][]; error: string }
 const reportSections = [
@@ -36,11 +36,11 @@ export default function OperationalReports({ permissions }: { permissions: strin
   const [source, setSource] = useState(allowed[0] ?? '')
   const [query, setQuery] = useState('')
   const [notice, setNotice] = useState('')
-  const [operations] = useState(loadOperations)
-  const [students] = useState(() => loadDirectory('students'))
-  const [teachers] = useState(() => loadDirectory('teachers'))
-  const [institution] = useState(loadInstitutionSettings)
-  const [school] = useState(() => loadSchool(institution))
+  const operations = useOperationsData()
+  const students = useDirectoryRecords('students')
+  const teachers = useDirectoryRecords('teachers')
+  const { institution } = useAppState()
+  const school = useSchoolData(institution)
   const data = operations.data
   function getReport(): Report {
     if (!allowed.includes(source)) return { name: 'Sin acceso', headers: [], rows: [], error: '' }

@@ -97,21 +97,6 @@ export const initialApplicants: Applicant[] = [
   },
 ]
 
-const STORAGE_KEY = 'nexo-applicants'
-
-export function loadApplicants(): Applicant[] {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    return stored ? JSON.parse(stored) : initialApplicants
-  } catch {
-    return initialApplicants
-  }
-}
-
-export function saveApplicants(applicants: Applicant[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants))
-}
-
 export function createApplicant(
   data: Pick<Applicant, 'name' | 'email' | 'phone' | 'curp' | 'career' | 'campus'>,
 ): Applicant {

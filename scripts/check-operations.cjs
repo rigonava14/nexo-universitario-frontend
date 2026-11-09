@@ -1,16 +1,10 @@
 const assert = require('node:assert/strict')
 const fs = require('node:fs')
-const vm = require('node:vm')
-const { stripTypeScriptTypes } = require('node:module')
-const source = fs.readFileSync('src/operations.ts', 'utf8')
-const code =
-  stripTypeScriptTypes(source).replace(/^export /gm, '') +
-  '\nexports = { validOperations, defaultOperations, loadOperations, saveOperations, residencyError, graduationError, graduationRequirements, englishResult, csvText };'
+const { loadTsModule } = require('./ts-module.cjs')
 let saved = null
 let readBlocked = false
 let writeBlocked = false
 const context = {
-  exports: {},
   structuredClone,
   URL,
   localStorage: {
@@ -24,7 +18,21 @@ const context = {
     },
   },
 }
-vm.runInNewContext(code, context)
+context.exports = loadTsModule(
+  ['src/operations.ts', 'src/services/local/operations.ts'],
+  [
+    'validOperations',
+    'defaultOperations',
+    'loadOperations',
+    'saveOperations',
+    'residencyError',
+    'graduationError',
+    'graduationRequirements',
+    'englishResult',
+    'csvText',
+  ],
+  context,
+)
 const api = context.exports
 const data = structuredClone(api.defaultOperations)
 assert.equal(api.validOperations(data), true)
@@ -145,13 +153,16 @@ for (const changes of [{ grade: 101 }, { grade: -1 }, { grade: NaN }, { attendan
   assert.equal(api.validOperations({ ...data, englishEnrollments: [{ ...enrollment, ...changes }] }), false)
 assert.equal(api.validOperations({ ...data, settings: { ...data.settings, englishPassingGrade: 101 } }), false)
 assert.equal(api.validOperations({ ...data, settings: { ...data.settings, graduationModalities: [] } }), false)
-assert.equal(api.saveOperations(data), '')
+assert.equal(api.saveOperations(data, saved).error, '')
 assert.equal(api.loadOperations().data.residencies[0].project, 'Proyecto')
+assert.equal(api.loadOperations().version, saved)
 const previous = saved
-assert.ok(api.saveOperations({ ...data, englishGroups: [] }))
+assert.ok(api.saveOperations({ ...data, englishGroups: [] }, saved).error)
+assert.equal(saved, previous)
+assert.ok(api.saveOperations(data, 'version-de-otra-pestaña').error)
 assert.equal(saved, previous)
 writeBlocked = true
-assert.ok(api.saveOperations(data))
+assert.ok(api.saveOperations(data, saved).error)
 assert.equal(saved, previous)
 writeBlocked = false
 for (const corrupt of ['invalid', '{}', 'null', JSON.stringify({ ...data, academies: [{}] })]) {

@@ -2,7 +2,6 @@ import defaultSettings from './content/institution.json'
 export { defaultSettings }
 
 export type InstitutionSettings = typeof defaultSettings
-const key = 'nexo-institution-settings-v1'
 const hex = /^#[0-9a-fA-F]{6}$/
 const colorKeys: (keyof InstitutionSettings['colors'])[] = [
   'primary',
@@ -291,31 +290,6 @@ export function normalizeInstitutionSettings(value: unknown): InstitutionSetting
     },
   }
   return validInstitutionSettings(normalized) ? normalized : null
-}
-
-export function loadInstitutionSettings(): InstitutionSettings {
-  try {
-    const stored = localStorage.getItem(key)
-    if (stored) {
-      const parsed: unknown = JSON.parse(stored)
-      const normalized = normalizeInstitutionSettings(parsed)
-      if (normalized) return normalized
-    }
-  } catch {
-    /* Ignore a damaged local draft. */
-  }
-  return defaultSettings
-}
-
-export function saveInstitutionSettings(settings: InstitutionSettings) {
-  localStorage.setItem(key, JSON.stringify(settings))
-  applyInstitutionSettings(settings)
-}
-
-export function resetInstitutionSettings() {
-  localStorage.removeItem(key)
-  applyInstitutionSettings(defaultSettings)
-  return defaultSettings
 }
 
 export function applyInstitutionSettings(settings: InstitutionSettings) {

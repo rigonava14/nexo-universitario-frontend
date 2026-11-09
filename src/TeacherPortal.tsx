@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react'
 import { Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { getRole, signOut } from './auth'
-import { loadInstitutionSettings } from './institution'
+import { useAppState } from './app-state'
 import FadeContent from './components/FadeContent'
 import {
   AlertCircle,
@@ -525,7 +525,7 @@ function EvaluationsPage({ actsOnly = false, notify }: { actsOnly?: boolean; not
   )
   const [studentSearch, setStudentSearch] = useState('')
   const [saved, setSaved] = useState(false)
-  const institution = loadInstitutionSettings()
+  const { institution } = useAppState()
   const grading = institution.grading
   if (actsOnly)
     return (
@@ -1139,6 +1139,7 @@ function TeacherProfile({ notify }: { notify: TeacherNotice }) {
 }
 
 export default function TeacherPortal() {
+  const { institution } = useAppState()
   const location = useLocation()
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -1175,7 +1176,7 @@ export default function TeacherPortal() {
             <Menu size={20} />
           </button>
           <div>
-            <strong>{loadInstitutionSettings().name}</strong>
+            <strong>{institution.name}</strong>
             <span>Periodo académico 2026-2</span>
           </div>
           <div>

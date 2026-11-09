@@ -1,28 +1,30 @@
 const assert = require('node:assert/strict')
-const fs = require('node:fs')
-const vm = require('node:vm')
-const { stripTypeScriptTypes } = require('node:module')
+const { loadTsModule } = require('./ts-module.cjs')
 
-const code =
-  stripTypeScriptTypes(fs.readFileSync('src/directory.ts', 'utf8')).replace(/^export /gm, '') +
-  '\nexports = { loadDirectory, directorySeeds, prepareDirectoryRecord, filterDirectory };'
 let saved = null
 let blocked = false
 const context = {
-  exports: {},
   localStorage: {
     getItem: () => {
       if (blocked) throw new Error('Storage blocked')
       return saved
     },
+    setItem: (_, value) => {
+      if (blocked) throw new Error('Storage blocked')
+      saved = value
+    },
   },
 }
-vm.runInNewContext(code, context)
-const { loadDirectory, directorySeeds, prepareDirectoryRecord, filterDirectory } = context.exports
+context.exports = loadTsModule(
+  ['src/directory.ts', 'src/services/local/directory.ts'],
+  ['loadDirectory', 'saveDirectory', 'directorySeeds', 'prepareDirectoryRecord', 'filterDirectory'],
+  context,
+)
+const { loadDirectory, saveDirectory, directorySeeds, prepareDirectoryRecord, filterDirectory } = context.exports
 const records = directorySeeds.students
 const draft = { ...records[0], id: 'new', number: ' NEW-001 ', email: ' NEW@EXAMPLE.COM ', name: ' Alumno nuevo ' }
-assert.equal(loadDirectory('students').records.length, 4)
-assert.equal(loadDirectory('teachers').records.length, 2)
+assert.equal(loadDirectory('students').data.length, 4)
+assert.equal(loadDirectory('teachers').data.length, 2)
 assert.equal(prepareDirectoryRecord(draft, records, 'students').record.email, 'new@example.com')
 assert.equal(prepareDirectoryRecord(draft, records, 'students').error, '')
 assert.ok(prepareDirectoryRecord({ ...draft, number: records[0].number.toLowerCase() }, records, 'students').error)
@@ -44,17 +46,29 @@ assert.equal(filterDirectory(records, '', '', 'Baja').length, 0)
 saved = JSON.stringify([
   { ...prepareDirectoryRecord(draft, records, 'students').record, name: 'Expediente persistido' },
 ])
-assert.equal(loadDirectory('students').records[0].name, 'Expediente persistido')
+assert.equal(loadDirectory('students').data[0].name, 'Expediente persistido')
 saved = '[]'
-assert.equal(loadDirectory('students').records.length, 0)
+assert.equal(loadDirectory('students').data.length, 0)
 for (const corrupt of ['invalid json', '{}', '[{}]', JSON.stringify([records[0], records[0]])]) {
   saved = corrupt
   assert.ok(loadDirectory('students').error)
-  assert.equal(loadDirectory('students').records.length, 0)
+  assert.equal(loadDirectory('students').data.length, 0)
   assert.equal(saved, corrupt)
 }
 blocked = true
 assert.ok(loadDirectory('students').error)
+blocked = false
+// Guardado con versión: solo escribe si nadie más cambió los datos desde la lectura.
+saved = '[]'
+const fresh = loadDirectory('students')
+assert.equal(fresh.version, '[]')
+const written = saveDirectory('students', records, fresh.version)
+assert.equal(written.error, '')
+assert.equal(written.version, saved)
+assert.ok(saveDirectory('students', records, '[]').error, 'otra pestaña cambió los datos')
+assert.equal(saved, written.version)
+blocked = true
+assert.ok(saveDirectory('students', records, written.version).error)
 console.log(
   'Directory checks passed: validation, duplicates, filters, persisted data, empty directory and storage failures.',
 )
