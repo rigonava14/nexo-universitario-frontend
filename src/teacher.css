@@ -1,7 +1,7 @@
 .teacher-access-link {
   display: block;
   margin-top: 8px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   text-align: center;
   text-decoration: none;
   font-size: 10px;
@@ -11,13 +11,13 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .teacher-login > aside {
   position: relative;
   background:
-    radial-gradient(circle at 70% 20%, var(--brand-violet) 0, transparent 36%),
-    linear-gradient(145deg, var(--brand-plum), var(--brand-plum));
+    radial-gradient(circle at 70% 20%, var(--color-primary) 0, transparent 36%),
+    linear-gradient(145deg, var(--color-text), var(--color-text));
   overflow: hidden;
 }
 .teacher-login > aside:after {
@@ -27,7 +27,7 @@
   height: 520px;
   left: -260px;
   bottom: -260px;
-  border: 1px solid var(--campus-paper) 12;
+  border: 1px solid var(--color-surface) 12;
   border-radius: 50%;
 }
 .teacher-login-message {
@@ -36,7 +36,7 @@
   right: 12%;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--campus-paper);
+  color: var(--color-surface);
 }
 .teacher-login-message > span {
   width: 52px;
@@ -44,12 +44,12 @@
   display: grid;
   place-items: center;
   margin-bottom: 44px;
-  border: 1px solid var(--campus-paper) 25;
+  border: 1px solid var(--color-surface) 25;
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper) 12;
+  background: var(--color-surface) 12;
 }
 .teacher-login-message p {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -62,7 +62,7 @@
 .teacher-login-message small {
   display: block;
   max-width: 450px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 13px;
   line-height: 1.7;
 }
@@ -87,8 +87,8 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
 }
 .teacher-login-brand strong,
 .teacher-login-brand small,
@@ -98,36 +98,36 @@
 }
 .teacher-login-brand strong,
 .teacher-brand strong {
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 18px Inter;
 }
 .teacher-login-brand small,
 .teacher-brand small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .teacher-eyebrow {
   margin: 0 0 13px !important;
-  color: var(--brand-violet) !important;
+  color: var(--color-primary) !important;
   font-size: 9px !important;
   font-weight: 700;
   letter-spacing: 0.14em;
 }
 .teacher-login form > h2 {
   margin: 0 0 8px;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 31px Inter;
   letter-spacing: -0.04em;
 }
 .teacher-login form > p {
   margin: 0 0 29px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 12px;
 }
 .teacher-login form label {
   display: block;
   margin-bottom: 17px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
   font-weight: 600;
 }
@@ -135,10 +135,10 @@
   width: 100%;
   margin-top: 8px;
   padding: 13px 14px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
   outline: 0;
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .teacher-login form > button {
   width: 100%;
@@ -150,29 +150,29 @@
   padding: 14px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 11px;
   font-weight: 700;
 }
 .teacher-login form > small {
   display: block;
   margin-top: 14px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   text-align: center;
   font-size: 8px;
 }
 .teacher-login form > a {
   display: block;
   margin-top: 28px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   text-align: center;
   text-decoration: none;
   font-size: 9px;
 }
 .teacher-shell {
   min-height: 100vh;
-  background: var(--brand-lavender);
+  background: var(--color-canvas);
 }
 .teacher-sidebar {
   position: fixed;
@@ -181,8 +181,8 @@
   width: 250px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--campus-line);
-  background: var(--campus-paper);
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .teacher-brand {
   height: 72px;
@@ -190,7 +190,7 @@
   align-items: center;
   gap: 10px;
   padding: 0 20px;
-  border-bottom: 1px solid var(--brand-lavender);
+  border-bottom: 1px solid var(--color-canvas);
 }
 .teacher-brand > span {
   width: 38px;
@@ -200,7 +200,7 @@
   display: none;
   margin-left: auto;
   border: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
 }
 .teacher-card {
@@ -214,8 +214,8 @@
   place-items: center;
   margin: 0 auto 9px;
   border-radius: 50%;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 12px;
   font-weight: 700;
 }
@@ -225,17 +225,17 @@
   display: block;
 }
 .teacher-card strong {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
 }
 .teacher-card span {
   margin-top: 3px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-card small {
   margin-top: 4px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .teacher-sidebar nav {
@@ -253,22 +253,22 @@
   padding: 9px 10px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
   font-size: 9px;
   text-align: left;
 }
 .teacher-sidebar nav button.active {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-weight: 700;
 }
 .teacher-sidebar nav button i {
   margin-left: auto;
   padding: 2px 6px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
   font-size: 7px;
   font-style: normal;
 }
@@ -279,8 +279,8 @@
   margin: 11px 14px;
   padding: 10px;
   border: 0;
-  border-top: 1px solid var(--brand-lavender);
-  color: var(--campus-muted);
+  border-top: 1px solid var(--color-canvas);
+  color: var(--color-muted);
   background: transparent;
   font-size: 9px;
 }
@@ -297,20 +297,20 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  border-bottom: 1px solid var(--campus-line);
-  background: var(--campus-paper) F2;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface) F2;
 }
 .teacher-topbar > div:first-of-type strong,
 .teacher-topbar > div:first-of-type span {
   display: block;
 }
 .teacher-topbar > div:first-of-type strong {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
 }
 .teacher-topbar > div:first-of-type span {
   margin-top: 3px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-topbar > div:last-child {
@@ -324,10 +324,10 @@
   height: 36px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
-  background: var(--campus-paper);
+  color: var(--color-muted);
+  background: var(--color-surface);
 }
 .teacher-notification i {
   position: absolute;
@@ -336,7 +336,7 @@
   top: 6px;
   right: 7px;
   border-radius: 50%;
-  background: var(--brand-coral);
+  background: var(--color-secondary);
 }
 .teacher-avatar {
   width: 36px;
@@ -344,15 +344,15 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 9px;
   font-weight: 700;
 }
 .teacher-menu {
   display: none;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
 }
 .teacher-content {
@@ -369,19 +369,19 @@
 }
 .teacher-heading p {
   margin: 0 0 7px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
 .teacher-heading h1 {
   margin: 0 0 6px;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 27px Inter;
   letter-spacing: -0.035em;
 }
 .teacher-heading span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 10px;
 }
 .teacher-primary {
@@ -392,8 +392,8 @@
   padding: 10px 13px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
 }
@@ -408,9 +408,9 @@
   align-items: center;
   gap: 12px;
   padding: 17px 18px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .teacher-metrics article > span {
   width: 37px;
@@ -422,26 +422,26 @@
 .teacher-metrics .blue,
 .pending-list span.blue,
 .evaluation-summary span.blue {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .teacher-metrics .green,
 .pending-list span.green,
 .evaluation-summary span.green {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .teacher-metrics .amber,
 .pending-list span.amber,
 .evaluation-summary span.amber {
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
 }
 .teacher-metrics .violet,
 .pending-list span.violet,
 .evaluation-summary span.violet {
-  color: var(--campus-muted);
-  background: var(--brand-lavender);
+  color: var(--color-muted);
+  background: var(--color-canvas);
 }
 .teacher-metrics small,
 .teacher-metrics strong,
@@ -449,12 +449,12 @@
   display: block;
 }
 .teacher-metrics small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-metrics strong {
   margin-top: 2px;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 19px Inter;
 }
 .teacher-metrics p,
@@ -462,12 +462,12 @@
   margin: 3px 0 0;
   padding: 0;
   border: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
   font-size: 7px;
 }
 .teacher-metrics button {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-weight: 700;
 }
 .teacher-home-grid {
@@ -476,9 +476,9 @@
   gap: 17px;
 }
 .teacher-panel {
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .teacher-panel-title {
   display: flex;
@@ -489,18 +489,18 @@
 }
 .teacher-panel-title h2 {
   margin: 0 0 4px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font: 700 12px Inter;
 }
 .teacher-panel-title p {
   margin: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-panel-title button {
   padding: 0;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
   font-weight: 700;
@@ -515,14 +515,14 @@
   margin-left: 21px;
 }
 .teacher-next-class > span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
 }
 .teacher-next-class h3 {
   margin-top: 6px;
   margin-bottom: 14px;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 18px Inter;
 }
 .teacher-next-class > p {
@@ -531,7 +531,7 @@
   gap: 7px;
   margin-top: 7px;
   margin-bottom: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-next-class > button {
@@ -541,7 +541,7 @@
   margin-top: 18px;
   padding: 0;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
   font-weight: 700;
@@ -552,7 +552,7 @@
   gap: 10px;
   margin: 0 21px;
   padding: 11px 0;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .pending-list > div > span {
   width: 31px;
@@ -570,14 +570,14 @@
   font-size: 8px;
 }
 .pending-list small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .pending-list time {
   padding: 4px 7px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .today-groups > div:not(.teacher-panel-title) {
@@ -586,7 +586,7 @@
   gap: 10px;
   margin: 0 21px;
   padding: 11px 0;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .today-groups time {
   width: 37px;
@@ -596,13 +596,13 @@
 .today-groups i {
   width: 3px;
   height: 30px;
-  background: var(--campus-muted);
+  background: var(--color-muted);
 }
 .today-groups i.green {
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .today-groups i.amber {
-  background: var(--brand-coral);
+  background: var(--color-secondary);
 }
 .today-groups section {
   flex: 1;
@@ -613,11 +613,11 @@
   font-size: 8px;
 }
 .today-groups small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .today-groups > div > span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .teacher-actions > div:last-child {
@@ -632,14 +632,14 @@
   align-items: center;
   gap: 9px;
   padding: 12px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   text-align: left;
 }
 .teacher-actions span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
 }
 .teacher-group-grid {
@@ -650,9 +650,9 @@
 .teacher-group-grid article {
   position: relative;
   padding: 21px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
   overflow: hidden;
 }
 .teacher-group-accent {
@@ -661,42 +661,42 @@
   width: 4px;
 }
 .teacher-group-accent.blue {
-  background: var(--campus-muted);
+  background: var(--color-muted);
 }
 .teacher-group-accent.green {
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .teacher-group-accent.violet {
-  background: var(--campus-muted);
+  background: var(--color-muted);
 }
 .teacher-group-accent.amber {
-  background: var(--brand-coral);
+  background: var(--color-secondary);
 }
 .teacher-group-top {
   display: flex;
   justify-content: space-between;
 }
 .teacher-group-top span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
 }
 .teacher-group-top b {
   padding: 4px 7px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .teacher-group-grid article > small {
   display: block;
   margin-top: 5px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .teacher-group-grid h2 {
   margin: 9px 0 14px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font: 700 15px Inter;
 }
 .teacher-group-grid p {
@@ -704,7 +704,7 @@
   align-items: center;
   gap: 7px;
   margin: 7px 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-progress {
@@ -721,13 +721,13 @@
   grid-column: 1/-1;
   height: 5px;
   border-radius: var(--paper-radius, 4px);
-  background: var(--brand-lavender);
+  background: var(--color-canvas);
 }
 .teacher-progress em {
   display: block;
   height: 100%;
   border-radius: var(--paper-radius, 4px);
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .teacher-group-grid article > button {
   display: flex;
@@ -736,7 +736,7 @@
   margin-top: 15px;
   padding: 0;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
   font-weight: 700;
@@ -752,7 +752,7 @@
   position: absolute;
   inset: 0;
   border: 0;
-  background: var(--brand-plum) 70;
+  background: var(--color-text) 70;
 }
 .teacher-group-drawer {
   position: relative;
@@ -760,28 +760,28 @@
   width: min(455px, 100%);
   height: 100%;
   overflow-y: auto;
-  background: var(--campus-paper);
-  box-shadow: -10px 0 35px var(--brand-plum) 25;
+  background: var(--color-surface);
+  box-shadow: -10px 0 35px var(--color-text) 25;
 }
 .teacher-drawer-head {
   display: flex;
   justify-content: space-between;
   padding: 25px;
-  border-bottom: 1px solid var(--campus-line);
+  border-bottom: 1px solid var(--color-border);
 }
 .teacher-drawer-head p {
   margin: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
   letter-spacing: 0.1em;
 }
 .teacher-drawer-head h2 {
   margin: 6px 0;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 19px Inter;
 }
 .teacher-drawer-head span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-drawer-head button {
@@ -790,11 +790,11 @@
 }
 .teacher-group-drawer > section {
   padding: 19px 25px;
-  border-bottom: 1px solid var(--brand-lavender);
+  border-bottom: 1px solid var(--color-canvas);
 }
 .teacher-group-drawer h3 {
   margin: 0 0 13px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
 }
 .teacher-group-drawer dl {
@@ -804,20 +804,20 @@
   margin: 0;
 }
 .teacher-group-drawer dt {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .teacher-group-drawer dd {
   margin: 3px 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
 }
 .drawer-evaluation {
   display: flex;
   gap: 10px;
   padding: 12px;
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
 }
 .drawer-evaluation strong,
 .drawer-evaluation small {
@@ -825,7 +825,7 @@
   font-size: 8px;
 }
 .drawer-evaluation small {
-  color: var(--brand-coral);
+  color: var(--color-secondary);
   font-size: 7px;
 }
 .drawer-student {
@@ -833,7 +833,7 @@
   align-items: center;
   gap: 9px;
   padding: 9px 0;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .drawer-student > span,
 .teacher-student > span,
@@ -843,8 +843,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
   font-style: normal;
   font-weight: 700;
@@ -858,11 +858,11 @@
   font-size: 8px;
 }
 .drawer-student small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .drawer-student > b {
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .teacher-drawer-actions {
   position: sticky;
@@ -871,7 +871,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 9px;
   padding: 17px 25px;
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .teacher-drawer-actions button {
   display: flex;
@@ -879,29 +879,29 @@
   justify-content: center;
   gap: 6px;
   padding: 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   font-size: 8px;
 }
 .teacher-drawer-actions button:last-child {
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
 }
 .teacher-group-select {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-group-select select {
   padding: 9px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   font-size: 8px;
 }
 .evaluation-summary {
@@ -909,16 +909,16 @@
   grid-template-columns: 1.5fr 0.7fr 0.7fr;
   gap: 0;
   margin-bottom: 15px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .evaluation-summary > div {
   display: flex;
   align-items: center;
   gap: 11px;
   padding: 17px 20px;
-  border-right: 1px solid var(--brand-lavender);
+  border-right: 1px solid var(--color-canvas);
 }
 .evaluation-summary > div > span {
   width: 38px;
@@ -930,17 +930,17 @@
 .evaluation-summary small,
 .evaluation-summary strong {
   display: block;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .evaluation-summary h2 {
   margin: 4px 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font: 700 12px Inter;
 }
 .evaluation-summary p {
   margin: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .evaluation-summary > div:not(:first-child) {
@@ -948,27 +948,27 @@
 }
 .evaluation-summary > div:not(:first-child) strong {
   margin-top: 6px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 9px;
 }
 .teacher-grade-table {
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .grade-table-tools {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 13px 18px;
-  border-bottom: 1px solid var(--brand-lavender);
+  border-bottom: 1px solid var(--color-canvas);
 }
 .grade-table-tools label {
   display: flex;
   align-items: center;
   gap: 7px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .grade-table-tools input {
   border: 0;
@@ -978,7 +978,7 @@
 .grade-table-tools > span {
   display: flex;
   gap: 5px;
-  color: var(--brand-coral);
+  color: var(--color-secondary);
   font-size: 7px;
 }
 .teacher-grade-table table {
@@ -992,25 +992,25 @@
 .teacher-grade-table td input {
   width: 60px;
   padding: 7px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
   text-align: center;
 }
 .teacher-grade-table td > b {
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .grade-table-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 18px;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .grade-table-actions span {
   display: flex;
   align-items: center;
   gap: 5px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .grade-table-actions button,
@@ -1021,8 +1021,8 @@
   padding: 9px 12px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 8px;
   font-weight: 700;
 }
@@ -1035,14 +1035,14 @@
   align-items: center;
   gap: 12px;
   padding: 13px 20px;
-  border-top: 1px solid var(--brand-lavender);
-  color: var(--campus-muted);
+  border-top: 1px solid var(--color-canvas);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .teacher-act-row.heading {
   border: 0;
-  background: var(--brand-lavender);
-  color: var(--campus-muted);
+  background: var(--color-canvas);
+  color: var(--color-muted);
   font-size: 7px;
   font-weight: 700;
 }
@@ -1051,7 +1051,7 @@
   display: block;
 }
 .teacher-act-row small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .teacher-act-row > span.closed,
@@ -1059,19 +1059,19 @@
   width: max-content;
   padding: 4px 7px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .teacher-act-row > span.pending {
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
 }
 .teacher-act-row button {
   display: flex;
   align-items: center;
   gap: 5px;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
 }
@@ -1084,10 +1084,10 @@
 .attendance-controls > label,
 .attendance-controls > div {
   padding: 14px 17px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
-  background: var(--campus-paper);
+  color: var(--color-muted);
+  background: var(--color-surface);
   font-size: 8px;
 }
 .attendance-controls select,
@@ -1096,7 +1096,7 @@
   margin-top: 7px;
   border: 0;
   outline: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 9px;
 }
 .attendance-controls span,
@@ -1105,7 +1105,7 @@
 }
 .attendance-controls strong {
   margin-top: 5px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font: 700 15px Inter;
 }
 .attendance-list > div:not(.teacher-panel-title) {
@@ -1115,8 +1115,8 @@
   gap: 10px;
   margin: 0 21px;
   padding: 10px 0;
-  border-top: 1px solid var(--brand-lavender);
-  color: var(--campus-muted);
+  border-top: 1px solid var(--color-canvas);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .attendance-list .teacher-student section {
@@ -1128,7 +1128,7 @@
   font-size: 8px;
 }
 .teacher-student small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .attendance-list label {
@@ -1140,12 +1140,12 @@
   font-size: 7px;
 }
 .attendance-list label.present {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .attendance-list label.absent {
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
 }
 .attendance-list label input {
   display: none;
@@ -1155,17 +1155,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 21px;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .attendance-list footer span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .history-toolbar {
   display: flex;
   gap: 12px;
   padding: 15px 18px;
-  border-bottom: 1px solid var(--brand-lavender);
+  border-bottom: 1px solid var(--color-canvas);
 }
 .history-toolbar label {
   flex: 1;
@@ -1181,9 +1181,9 @@
 }
 .history-toolbar select {
   padding: 8px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
 }
 .teacher-history td button {
@@ -1191,7 +1191,7 @@
   align-items: center;
   gap: 4px;
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 8px;
 }
@@ -1203,9 +1203,9 @@
 }
 .report-cards article {
   padding: 18px 20px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .report-cards small,
 .report-cards strong,
@@ -1213,23 +1213,23 @@
   display: block;
 }
 .report-cards small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 8px;
 }
 .report-cards strong {
   margin: 4px 0;
-  color: var(--brand-plum);
+  color: var(--color-text);
   font: 700 21px Inter;
 }
 .report-cards span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .report-cards span.up {
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .report-cards span.warning {
-  color: var(--brand-coral);
+  color: var(--color-secondary);
 }
 .reports-layout {
   display: grid;
@@ -1243,7 +1243,7 @@
   align-items: flex-end;
   justify-content: space-around;
   padding: 20px 25px 18px;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .bar-chart > div {
   height: 100%;
@@ -1256,10 +1256,10 @@
 .bar-chart i {
   width: 28px;
   border-radius: 5px 5px 0 0;
-  background: linear-gradient(var(--campus-muted), var(--brand-lavender));
+  background: linear-gradient(var(--color-muted), var(--color-canvas));
 }
 .bar-chart span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 7px;
 }
 .group-performance > div:not(.teacher-panel-title) {
@@ -1268,7 +1268,7 @@
   gap: 10px;
   margin: 0 20px;
   padding: 11px 0;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .group-performance > div > span {
   width: 43px;
@@ -1278,20 +1278,20 @@
   font-size: 7px;
 }
 .group-performance span.blue {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .group-performance span.green {
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
 }
 .group-performance span.violet {
-  color: var(--campus-muted);
-  background: var(--brand-lavender);
+  color: var(--color-muted);
+  background: var(--color-canvas);
 }
 .group-performance span.amber {
-  color: var(--brand-coral);
-  background: var(--brand-lavender);
+  color: var(--color-secondary);
+  background: var(--color-canvas);
 }
 .group-performance section {
   flex: 1;
@@ -1303,12 +1303,12 @@
   display: block;
   height: 4px;
   margin-top: 6px;
-  background: var(--brand-lavender);
+  background: var(--color-canvas);
 }
 .group-performance em {
   display: block;
   height: 100%;
-  background: var(--brand-violet);
+  background: var(--color-primary);
 }
 .group-performance b {
   font-size: 9px;
@@ -1325,14 +1325,14 @@
   align-items: center;
   gap: 6px;
   padding: 12px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   text-align: left;
 }
 .report-downloads button span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
 }
 .teacher-profile-layout {
@@ -1352,8 +1352,8 @@
   place-items: center;
   margin: 0 auto;
   border-radius: 50%;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font: 700 18px Inter;
 }
 .teacher-profile-card h2 {
@@ -1366,8 +1366,8 @@
 }
 .teacher-profile-card > span {
   padding: 5px 8px;
-  color: var(--brand-violet);
-  background: var(--brand-lavender);
+  color: var(--color-primary);
+  background: var(--color-canvas);
   font-size: 7px;
 }
 .teacher-profile-card dl {
@@ -1375,7 +1375,7 @@
 }
 .teacher-profile-card dl > div {
   padding: 11px 0;
-  border-top: 1px solid var(--brand-lavender);
+  border-top: 1px solid var(--color-canvas);
 }
 .teacher-profile-card dd {
   margin: 4px 0;
@@ -1387,7 +1387,7 @@
 .teacher-profile-form .two-fields label {
   display: block;
   margin: 0 21px 15px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 8px;
 }
 .teacher-profile-form .two-fields {
@@ -1400,7 +1400,7 @@
   width: 100%;
   margin-top: 7px;
   padding: 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
 }
 .teacher-profile-form > button {
@@ -1456,7 +1456,7 @@
     z-index: 25;
     display: block;
     border: 0;
-    background: var(--brand-plum) 66;
+    background: var(--color-text) 66;
   }
   .teacher-home-grid,
   .teacher-group-grid,
@@ -1526,17 +1526,17 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   font-size: 13px;
   font-weight: 700;
 }
 .teacher-group-actions button.primary {
-  border-color: var(--brand-violet);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  border-color: var(--color-primary);
+  color: var(--color-surface);
+  background: var(--color-primary);
 }
 .evaluation-group-picker {
   display: grid;
@@ -1548,10 +1548,10 @@
   grid-template-columns: 54px 1fr;
   gap: 18px;
   padding: 25px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
   transition:
     transform 0.18s ease,
     border-color 0.18s ease,
@@ -1559,8 +1559,8 @@
 }
 .evaluation-group-picker article:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--brand-violet) 36%, var(--campus-line));
-  box-shadow: var(--campus-shadow-md);
+  border-color: color-mix(in srgb, var(--color-primary) 36%, var(--color-border));
+  box-shadow: var(--shadow-md);
 }
 .evaluation-group-icon {
   width: 54px;
@@ -1568,8 +1568,8 @@
   display: grid;
   place-items: center;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 11%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 11%, var(--color-surface));
 }
 .evaluation-group-copy {
   min-width: 0;
@@ -1580,23 +1580,23 @@
   gap: 9px;
 }
 .evaluation-group-copy > div:first-child span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 13px;
   font-weight: 700;
 }
 .evaluation-group-copy > div:first-child small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .evaluation-group-copy h2 {
   margin: 8px 0 7px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 20px/1.2 Inter,
     sans-serif;
 }
 .evaluation-group-copy p {
   margin: 0;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   line-height: 1.5;
 }
 .evaluation-group-copy > div:last-child {
@@ -1604,7 +1604,7 @@
   flex-wrap: wrap;
   gap: 12px 20px;
   margin-top: 18px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .evaluation-group-copy > div:last-child span {
   display: flex;
@@ -1618,7 +1618,7 @@
   justify-content: space-between;
   gap: 14px;
   padding-top: 18px;
-  border-top: 1px solid var(--campus-line);
+  border-top: 1px solid var(--color-border);
 }
 .evaluation-group-picker footer > span {
   padding: 7px 10px;
@@ -1627,12 +1627,12 @@
   font-weight: 700;
 }
 .evaluation-group-picker footer > span.pending {
-  color: color-mix(in srgb, var(--brand-coral) 70%, black);
-  background: color-mix(in srgb, var(--brand-coral) 12%, var(--campus-paper));
+  color: color-mix(in srgb, var(--color-secondary) 70%, black);
+  background: color-mix(in srgb, var(--color-secondary) 12%, var(--color-surface));
 }
 .evaluation-group-picker footer > span.ready {
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 10%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
 }
 .evaluation-group-picker footer button,
 .evaluation-back {
@@ -1644,15 +1644,15 @@
   padding: 0 15px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-size: 13px;
   font-weight: 700;
 }
 .evaluation-back {
-  border: 1px solid var(--campus-line);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  background: var(--color-surface);
 }
 .evaluation-summary {
   margin-bottom: 18px;
@@ -1679,21 +1679,21 @@
   gap: 20px;
   margin-bottom: 18px;
   padding: 17px 20px;
-  border: 1px solid color-mix(in srgb, var(--brand-violet) 22%, var(--campus-line));
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--brand-violet) 6%, var(--campus-paper));
+  background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface));
 }
 .grading-rules-banner > div:first-child strong,
 .grading-rules-banner > div:first-child span {
   display: block;
 }
 .grading-rules-banner > div:first-child strong {
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 14px;
 }
 .grading-rules-banner > div:first-child span {
   margin-top: 4px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 13px;
 }
 .grading-code-chips {
@@ -1704,15 +1704,15 @@
 }
 .grading-code-chips span {
   padding: 8px 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
-  background: var(--campus-paper);
+  color: var(--color-muted);
+  background: var(--color-surface);
   font-size: 12px;
 }
 .grading-code-chips b {
   margin-right: 3px;
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .teacher-grade-table {
   border-radius: var(--paper-radius, 4px);
@@ -1724,9 +1724,9 @@
   width: min(390px, 100%);
   min-height: 44px;
   padding: 0 13px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .grade-table-tools input {
   width: 100%;
@@ -1736,7 +1736,7 @@
 .grade-table-tools > span {
   align-items: center;
   font-size: 13px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .grade-table-scroll {
   overflow-x: auto;
@@ -1760,10 +1760,10 @@
   width: 100%;
   height: 44px;
   padding: 0 34px 0 11px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
   font-size: 13px;
   font-weight: 700;
 }
@@ -1776,14 +1776,14 @@
   font-weight: 700;
 }
 .teacher-grade-table td input.invalid {
-  border-color: var(--brand-coral);
-  background: color-mix(in srgb, var(--brand-coral) 6%, var(--campus-paper));
+  border-color: var(--color-secondary);
+  background: color-mix(in srgb, var(--color-secondary) 6%, var(--color-surface));
 }
 .teacher-grade-table td > b {
   font-size: 15px;
 }
 .teacher-grade-table td > b.empty {
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .teacher-student > span {
   width: 38px;

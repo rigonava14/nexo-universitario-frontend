@@ -14,10 +14,11 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "npm run test:school && npm run test:directory && npm run test:operations",
+    "test": "npm run test:school && npm run test:directory && npm run test:operations && npm run test:migration",
     "test:school": "node --test scripts/school.test.mjs",
     "test:directory": "node scripts/check-directory.cjs",
     "test:operations": "node scripts/check-operations.cjs",
+    "test:migration": "node scripts/check-migration.cjs",
     "test:e2e": "playwright test --trace off",
     "check": "npm run lint && npm run format:check && npm run build && npm run test"
   },

@@ -5,8 +5,8 @@
    Runtime brand colors (institution settings) still flow through the
    --brand-* / --campus-* variables; this file only fixes structure. */
 :root {
-  --paper-blue: var(--brand-violet);
-  --paper-sky-tint: color-mix(in srgb, var(--brand-violet) 10%, white);
+  --paper-blue: var(--color-primary);
+  --paper-sky-tint: color-mix(in srgb, var(--color-primary) 10%, white);
   --paper-midnight: #02093a;
   --paper-hairline: rgba(0, 0, 0, 0.08);
   --paper-hairline-strong: rgba(0, 0, 0, 0.16);
@@ -18,15 +18,15 @@
   --paper-radius: 4px;
   --paper-mockup-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-  --campus-shadow-sm: none;
-  --campus-shadow-md: none;
-  --campus-radius-sm: var(--paper-radius);
-  --campus-radius-md: var(--paper-radius);
-  --campus-radius-lg: var(--paper-radius);
+  --shadow-sm: none;
+  --shadow-md: none;
+  --radius-sm: var(--paper-radius);
+  --radius-md: var(--paper-radius);
+  --radius-lg: var(--paper-radius);
 }
 
 body {
-  background: var(--campus-canvas);
+  background: var(--color-canvas);
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
@@ -54,13 +54,13 @@ a:active {
 .app-shell,
 .student-shell,
 .teacher-shell {
-  background: var(--campus-canvas);
+  background: var(--color-canvas);
 }
 
 .sidebar,
 .student-sidebar,
 .teacher-sidebar {
-  background: var(--sidebar-bg);
+  background: var(--color-sidebar);
   border-right: 1px solid var(--paper-hairline);
   box-shadow: none;
 }
@@ -91,7 +91,7 @@ a:active {
 }
 
 .nav-section > p {
-  color: color-mix(in srgb, var(--sidebar-text) 40%, transparent);
+  color: color-mix(in srgb, var(--color-sidebar-text) 40%, transparent);
   letter-spacing: 0.08em;
   font-weight: 500;
 }
@@ -102,34 +102,34 @@ a:active {
   margin: 1px 0;
   padding: 8px 12px;
   border-radius: var(--paper-radius, 4px);
-  color: color-mix(in srgb, var(--sidebar-text) 60%, transparent);
+  color: color-mix(in srgb, var(--color-sidebar-text) 60%, transparent);
   font-weight: 500;
 }
 .nav-section button:hover,
 .student-sidebar nav button:hover,
 .teacher-sidebar nav button:hover {
-  color: var(--sidebar-text);
-  background: color-mix(in srgb, var(--sidebar-text) 5%, transparent);
+  color: var(--color-sidebar-text);
+  background: color-mix(in srgb, var(--color-sidebar-text) 5%, transparent);
 }
 .nav-section button.active,
 .student-sidebar nav button.active,
 .teacher-sidebar nav button.active {
-  color: var(--sidebar-text);
-  background: color-mix(in srgb, var(--sidebar-text) 7%, transparent);
+  color: var(--color-sidebar-text);
+  background: color-mix(in srgb, var(--color-sidebar-text) 7%, transparent);
   box-shadow: none;
 }
 .student-mini-profile > div,
 .teacher-card > div {
   border: 1px solid var(--paper-hairline);
-  background: var(--campus-paper);
-  color: var(--sidebar-text);
+  background: var(--color-surface);
+  color: var(--color-sidebar-text);
 }
 
 .app-content > header,
 .student-topbar,
 .teacher-topbar {
   border-bottom: 1px solid var(--paper-hairline);
-  background: color-mix(in srgb, var(--campus-canvas) 88%, transparent);
+  background: color-mix(in srgb, var(--color-canvas) 88%, transparent);
   box-shadow: var(--paper-nav-shadow);
 }
 .search-box {
@@ -182,7 +182,7 @@ a:active {
 .student-page-heading span,
 .teacher-heading span,
 .module-heading > div > p:last-child {
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 
 /* ---------- Cards: white on paper, hairline, no shadow ---------- */
@@ -207,7 +207,7 @@ a:active {
 .public-benefits {
   border: 1px solid var(--paper-hairline);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
   box-shadow: none;
 }
 .panel:hover,
@@ -244,7 +244,7 @@ a:active {
 .student-metric.amber,
 .teacher-metrics .amber {
   color: #000;
-  background: var(--brand-amber);
+  background: var(--color-accent);
 }
 .student-metric.green,
 .teacher-metrics .green {
@@ -326,10 +326,10 @@ a:active {
 .portal-copy-preview,
 .balance-card,
 .scholarship-banner {
-  --sidebar-bg: var(--paper-midnight);
-  --sidebar-text: #fff;
-  --campus-muted: rgba(255, 255, 255, 0.64);
-  --campus-line: rgba(255, 255, 255, 0.78);
+  --color-sidebar: var(--paper-midnight);
+  --color-sidebar-text: #fff;
+  --color-muted: rgba(255, 255, 255, 0.64);
+  --color-border: rgba(255, 255, 255, 0.78);
   color: #fff;
   background: var(--paper-midnight);
   box-shadow: none;
@@ -369,14 +369,14 @@ a:active {
 
 /* ---------- Public admissions ---------- */
 .public-page {
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .public-page--soft {
-  background: var(--campus-canvas);
+  background: var(--color-canvas);
 }
 .public-header {
   border-bottom: 1px solid var(--paper-hairline);
-  background: color-mix(in srgb, var(--campus-canvas) 90%, transparent);
+  background: color-mix(in srgb, var(--color-canvas) 90%, transparent);
   box-shadow: var(--paper-nav-shadow);
 }
 .public-brand > span {
@@ -394,7 +394,7 @@ a:active {
 }
 
 .admissions-hero {
-  background: var(--campus-canvas);
+  background: var(--color-canvas);
 }
 .admissions-hero::before {
   display: none;
@@ -410,7 +410,7 @@ a:active {
 .hero-copy > p:nth-child(3),
 .registration-layout > section > p:nth-child(3),
 .tracking-intro > p:nth-child(3) {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-family: var(--paper-serif);
   font-size: 18px;
   line-height: 1.56;
@@ -435,11 +435,11 @@ a:active {
 .public-programs article {
   border: 1px solid var(--paper-hairline);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
   box-shadow: none;
 }
 .public-programs article > span {
-  color: var(--brand-coral);
+  color: var(--color-secondary);
   font-weight: 500;
 }
 .public-programs article a {

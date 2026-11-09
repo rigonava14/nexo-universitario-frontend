@@ -9,32 +9,32 @@
 }
 .school-tabs button {
   padding: 11px 15px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
   font-weight: 700;
 }
 .school-tabs button.active {
-  color: var(--campus-paper);
-  background: var(--brand-violet);
-  border-color: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
 }
 .school-workspace > .directory-table-wrap,
 .school-workspace .operation-panel > .directory-table-wrap {
   margin: 18px 0;
-  background: var(--campus-paper);
-  border: 1px solid var(--campus-line);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
 }
 .school-workspace label > select {
   max-width: 100%;
   min-height: 42px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   padding: 9px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
 }
 .school-workspace .operation-toolbar select {
   max-width: min(100%, 520px);
@@ -46,7 +46,7 @@
   white-space: normal;
 }
 .school-workspace button:focus-visible {
-  outline: 2px solid var(--brand-violet);
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 @media (max-width: 760px) {

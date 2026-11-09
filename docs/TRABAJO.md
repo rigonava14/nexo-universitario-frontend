@@ -77,5 +77,7 @@ Agrega una entrada al cerrar cada sprint: fecha, qué se terminó, qué no, velo
 - Hecho: 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 0.10 y 0.15; estándares de trabajo (`CLAUDE.md`, skill, esta guía).
 - Corrección encontrada por las pruebas: el directorio de alumnos desbordaba la pantalla en móvil.
 - Capa de servicios (0.11 a 0.13) en su propio PR: interfaces, adaptadores locales, TanStack Query y guardado optimista con versión (ADR 0002).
-- Siguiente: 0.14 (unificar nombres) y cierre del sprint 0.
+- 0.14: claves `campusone-*` con migración y variables CSS por función.
+- **Sprint 0 cerrado.** Puerta de la fase 0 cumplida: la app se ve igual, ninguna pantalla accede a almacenamiento y el CI corre lint, build, reglas y Playwright.
+- Siguiente: fase 1, sprint 1 (monorepo y API base).
 - La persona dueña fusionó los PR #1 y #2 y protegió `main` con un ruleset (0.1 y 0.6).

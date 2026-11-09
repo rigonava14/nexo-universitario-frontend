@@ -13,10 +13,10 @@
   gap: 14px;
   min-height: 98px;
   padding: 20px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
-  box-shadow: var(--campus-shadow-sm);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 .academic-summary article > span {
   width: 44px;
@@ -25,37 +25,37 @@
   place-items: center;
   flex: 0 0 auto;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 9%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface));
 }
 .academic-summary small,
 .academic-summary strong {
   display: block;
 }
 .academic-summary small {
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .academic-summary strong {
   margin-top: 2px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 25px Inter,
     sans-serif;
 }
 .academic-catalog {
   overflow: hidden;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--campus-paper) 90%, var(--campus-canvas));
-  box-shadow: var(--campus-shadow-sm);
+  background: color-mix(in srgb, var(--color-surface) 90%, var(--color-canvas));
+  box-shadow: var(--shadow-sm);
 }
 .academic-toolbar {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) 190px 170px;
   gap: 10px;
   padding: 18px 20px;
-  border-bottom: 1px solid var(--campus-line);
-  background: var(--campus-paper);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .academic-toolbar label {
   display: flex;
@@ -63,25 +63,25 @@
   gap: 8px;
   height: 44px;
   padding: 0 13px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .academic-toolbar input {
   flex: 1;
   min-width: 0;
   border: 0;
   outline: 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   background: transparent;
 }
 .academic-toolbar select {
   height: 44px;
   padding: 0 12px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
 }
 .program-grid {
   display: grid;
@@ -94,15 +94,15 @@
   flex-direction: column;
   min-height: 330px;
   padding: 22px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
   cursor: pointer;
   transition: 0.18s ease;
 }
 .program-card:hover {
-  border-color: color-mix(in srgb, var(--brand-violet) 30%, var(--campus-line));
-  box-shadow: var(--campus-shadow-md);
+  border-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 .program-card-top {
@@ -112,7 +112,7 @@
   gap: 10px;
 }
 .program-card-top > span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.09em;
@@ -133,13 +133,13 @@
   background: #fff4d9;
 }
 .program-card-top i.inactive {
-  color: var(--campus-muted);
-  background: var(--campus-canvas);
+  color: var(--color-muted);
+  background: var(--color-canvas);
 }
 .program-card h2 {
   min-height: 48px;
   margin: 18px 0 9px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 18px/1.35 Inter,
     sans-serif;
@@ -150,7 +150,7 @@
   min-height: 61px;
   margin: 0;
   overflow: hidden;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   line-height: 1.55;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -164,8 +164,8 @@
 .program-tags span {
   padding: 5px 8px;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 7%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
   font-size: 10px;
   font-weight: 700;
 }
@@ -175,18 +175,18 @@
   gap: 7px;
   margin: auto 0 0;
   padding-top: 16px;
-  border-top: 1px solid var(--campus-line);
+  border-top: 1px solid var(--color-border);
 }
 .program-card dl div {
   min-width: 0;
 }
 .program-card dt {
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
 }
 .program-card dd {
   margin: 3px 0 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 11px;
   font-weight: 700;
 }
@@ -200,12 +200,12 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 10px;
 }
 .program-card footer button {
   border: 0;
-  color: var(--brand-violet);
+  color: var(--color-primary);
   background: transparent;
   font-size: 10px;
   font-weight: 700;
@@ -213,11 +213,11 @@
 .academic-empty {
   padding: 65px 25px;
   text-align: center;
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .academic-empty h2 {
   margin: 10px 0 4px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 20px Inter,
     sans-serif;
@@ -235,14 +235,14 @@
   gap: 16px;
   margin-top: 18px;
   padding: 15px 18px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--campus-paper) 92%, transparent);
-  box-shadow: var(--campus-shadow-md);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  box-shadow: var(--shadow-md);
   backdrop-filter: blur(14px);
 }
 .academic-savebar span {
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .academic-savebar button {
   display: inline-flex;
@@ -252,8 +252,8 @@
   padding: 0 16px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-paper);
-  background: var(--brand-violet);
+  color: var(--color-surface);
+  background: var(--color-primary);
   font-weight: 700;
 }
 .academic-editor-layer {
@@ -276,7 +276,7 @@
   width: min(900px, calc(100% - 40px));
   height: 100%;
   overflow-y: auto;
-  background: var(--campus-paper);
+  background: var(--color-surface);
   box-shadow: -20px 0 60px rgba(36, 21, 53, 0.2);
   animation: academicSlide 0.22s ease;
 }
@@ -295,19 +295,19 @@
   justify-content: space-between;
   gap: 18px;
   padding: 25px 28px 21px;
-  border-bottom: 1px solid var(--campus-line);
-  background: color-mix(in srgb, var(--campus-paper) 94%, transparent);
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
   backdrop-filter: blur(12px);
 }
 .academic-editor > header span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 .academic-editor > header h2 {
   margin: 5px 0 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 24px/1.2 Inter,
     sans-serif;
@@ -321,10 +321,10 @@
   height: 40px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
-  background: var(--campus-paper);
+  color: var(--color-muted);
+  background: var(--color-surface);
 }
 .academic-editor > nav {
   position: sticky;
@@ -333,20 +333,20 @@
   display: flex;
   gap: 5px;
   padding: 10px 28px;
-  border-bottom: 1px solid var(--campus-line);
-  background: var(--campus-paper);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 .academic-editor > nav button {
   padding: 9px 12px;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
+  color: var(--color-muted);
   background: transparent;
   font-weight: 700;
 }
 .academic-editor > nav button.active {
-  color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 8%, var(--campus-paper));
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
 }
 .academic-editor-body {
   display: grid;
@@ -357,19 +357,19 @@
 .academic-editor-body section {
   align-self: start;
   padding: 20px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
 }
 .academic-editor-body h3 {
   margin: 0 0 17px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 16px Inter,
     sans-serif;
 }
 .academic-editor-body h4 {
   margin: 21px 0 10px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 11px;
 }
 .academic-fields {
@@ -380,7 +380,7 @@
 .academic-fields label {
   display: grid;
   gap: 7px;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 11px;
   font-weight: 700;
 }
@@ -393,10 +393,10 @@
   width: 100%;
   min-width: 0;
   padding: 0 11px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-ink);
-  background: var(--campus-paper);
+  color: var(--color-text);
+  background: var(--color-surface);
   outline: 0;
 }
 .academic-fields input,
@@ -411,8 +411,8 @@
 .academic-fields input:focus,
 .academic-fields select:focus,
 .academic-fields textarea:focus {
-  border-color: var(--brand-violet);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-violet) 10%, transparent);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 .academic-fields.metrics {
   grid-template-columns: repeat(3, 1fr);
@@ -433,14 +433,14 @@
   align-items: center;
   gap: 8px;
   padding: 11px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .campus-options input:checked + span {
-  color: var(--brand-violet);
-  border-color: color-mix(in srgb, var(--brand-violet) 40%, var(--campus-line));
-  background: color-mix(in srgb, var(--brand-violet) 7%, var(--campus-paper));
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
 }
 .curriculum-editor {
   padding: 22px 28px 100px;
@@ -456,14 +456,14 @@
   display: grid;
   gap: 2px;
   padding: 10px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  color: var(--campus-muted);
-  background: var(--campus-paper);
+  color: var(--color-muted);
+  background: var(--color-surface);
   text-align: left;
 }
 .semester-selector button span {
-  color: var(--campus-ink);
+  color: var(--color-text);
   font-size: 14px;
   font-weight: 700;
 }
@@ -471,11 +471,11 @@
   font-size: 9px;
 }
 .semester-selector button.active {
-  border-color: var(--brand-violet);
-  background: color-mix(in srgb, var(--brand-violet) 8%, var(--campus-paper));
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
 }
 .semester-selector button.active span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
 }
 .curriculum-heading {
   display: flex;
@@ -485,14 +485,14 @@
   margin: 18px 0 13px;
 }
 .curriculum-heading span {
-  color: var(--brand-violet);
+  color: var(--color-primary);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.09em;
 }
 .curriculum-heading h3 {
   margin: 4px 0 0;
-  color: var(--campus-ink);
+  color: var(--color-text);
   font:
     700 19px Inter,
     sans-serif;
@@ -502,10 +502,10 @@
   align-items: center;
   gap: 6px;
   padding: 10px 12px;
-  border: 1px solid var(--brand-violet);
+  border: 1px solid var(--color-primary);
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-violet);
-  background: var(--campus-paper);
+  color: var(--color-primary);
+  background: var(--color-surface);
   font-weight: 700;
 }
 .subject-editor-list {
@@ -518,14 +518,14 @@
   align-items: end;
   gap: 8px;
   padding: 12px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: color-mix(in srgb, var(--campus-canvas) 35%, var(--campus-paper));
+  background: color-mix(in srgb, var(--color-canvas) 35%, var(--color-surface));
 }
 .subject-editor-list label {
   display: grid;
   gap: 5px;
-  color: var(--campus-muted);
+  color: var(--color-muted);
   font-size: 9px;
   font-weight: 700;
 }
@@ -534,9 +534,9 @@
   min-width: 0;
   height: 37px;
   padding: 0 8px;
-  border: 1px solid var(--campus-line);
+  border: 1px solid var(--color-border);
   border-radius: var(--paper-radius, 4px);
-  background: var(--campus-paper);
+  background: var(--color-surface);
 }
 .subject-editor-list .mandatory {
   display: flex;
@@ -545,7 +545,7 @@
   height: 37px;
 }
 .subject-editor-list .mandatory input {
-  accent-color: var(--brand-violet);
+  accent-color: var(--color-primary);
 }
 .subject-editor-list article > button {
   width: 36px;
@@ -554,20 +554,20 @@
   place-items: center;
   border: 0;
   border-radius: var(--paper-radius, 4px);
-  color: var(--brand-coral);
+  color: var(--color-secondary);
   background: transparent;
 }
 .semester-empty {
   padding: 60px 20px;
-  border: 1px dashed var(--campus-line);
+  border: 1px dashed var(--color-border);
   border-radius: var(--paper-radius, 4px);
   text-align: center;
-  color: var(--campus-muted);
+  color: var(--color-muted);
 }
 .semester-empty strong {
   display: block;
   margin-top: 10px;
-  color: var(--campus-ink);
+  color: var(--color-text);
 }
 .semester-empty p {
   margin: 4px 0 0;
@@ -582,8 +582,8 @@
   justify-content: space-between;
   gap: 10px;
   padding: 14px 28px;
-  border-top: 1px solid var(--campus-line);
-  background: color-mix(in srgb, var(--campus-paper) 94%, transparent);
+  border-top: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
   backdrop-filter: blur(12px);
 }
 .delete-program {
@@ -591,7 +591,7 @@
   align-items: center;
   gap: 6px;
   border: 0;
-  color: var(--brand-coral);
+  color: var(--color-secondary);
   background: transparent;
   font-weight: 700;
 }
