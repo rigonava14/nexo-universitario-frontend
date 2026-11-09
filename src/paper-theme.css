@@ -15,13 +15,14 @@
   --paper-ink-40: rgba(0, 0, 0, .4);
   --paper-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
   --paper-nav-shadow: 0 .7px 1.462px rgba(0, 0, 0, .015), 0 3px 9px rgba(0, 0, 0, .03);
+  --paper-radius: 4px;
   --paper-mockup-shadow: 0 4px 12px rgba(0, 0, 0, .1);
 
   --campus-shadow-sm: none;
   --campus-shadow-md: none;
-  --campus-radius-sm: 8px;
-  --campus-radius-md: 12px;
-  --campus-radius-lg: 12px;
+  --campus-radius-sm: var(--paper-radius);
+  --campus-radius-md: var(--paper-radius);
+  --campus-radius-lg: var(--paper-radius);
 }
 
 body { background: var(--campus-canvas); -webkit-font-smoothing: antialiased; }
@@ -42,7 +43,7 @@ button:not(:disabled):active, a:active { transform: none; }
 .sidebar-brand, .student-side-brand, .teacher-brand { border-bottom-color: var(--paper-hairline); }
 .sidebar-brand .brand-mark, .student-side-brand > span, .teacher-brand > span {
   border: 0;
-  border-radius: 8px;
+  border-radius: var(--paper-radius, 4px);
   color: #fff;
   background: var(--paper-blue);
   box-shadow: none;
@@ -54,7 +55,7 @@ button:not(:disabled):active, a:active { transform: none; }
   min-height: 36px;
   margin: 1px 0;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: var(--paper-radius, 4px);
   color: color-mix(in srgb, var(--sidebar-text) 60%, transparent);
   font-weight: 500;
 }
@@ -74,7 +75,7 @@ button:not(:disabled):active, a:active { transform: none; }
   background: color-mix(in srgb, var(--campus-canvas) 88%, transparent);
   box-shadow: var(--paper-nav-shadow);
 }
-.search-box { border: 1px solid var(--paper-hairline); border-radius: 8px; box-shadow: none; }
+.search-box { border: 1px solid var(--paper-hairline); border-radius: var(--paper-radius, 4px); box-shadow: none; }
 .search-box:focus-within { border-color: color-mix(in srgb, var(--paper-blue) 45%, transparent); }
 .notification, .student-notification, .teacher-notification, .header-avatar, .student-top-avatar, .teacher-avatar { border-radius: 9999px; }
 .header-avatar, .student-top-avatar, .teacher-avatar { font-weight: 600; }
@@ -100,7 +101,7 @@ button:not(:disabled):active, a:active { transform: none; }
 .student-table-panel, .teacher-grade-table, .payment-concepts, .report-cards article,
 .registration-form, .public-benefits {
   border: 1px solid var(--paper-hairline);
-  border-radius: 12px;
+  border-radius: var(--paper-radius, 4px);
   background: var(--campus-paper);
   box-shadow: none;
 }
@@ -113,7 +114,7 @@ button:not(:disabled):active, a:active { transform: none; }
 }
 .stat-card > strong, .student-summary-grid strong, .teacher-metrics strong, .admission-stats strong { font-weight: 600; letter-spacing: -.03em; }
 .panel-heading h3, .student-panel-title h2, .teacher-panel-title h2 { font-weight: 600; letter-spacing: -.011em; }
-.student-metric, .teacher-metrics article > span, .metric-icon { border-radius: 8px; }
+.student-metric, .teacher-metrics article > span, .metric-icon { border-radius: var(--paper-radius, 4px); }
 
 /* Accent swatches: flat fills that read like sticky notes */
 .student-metric.amber, .teacher-metrics .amber { color: #000; background: var(--brand-amber); }
@@ -123,7 +124,7 @@ button:not(:disabled):active, a:active { transform: none; }
 .primary-button, .student-primary-button, .teacher-primary, .teacher-primary-button, .public-primary,
 .login-page .primary-button, .student-login-card form button, .teacher-login form > button {
   border: 0;
-  border-radius: 8px;
+  border-radius: var(--paper-radius, 4px);
   color: #fff;
   background: var(--paper-blue);
   box-shadow: none;
@@ -135,7 +136,7 @@ button:not(:disabled):active, a:active { transform: none; }
 }
 .public-secondary {
   border: 0;
-  border-radius: 8px;
+  border-radius: var(--paper-radius, 4px);
   color: var(--paper-blue);
   background: var(--paper-sky-tint);
   font-weight: 500;
@@ -148,7 +149,7 @@ button:not(:disabled):active, a:active { transform: none; }
 .registration-form input:not([type='checkbox']), .registration-form select,
 .student-login-card form input, .teacher-login form input {
   border: 1px solid var(--paper-hairline-strong);
-  border-radius: 8px;
+  border-radius: var(--paper-radius, 4px);
 }
 
 /* ---------- Pills ---------- */
@@ -168,11 +169,11 @@ button:not(:disabled):active, a:active { transform: none; }
   box-shadow: none;
 }
 .payroll-strip, .admin-owner-note, .scholarship-insight, .portal-copy-preview,
-.balance-card, .scholarship-banner { border-radius: 12px; }
-.payroll-strip button, .balance-card button, .scholarship-banner > button { border-radius: 8px; color: var(--paper-midnight); background: #fff; }
+.balance-card, .scholarship-banner { border-radius: var(--paper-radius, 4px); }
+.payroll-strip button, .balance-card button, .scholarship-banner > button { border-radius: var(--paper-radius, 4px); color: var(--paper-midnight); background: #fff; }
 .login-brand-panel h1, .teacher-login-message h1, .student-login-quote blockquote { font-weight: 700; letter-spacing: -.035em; }
 .login-intro { font-family: var(--paper-serif); font-size: 18px; line-height: 1.56; }
-.brand-mark--light { border-radius: 8px; }
+.brand-mark--light { border-radius: var(--paper-radius, 4px); }
 .teacher-login > aside::after { border-color: rgba(255, 255, 255, .08); }
 
 /* ---------- Public admissions ---------- */
@@ -183,7 +184,7 @@ button:not(:disabled):active, a:active { transform: none; }
   background: color-mix(in srgb, var(--campus-canvas) 90%, transparent);
   box-shadow: var(--paper-nav-shadow);
 }
-.public-brand > span { border-radius: 8px; }
+.public-brand > span { border-radius: var(--paper-radius, 4px); }
 .public-header nav a { color: var(--paper-ink-60); font-weight: 500; }
 .public-header nav a:hover { color: #000; }
 .public-header nav a::after { display: none; }
@@ -203,13 +204,13 @@ button:not(:disabled):active, a:active { transform: none; }
   line-height: 1.56;
 }
 .public-eyebrow { color: var(--paper-ink-60); }
-.process-card { border: 1px solid var(--paper-hairline); border-radius: 12px; box-shadow: var(--paper-mockup-shadow); }
+.process-card { border: 1px solid var(--paper-hairline); border-radius: var(--paper-radius, 4px); box-shadow: var(--paper-mockup-shadow); }
 
 .public-benefits { margin-top: 32px; }
 .public-programs h2 { font-weight: 700; letter-spacing: -.035em; line-height: 1.04; }
 .public-programs article {
   border: 1px solid var(--paper-hairline);
-  border-radius: 12px;
+  border-radius: var(--paper-radius, 4px);
   background: var(--campus-paper);
   box-shadow: none;
 }
