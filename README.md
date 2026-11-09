@@ -3,6 +3,8 @@
 Inventario de módulos faltantes y secuencia de trabajo: [MODULOS.md](MODULOS.md).
 Estándar visual obligatorio (colores, tipografía, componentes): [DESIGN.md](DESIGN.md).
 
+Plan de producto e implementación: [docs/PROPUESTA.md](docs/PROPUESTA.md) y [docs/PLAN.md](docs/PLAN.md). Cómo trabajamos (ramas, commits, PR, definición de terminado): [docs/TRABAJO.md](docs/TRABAJO.md). Reglas para Claude Code: [CLAUDE.md](CLAUDE.md) y la skill `.claude/skills/campusone-domain`.
+
 
 Primera base visual para una plataforma integral de gestión universitaria.
 

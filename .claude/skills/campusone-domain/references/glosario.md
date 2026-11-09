@@ -1,0 +1,45 @@
+# Glosario escolar y fiscal (México)
+
+Términos que aparecen en código, pantallas y conversaciones con escuelas. En código se usa el identificador en inglés de la última columna.
+
+| Término | Significado | Identificador en código |
+| --- | --- | --- |
+| RVOE | Reconocimiento de Validez Oficial de Estudios: autorización de la SEP o del estado para un plan de una escuela particular. Tiene clave y fecha; aparece en documentos y facturas | `rvoe` |
+| CURP | Clave Única de Registro de Población, 18 caracteres. Identifica a alumnos y aspirantes | `curp` |
+| RFC | Registro Federal de Contribuyentes; dato fiscal de quien paga o factura | `rfc` |
+| Matrícula | Número de control del alumno dentro de la institución | `enrollmentNumber` |
+| Folio | Identificador de un trámite (p. ej. aspirante `ASP-2026-0148`) | `folio` |
+| Programa / carrera | Oferta educativa (licenciatura, bachillerato, posgrado) | `program` |
+| Plan de estudios | Versión del programa con sus materias por semestre; los alumnos quedan ligados a la versión con la que ingresaron | `planVersion` |
+| Periodo | Semestre, cuatrimestre o trimestre (p. ej. 2026-1) | `term` |
+| Grupo | Conjunto de alumnos de un semestre y turno en un periodo | `group` |
+| Carga académica | Materias inscritas por un alumno en un periodo | `enrollment` |
+| Kárdex | Historial académico: materias, calificaciones, oportunidades, promedios | `kardex` |
+| Parcial | Evaluación intermedia; la final se pondera según reglas de la institución | `partial` |
+| Extraordinario | Examen fuera del periodo ordinario para acreditar una materia reprobada | `extraordinary` |
+| Acta | Registro oficial de calificaciones de un grupo; al cerrarse ya no se edita sin movimiento autorizado | `gradeReport` |
+| Revalidación / equivalencia | Reconocimiento de materias cursadas en otra institución o plan | `revalidation` |
+| Baja temporal / definitiva | Suspensión o término de estudios; conserva historial | `movement` |
+| Bloqueo | Impedimento administrativo (adeudo, biblioteca, documentos) para inscribirse o recibir documentos | `block` |
+| Servicio social | Requisito de egreso (en licenciatura suele ser 480 horas; varía por institución y nivel) | `socialService` |
+| Residencia profesional | Estancia en empresa propia de tecnológicos; requisito de egreso | `residency` |
+| Titulación | Proceso y modalidad para obtener el título | `graduation` |
+| Título electrónico | XML firmado con e.firma de la institución y registrado ante la DGP | `electronicTitle` |
+| Cédula profesional | Registro emitido por la DGP tras registrar el título | — |
+| Certificado electrónico de bachillerato | Documento SEP con folio y QR, consultable en SIGED (terminación, formación profesional, parcial) | `certificate` |
+| MCCEMS | Marco Curricular Común de la Educación Media Superior | — |
+| Subsistema | DGB, DGETI, DGETA, CECyTE, preparatorias incorporadas, etc.; cada uno con normas de control escolar | `subsystem` |
+| Formato 911 | Estadística oficial SEP de inicio y fin de ciclo | `stats911` |
+| DGP | Dirección General de Profesiones (SEP) | — |
+| DGAIR | Dirección General de Acreditación, Incorporación y Revalidación (SEP) | — |
+| SIGED | Sistema de Información y Gestión Educativa de la SEP | — |
+| CFDI | Comprobante Fiscal Digital por Internet (factura electrónica 4.0) | `invoice` |
+| IEDU | Complemento de CFDI para colegiaturas deducibles (nombre, CURP, nivel y RVOE del alumno) | `iedu` |
+| PAC | Proveedor Autorizado de Certificación que timbra los CFDI | `pac` |
+| CSD | Certificado de Sello Digital de la escuela para facturar | `csd` |
+| e.firma (FIEL) | Firma electrónica avanzada del SAT; se usa también para firmar títulos | `efirma` |
+| Nómina 1.2 | Complemento de CFDI de nómina (revisión vigente según el SAT) | `payroll` |
+| Prenómina | Horas, incidencias, percepciones y deducciones antes de calcular y timbrar | `prePayroll` |
+| IDSE / SUA | Sistemas del IMSS para movimientos afiliatorios y cálculo de cuotas | — |
+| Derechos ARCO | Acceso, Rectificación, Cancelación y Oposición sobre datos personales | `arcoRequest` |
+| LFPDPPP | Ley Federal de Protección de Datos Personales en Posesión de los Particulares (nueva ley de marzo de 2025) | — |
