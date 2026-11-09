@@ -501,3 +501,12 @@ a:active {
     margin-top: 24px;
   }
 }
+
+/* ---------- Carga diferida de rutas ---------- */
+.page-loading {
+  display: grid;
+  min-height: 40vh;
+  place-items: center;
+  color: var(--paper-ink-60);
+  font-size: 14px;
+}
