@@ -74,4 +74,7 @@ Agrega una entrada al cerrar cada sprint: fecha, qué se terminó, qué no, velo
 
 ### Sprint 0 — iniciado el 9 de noviembre de 2026
 
-- En curso: tareas 0.2 a 0.15 de la fase 0.
+- Hecho: 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 0.10 y 0.15; estándares de trabajo (`CLAUDE.md`, skill, esta guía).
+- Corrección encontrada por las pruebas: el directorio de alumnos desbordaba la pantalla en móvil.
+- Siguiente: 0.11 y 0.12 (capa de servicios) en su propio PR; luego 0.13 y 0.14.
+- Pendiente de la persona dueña: 0.1 (merge) y 0.6 (proteger `main`).
