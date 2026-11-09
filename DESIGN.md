@@ -24,20 +24,20 @@ Este documento es la **norma visual obligatoria** de CampusOne. Todo módulo, pa
 
 ### 2.1 Paleta base (valores por defecto de `institution.json`)
 
-| Clave en `institution.json` | Variable CSS                               | Valor     | Uso                                        |
-| --------------------------- | ------------------------------------------ | --------- | ------------------------------------------ |
-| `primary`                   | `--brand-violet`, `--blue`, `--paper-blue` | `#0075DE` | Botón principal, enlaces, foco, gráficas   |
-| `secondary`                 | `--brand-coral`                            | `#F64932` | Alertas, notificaciones, acentos cálidos   |
-| `accent`                    | `--brand-amber`                            | `#FFB110` | Indicadores de atención, paneles de acento |
-| `background`                | `--campus-canvas`, `--brand-lavender`      | `#F6F5F4` | Lienzo de página                           |
-| `surface`                   | `--campus-paper`                           | `#FFFFFF` | Tarjetas, paneles, formularios             |
-| `text`                      | `--campus-ink`, `--brand-plum`             | `#000000` | Texto principal                            |
-| `muted`                     | `--campus-muted`                           | `#615D59` | Texto secundario (gris cálido)             |
-| `border`                    | `--campus-line`                            | `#E9E8E6` | Divisores sólidos                          |
-| `sidebar`                   | `--sidebar-bg`                             | `#EFEDEA` | Barra lateral (clara)                      |
-| `sidebarText`               | `--sidebar-text`                           | `#000000` | Texto de la barra lateral                  |
+| Clave en `institution.json` | Variable CSS                      | Valor     | Uso                                        |
+| --------------------------- | --------------------------------- | --------- | ------------------------------------------ |
+| `primary`                   | `--color-primary`, `--paper-blue` | `#0075DE` | Botón principal, enlaces, foco, gráficas   |
+| `secondary`                 | `--color-secondary`               | `#F64932` | Alertas, notificaciones, acentos cálidos   |
+| `accent`                    | `--color-accent`                  | `#FFB110` | Indicadores de atención, paneles de acento |
+| `background`                | `--color-canvas`                  | `#F6F5F4` | Lienzo de página                           |
+| `surface`                   | `--color-surface`                 | `#FFFFFF` | Tarjetas, paneles, formularios             |
+| `text`                      | `--color-text`                    | `#000000` | Texto principal                            |
+| `muted`                     | `--color-muted`                   | `#615D59` | Texto secundario (gris cálido)             |
+| `border`                    | `--color-border`                  | `#E9E8E6` | Divisores sólidos                          |
+| `sidebar`                   | `--color-sidebar`                 | `#EFEDEA` | Barra lateral (clara)                      |
+| `sidebarText`               | `--color-sidebar-text`            | `#000000` | Texto de la barra lateral                  |
 
-> Los nombres de variable `--brand-violet`, `--brand-plum`, etc. son históricos; se conservan por compatibilidad. **Su significado es el rol de la tabla, no el color de su nombre.**
+> Las variables se nombran por su función (`--color-*`), no por el color: cada institución define sus propios valores desde la personalización institucional. Las sombras y radios heredados se llaman `--shadow-*` y `--radius-*`.
 
 ### 2.2 Tokens del tema
 
@@ -63,7 +63,7 @@ Se mantienen independientes de la marca para que su significado no cambie:
 
 ### 2.4 Reglas
 
-- ✅ Usar siempre variables (`var(--campus-paper)`, `var(--paper-blue)`…), nunca hex sueltos, salvo los estados de 2.3.
+- ✅ Usar siempre variables (`var(--color-surface)`, `var(--paper-blue)`…), nunca hex sueltos, salvo los estados de 2.3.
 - ✅ Sobre fondos de color, el texto es `#000` o `#fff` según el contraste (mínimo WCAG AA).
 - ❌ No usar `linear-gradient` ni `radial-gradient` en superficies. (Excepción: el relleno del área de la gráfica de matrícula, que va de `primary` a transparente.)
 - ❌ No poner texto de párrafo o etiquetas en azul. El azul en texto solo es para enlaces y acciones.
@@ -148,7 +148,7 @@ Foco visible en todos: `outline: 2px solid var(--paper-blue); outline-offset: 2p
 
 ### 5.2 Tarjeta blanca (componente por defecto)
 
-Fondo `--campus-paper`, borde `--paper-hairline`, radio 4px, padding 24px, sin sombra. Título 600 a 17px, cuerpo `--campus-muted`.
+Fondo `--color-surface`, borde `--paper-hairline`, radio 4px, padding 24px, sin sombra. Título 600 a 17px, cuerpo `--color-muted`.
 
 ### 5.3 Indicador (stat card)
 
@@ -160,7 +160,7 @@ Radio `9999px`, padding `4px 10px`, 11–12px, peso 500, colores de la tabla 2.3
 
 ### 5.5 Navegación lateral
 
-- Fondo `--sidebar-bg` claro, borde derecho `--paper-hairline`, sin sombra ni barra de degradado.
+- Fondo `--color-sidebar` claro, borde derecho `--paper-hairline`, sin sombra ni barra de degradado.
 - Elemento: alto 36px, padding `8px 12px`, radio 4px, texto tinta 60%, peso 500.
 - Hover: fondo tinta 5%. Activo: fondo tinta 7%, texto tinta 100%. Sin borde lateral de color.
 - Títulos de sección: 10px, mayúsculas, tinta 40%, `+0.08em`.
@@ -170,7 +170,7 @@ Radio `9999px`, padding `4px 10px`, 11–12px, peso 500, colores de la tabla 2.3
 Para paneles destacados (`.login-brand-panel`, `.payroll-strip`, `.balance-card`, `.scholarship-banner`, `.scholarship-insight`, `.admin-owner-note`, `.portal-copy-preview`):
 
 - Fondo plano `--paper-midnight`, texto `#fff`, radio 4px.
-- Dentro del panel se redefinen localmente `--sidebar-text: #fff`, `--campus-muted: rgba(255,255,255,.64)` y `--campus-line: rgba(255,255,255,.78)` para que los hijos mantengan contraste.
+- Dentro del panel se redefinen localmente `--color-sidebar-text: #fff`, `--color-muted: rgba(255,255,255,.64)` y `--color-border: rgba(255,255,255,.78)` para que los hijos mantengan contraste.
 - Botón interno: fondo blanco, texto midnight.
 - Usar con moderación: **máximo uno por vista**.
 
@@ -184,8 +184,8 @@ Para paneles destacados (`.login-brand-panel`, `.payroll-strip`, `.balance-card`
 
 - Serie principal en `--paper-blue`, línea de 2px.
 - Área: degradado vertical del azul al 25% → 0% (única excepción a "sin degradados").
-- Series adicionales: `--brand-amber`, `--brand-coral`, `--campus-muted`.
-- Ejes y etiquetas en `--campus-muted`, 11–12px.
+- Series adicionales: `--color-accent`, `--color-secondary`, `--color-muted`.
+- Ejes y etiquetas en `--color-muted`, 11–12px.
 
 ---
 
@@ -205,7 +205,7 @@ Para paneles destacados (`.login-brand-panel`, `.payroll-strip`, `.balance-card`
 
 ## 7. Lista de verificación para PRs de interfaz
 
-- [ ] Fondo de página `--campus-canvas`; contenido sobre `--campus-paper`.
+- [ ] Fondo de página `--color-canvas`; contenido sobre `--color-surface`.
 - [ ] Sin `box-shadow` en tarjetas y sin `gradient` en superficies.
 - [ ] Radios con `var(--paper-radius)`; solo círculos y píldoras redondeados.
 - [ ] Un solo botón principal azul por vista.
