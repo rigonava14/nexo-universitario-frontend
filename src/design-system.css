@@ -73,7 +73,7 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
   height: 44px;
   color: var(--sidebar-text);
   border: 1px solid color-mix(in srgb, var(--sidebar-text) 18%, transparent);
-  border-radius: 14px;
+  border-radius: var(--paper-radius, 4px);
   background: color-mix(in srgb, var(--sidebar-text) 11%, transparent);
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--sidebar-text) 15%, transparent);
 }
@@ -113,7 +113,7 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
   gap: 12px;
   margin: 3px 0;
   padding: 11px 13px;
-  border-radius: 11px;
+  border-radius: var(--paper-radius, 4px);
   color: color-mix(in srgb, var(--sidebar-text) 74%, transparent);
   font-size: 13px;
 }
@@ -161,8 +161,8 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
 .search-box { width: 290px; height: 42px; border: 1px solid transparent; background: var(--campus-paper); box-shadow: var(--campus-shadow-sm); }
 .search-box:focus-within { border-color: rgba(84, 32, 168, .35); }
 .search-box input { font-size: 13px; }
-.notification, .student-notification, .teacher-notification, .header-avatar, .student-top-avatar, .teacher-avatar { width: 42px; height: 42px; border-radius: 12px; }
-.header-avatar, .student-top-avatar, .teacher-avatar { font-size: 12px; font-weight: 800; }
+.notification, .student-notification, .teacher-notification, .header-avatar, .student-top-avatar, .teacher-avatar { width: 42px; height: 42px; border-radius: var(--paper-radius, 4px); }
+.header-avatar, .student-top-avatar, .teacher-avatar { font-size: 12px; font-weight:700; }
 
 .page-content, .student-content, .teacher-content {
   max-width: 1580px;
@@ -174,7 +174,7 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
   margin-top: 6px;
   margin-bottom: 8px;
   color: var(--campus-ink);
-  font: 800 clamp(30px, 2.4vw, 38px)/1.08 'Manrope';
+  font:700 clamp(30px, 2.4vw, 38px)/1.08 'Inter';
   letter-spacing: -.045em;
 }
 .welcome-row p, .student-page-heading span, .teacher-heading span, .module-heading > div > p:last-child {
@@ -224,7 +224,7 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
 .stat-card > p, .student-summary-grid small, .teacher-metrics small { color: var(--campus-muted); font-size: 12px !important; }
 .stat-card > strong, .student-summary-grid strong, .teacher-metrics strong { font-size: 28px; }
 .stat-card small, .student-summary-grid p, .teacher-metrics p { font-size: 11px !important; }
-.student-metric, .teacher-metrics article > span, .metric-icon { width: 46px; height: 46px; border-radius: 13px; }
+.student-metric, .teacher-metrics article > span, .metric-icon { width: 46px; height: 46px; border-radius: var(--paper-radius, 4px); }
 
 .dashboard-grid, .student-home-grid, .teacher-home-grid { gap: 22px; margin-bottom: 22px; }
 .panel-heading, .student-panel-title, .teacher-panel-title { padding: 24px 25px 18px; }
@@ -236,7 +236,7 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
 .grade-preview strong, .grade-preview small, .pending-list strong, .pending-list small,
 .today-groups strong, .today-groups small { font-size: 12px !important; }
 .quick-actions span, .teacher-actions span { font-size: 13px; }
-.quick-actions > div:last-child button, .teacher-actions > div:last-child button { min-height: 82px; border-radius: 13px; }
+.quick-actions > div:last-child button, .teacher-actions > div:last-child button { min-height: 82px; border-radius: var(--paper-radius, 4px); }
 
 .subject-grid, .teacher-group-grid, .procedure-grid, .reports-layout, .profile-layout, .teacher-profile-layout { gap: 20px; }
 .subject-grid article, .teacher-group-grid article, .process-overview-grid article { padding: 26px; }
@@ -256,13 +256,13 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
   border-bottom-color: color-mix(in srgb, var(--brand-violet) 10%, transparent);
   background: color-mix(in srgb, var(--campus-paper) 90%, transparent);
 }
-.public-brand > span { width: 44px; height: 44px; border-radius: 14px; }
+.public-brand > span { width: 44px; height: 44px; border-radius: var(--paper-radius, 4px); }
 .public-brand strong { font-size: 19px; }
 .public-brand small { font-size: 11px; }
 .public-header nav a { position: relative; font-size: 14px; }
 .public-header nav a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -8px; height: 2px; background: var(--brand-coral); transition: right .18s ease; }
 .public-header nav a:hover::after { right: 0; }
-.outline-link { padding: 11px 16px; border-radius: 11px; font-size: 12px; }
+.outline-link { padding: 11px 16px; border-radius: var(--paper-radius, 4px); font-size: 12px; }
 
 .admissions-hero {
   min-height: 650px;
@@ -287,21 +287,21 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
 .public-eyebrow { font-size: 12px; }
 .hero-copy h1 { max-width: 690px; font-size: clamp(52px, 6vw, 78px); }
 .hero-copy > p:nth-child(3) { font-size: 18px; }
-.public-primary, .public-secondary { min-height: 48px; padding: 14px 20px; border-radius: 12px; font-size: 13px; }
+.public-primary, .public-secondary { min-height: 48px; padding: 14px 20px; border-radius: var(--paper-radius, 4px); font-size: 13px; }
 .hero-help { font-size: 12px; }
-.process-card { width: min(470px, 100%); padding: 32px; border-radius: 24px; box-shadow: 0 30px 80px rgba(38, 20, 56, .14); }
+.process-card { width: min(470px, 100%); padding: 32px; border-radius: var(--paper-radius, 4px); box-shadow: 0 30px 80px rgba(38, 20, 56, .14); }
 .process-card-top small, .mini-step small { font-size: 11px; }
 .process-card-top strong, .mini-step strong { font-size: 13px; }
 .mini-step { padding-top: 20px; }
 
-.public-benefits { max-width: 1200px; margin-top: -30px; border-radius: 18px; box-shadow: var(--campus-shadow-md); }
+.public-benefits { max-width: 1200px; margin-top: -30px; border-radius: var(--paper-radius, 4px); box-shadow: var(--campus-shadow-md); }
 .public-benefits > div { grid-template-columns: 38px 1fr; padding: 29px 32px; }
 .public-benefits strong { font-size: 14px; }
 .public-benefits span { font-size: 12px; }
 .public-programs { max-width: 1220px; margin-block: 105px; }
 .public-programs h2 { font-size: 38px; }
 .public-programs > div { gap: 20px; }
-.public-programs article { min-height: 210px; padding: 26px; border-radius: 18px; background: linear-gradient(160deg, var(--campus-paper), color-mix(in srgb, var(--campus-paper) 92%, var(--brand-violet))); box-shadow: var(--campus-shadow-sm); }
+.public-programs article { min-height: 210px; padding: 26px; border-radius: var(--paper-radius, 4px); background: linear-gradient(160deg, var(--campus-paper), color-mix(in srgb, var(--campus-paper) 92%, var(--brand-violet))); box-shadow: var(--campus-shadow-sm); }
 .public-programs article > span { color: var(--brand-coral); font-size: 13px; }
 .public-programs h3 { margin-top: 28px; font-size: 17px; }
 .public-programs article > p { margin: -7px 0 18px; color: var(--campus-muted); font-size: 12px; line-height: 1.5; }
@@ -311,11 +311,11 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
 .back-link { font-size: 13px; }
 .registration-layout > section h1, .tracking-intro h1 { font-size: 50px; }
 .registration-layout > section > p:nth-child(3), .tracking-intro > p:nth-child(3) { font-size: 15px; }
-.registration-form { padding: 38px; border-radius: 20px; box-shadow: var(--campus-shadow-md); }
+.registration-form { padding: 38px; border-radius: var(--paper-radius, 4px); box-shadow: var(--campus-shadow-md); }
 .form-section-title strong, .registration-assurance strong { font-size: 14px; }
 .form-section-title small, .registration-assurance small { font-size: 12px; }
 .registration-form > label, .registration-form .two-fields label { font-size: 13px; }
-.registration-form input:not([type='checkbox']), .registration-form select { min-height: 48px; padding-inline: 15px; border-radius: 10px; font-size: 14px; }
+.registration-form input:not([type='checkbox']), .registration-form select { min-height: 48px; padding-inline: 15px; border-radius: var(--paper-radius, 4px); font-size: 14px; }
 .terms-check { font-size: 13px !important; }
 .tracking-intro form input { font-size: 14px; }
 .tracking-intro form button { padding: 12px 20px; font-size: 13px; }

@@ -13,6 +13,7 @@ import './scholarships.css'
 import './permissions.css'
 import './theme.css'
 import './design-system.css'
+import './paper-theme.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

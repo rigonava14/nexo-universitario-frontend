@@ -305,15 +305,15 @@
     ]
   },
   "colors": {
-    "primary": "#4C1D95",
-    "secondary": "#F05D5E",
-    "accent": "#FBBF24",
-    "background": "#F5F3FF",
-    "surface": "#FFFDFB",
-    "text": "#241535",
-    "muted": "#74677F",
-    "border": "#E6DEEE",
-    "sidebar": "#261438",
-    "sidebarText": "#FFFFFF"
+    "primary": "#0075DE",
+    "secondary": "#F64932",
+    "accent": "#FFB110",
+    "background": "#F6F5F4",
+    "surface": "#FFFFFF",
+    "text": "#000000",
+    "muted": "#615D59",
+    "border": "#E9E8E6",
+    "sidebar": "#EFEDEA",
+    "sidebarText": "#000000"
   }
 }
