@@ -1,14 +1,14 @@
 .operation-module { min-width: 0; }
 .operation-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px; }
 .operation-summary article { padding: 20px; background: var(--campus-paper); border: 1px solid var(--campus-line); border-radius: 14px; }
-.operation-summary small { display: block; color: var(--campus-muted); }.operation-summary strong { display: block; margin-top: 8px; font: 800 26px Manrope, sans-serif; color: var(--campus-ink); }
+.operation-summary small { display: block; color: var(--campus-muted); }.operation-summary strong { display: block; margin-top: 8px; font:700 26px Inter, sans-serif; color: var(--campus-ink); }
 .operation-toolbar { display: flex; flex-wrap: wrap; gap: 12px; padding: 18px 20px; border-bottom: 1px solid var(--campus-line); background: var(--campus-paper); }
 .operation-toolbar label { flex: 1; min-width: 180px; display: flex; align-items: center; gap: 8px; padding: 0 12px; border: 1px solid var(--campus-line); border-radius: 9px; color: var(--campus-muted); }
 .operation-toolbar input { width: 100%; min-width: 0; border: 0; background: transparent; color: var(--campus-ink); min-height: 44px; }
 .operation-toolbar select { min-height: 44px; max-width: 100%; padding: 0 12px; border: 1px solid var(--campus-line); border-radius: 9px; background: var(--campus-paper); color: var(--campus-ink); }
 .operation-cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; padding: 20px; }
 .operation-cards article { padding: 22px; border: 1px solid var(--campus-line); border-radius: 14px; background: var(--campus-paper); overflow-wrap: anywhere; }
-.operation-cards h2 { font: 800 19px Manrope, sans-serif; }.operation-cards p { color: var(--campus-muted); line-height: 1.6; }
+.operation-cards h2 { font:700 19px Inter, sans-serif; }.operation-cards p { color: var(--campus-muted); line-height: 1.6; }
 .operation-card-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .operation-checklist { padding: 18px; border: 1px solid var(--campus-line); border-radius: 10px; display: grid; gap: 12px; }
 .operation-checklist label { display: flex; align-items: center; gap: 10px; }.operation-checklist input[type=checkbox] { width: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--brand-violet); }

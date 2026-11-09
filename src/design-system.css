@@ -162,7 +162,7 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
 .search-box:focus-within { border-color: rgba(84, 32, 168, .35); }
 .search-box input { font-size: 13px; }
 .notification, .student-notification, .teacher-notification, .header-avatar, .student-top-avatar, .teacher-avatar { width: 42px; height: 42px; border-radius: 12px; }
-.header-avatar, .student-top-avatar, .teacher-avatar { font-size: 12px; font-weight: 800; }
+.header-avatar, .student-top-avatar, .teacher-avatar { font-size: 12px; font-weight:700; }
 
 .page-content, .student-content, .teacher-content {
   max-width: 1580px;
@@ -174,7 +174,7 @@ button:not(:disabled):active, a:active { transform: translateY(1px); }
   margin-top: 6px;
   margin-bottom: 8px;
   color: var(--campus-ink);
-  font: 800 clamp(30px, 2.4vw, 38px)/1.08 'Manrope';
+  font:700 clamp(30px, 2.4vw, 38px)/1.08 'Inter';
   letter-spacing: -.045em;
 }
 .welcome-row p, .student-page-heading span, .teacher-heading span, .module-heading > div > p:last-child {

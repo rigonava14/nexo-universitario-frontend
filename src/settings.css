@@ -10,7 +10,7 @@
 .institution-settings-layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 20px; align-items: start; }
 .institution-form { overflow: hidden; }
 .institution-form-section { padding: 25px 28px 29px; border-bottom: 1px solid var(--campus-line); }
-.institution-form-section h2 { margin: 0 0 5px; color: var(--brand-plum); font: 800 17px Manrope, sans-serif; }
+.institution-form-section h2 { margin: 0 0 5px; color: var(--brand-plum); font:700 17px Inter, sans-serif; }
 .institution-form-section>p { margin: 0 0 23px; color: var(--campus-muted); font-size: 12px; line-height: 1.5; }
 .institution-section-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 23px; }
 .institution-section-title h2 { margin-bottom: 5px; }
@@ -63,22 +63,22 @@
 .visual-preview-main header span { width: 70px; height: 7px; border-radius: 99px; background: currentColor; opacity: .13; }
 .visual-preview-main header i { width: 22px; height: 22px; border-radius: 50%; }
 .visual-preview-main main { padding: 30px 20px; }
-.visual-preview-main main>small { font-size: 7px; font-weight: 800; letter-spacing: .07em; }
-.visual-preview-main h3 { margin: 10px 0 6px; font: 800 17px/1.2 Manrope, sans-serif; overflow-wrap: anywhere; }
+.visual-preview-main main>small { font-size: 7px; font-weight:700; letter-spacing: .07em; }
+.visual-preview-main h3 { margin: 10px 0 6px; font:700 17px/1.2 Inter, sans-serif; overflow-wrap: anywhere; }
 .visual-preview-main p { margin: 0; font-size: 9px; line-height: 1.45; }
 .visual-preview-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 20px 0; }
 .visual-preview-cards i { display: block; height: 64px; border: 1px solid; border-radius: 9px; }
-.visual-preview-main button { padding: 9px 11px; border: 0; border-radius: 7px; font-size: 8px; font-weight: 800; }
+.visual-preview-main button { padding: 9px 11px; border: 0; border-radius: 7px; font-size: 8px; font-weight:700; }
 .institution-preview-page { min-height: 300px; padding: 21px 17px 27px; }
 .institution-preview-header { display: flex; align-items: center; gap: 8px; padding-bottom: 18px; border-bottom: 1px solid var(--campus-paper); }
 .institution-preview-logo { width: 36px; height: 36px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 9px; color: var(--campus-paper); }
 .institution-preview-header strong, .institution-preview-header small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 226px; }
-.institution-preview-header strong { font: 800 12px Manrope, sans-serif; }
+.institution-preview-header strong { font:700 12px Inter, sans-serif; }
 .institution-preview-header small { margin-top: 2px; font-size: 8px; }
 .institution-preview-hero { padding: 30px 6px 0; }
 .institution-preview-hero i { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; }
-.institution-preview-hero>span { font-size: 8px; font-weight: 800; letter-spacing: .07em; }
-.institution-preview-hero h3 { margin: 14px 0 8px; font: 800 20px/1.2 Manrope, sans-serif; overflow-wrap: anywhere; }
+.institution-preview-hero>span { font-size: 8px; font-weight:700; letter-spacing: .07em; }
+.institution-preview-hero h3 { margin: 14px 0 8px; font:700 20px/1.2 Inter, sans-serif; overflow-wrap: anywhere; }
 .institution-preview-hero p { margin: 0 0 18px; font-size: 10px; line-height: 1.45; }
 .institution-preview-hero button { padding: 9px 12px; border: 0; border-radius: 7px; color: var(--campus-paper); font-size: 9px; font-weight: 700; }
 .institution-preview-swatches { display: flex; gap: 7px; padding: 15px 18px; }
