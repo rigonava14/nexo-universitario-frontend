@@ -1,5 +1,6 @@
-import { FormEvent, useEffect, useState } from 'react'
-import { SchoolDocument, listDocuments, saveDocument, validateAttachment } from './document-store'
+import { FormEvent, useState } from 'react'
+import { SchoolDocument, validateAttachment } from './document-store'
+import { useDocuments } from './hooks/data'
 import { OperationFeedback } from './operation-ui'
 import './directory.css'
 
@@ -12,31 +13,15 @@ export default function DocumentFiles({
   ownerId: string
   administrative?: boolean
 }) {
-  const [documents, setDocuments] = useState<SchoolDocument[]>([])
+  const store = useDocuments(ownerType, ownerId)
+  const documents = store.data ?? []
   const [draft, setDraft] = useState<SchoolDocument | null>(null)
   const [file, setFile] = useState<File | null>(null)
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
-  const [loading, setLoading] = useState(true)
+  const loading = store.isPending
   const [saving, setSaving] = useState(false)
-  useEffect(() => {
-    let live = true
-    setLoading(true)
-    setError('')
-    listDocuments(ownerType, ownerId)
-      .then((items) => {
-        if (live) setDocuments(items)
-      })
-      .catch((failure: Error) => {
-        if (live) setError(failure.message)
-      })
-      .finally(() => {
-        if (live) setLoading(false)
-      })
-    return () => {
-      live = false
-    }
-  }, [ownerId, ownerType])
+  const loadError = store.error instanceof Error ? store.error.message : ''
   async function save(event: FormEvent) {
     event.preventDefault()
     if (!draft || saving) return
@@ -51,8 +36,7 @@ export default function DocumentFiles({
         blob: file ?? draft.blob,
         fileName: file?.name ?? draft.fileName,
       }
-      await saveDocument(document)
-      setDocuments(await listDocuments(ownerType, ownerId))
+      await store.save(document)
       setDraft(null)
       setFile(null)
       setNotice('Documento guardado en este navegador.')
@@ -103,7 +87,7 @@ export default function DocumentFiles({
         PDF, PNG o JPEG · Hasta 10 MB por archivo. Archivos locales en este navegador; la revisión la registra el
         personal responsable.
       </p>
-      <OperationFeedback error={error} notice={notice} />
+      <OperationFeedback error={error || loadError} notice={notice} />
       {loading ? (
         <p role="status">Cargando documentos…</p>
       ) : (

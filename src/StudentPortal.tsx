@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { getCurrentEmail, getRole, signOut } from './auth'
-import { loadDirectory } from './directory'
+import { useDirectoryRecords } from './hooks/data'
 import DocumentFiles from './DocumentFiles'
-import { loadInstitutionSettings } from './institution'
+import { useAppState } from './app-state'
 import FadeContent from './components/FadeContent'
 import {
   Award,
@@ -1099,8 +1099,10 @@ export default function StudentPortal() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [notice, setNotice] = useState('')
   const active = location.pathname.split('/')[2] || 'inicio'
+  const { institution } = useAppState()
+  const directory = useDirectoryRecords('students')
   const [linkedStudent] = useState(() =>
-    loadDirectory('students').records.find((item) => item.email.toLowerCase() === getCurrentEmail()?.toLowerCase()),
+    directory.records.find((item) => item.email.toLowerCase() === getCurrentEmail()?.toLowerCase()),
   )
 
   function notify(message: string) {
@@ -1157,7 +1159,7 @@ export default function StudentPortal() {
             <Menu size={20} />
           </button>
           <div>
-            <strong>{loadInstitutionSettings().name}</strong>
+            <strong>{institution.name}</strong>
             <span>Periodo 2026-2</span>
           </div>
           <div>

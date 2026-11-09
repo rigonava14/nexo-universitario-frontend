@@ -1,49 +1,33 @@
-import { useEffect, useRef, useState } from 'react'
-import { loadDirectory } from './directory'
+import { useQueryClient } from '@tanstack/react-query'
 import { InstitutionSettings } from './institution'
-import { SchoolData, effectiveStudentStatus, loadSchool, schoolKey, validSchool } from './school'
+import { SchoolData, effectiveStudentStatus, validSchool } from './school'
+import { useDirectoryRecords, useSchoolStore } from './hooks/data'
+import { queryKeys } from './hooks/query-client'
+import type { Loaded } from './services'
+
 export function useSchool(settings: InstitutionSettings) {
-  const [loaded] = useState(() => loadSchool(settings))
-  const [data, setData] = useState(loaded.data)
-  const [students] = useState(() => loadDirectory('students'))
-  const [teachers] = useState(() => loadDirectory('teachers'))
-  const [error, setError] = useState('')
-  const [notice, setNotice] = useState('')
-  const expected = useRef<string | null>(null)
-  const blocked = loaded.error || students.error || teachers.error
-  useEffect(() => {
-    try {
-      expected.current = localStorage.getItem(schoolKey)
-    } catch {
-      setError('El almacenamiento está bloqueado.')
-    }
-  }, [])
+  const queryClient = useQueryClient()
+  const store = useSchoolStore(settings)
+  const students = useDirectoryRecords('students')
+  const teachers = useDirectoryRecords('teachers')
+  const data = store.data
+  const blocked = store.loadError || students.error || teachers.error
+  function setData(next: SchoolData) {
+    queryClient.setQueryData<Loaded<SchoolData>>(queryKeys.school, (current) =>
+      current ? { ...current, data: next } : current,
+    )
+  }
   function commit(next: SchoolData) {
-    setNotice('')
+    store.setNotice('')
     if (blocked) {
-      setError(blocked)
+      store.setError(blocked)
       return false
     }
     if (!validSchool(next)) {
-      setError('Revisa campos, relaciones, códigos duplicados y valores numéricos antes de guardar.')
+      store.setError('Revisa campos, relaciones, códigos duplicados y valores numéricos antes de guardar.')
       return false
     }
-    try {
-      if (localStorage.getItem(schoolKey) !== expected.current) {
-        setError('Los datos cambiaron en otra pestaña. Recarga antes de guardar.')
-        return false
-      }
-      const serialized = JSON.stringify(next)
-      localStorage.setItem(schoolKey, serialized)
-      expected.current = serialized
-      setData(next)
-      setError('')
-      setNotice('Cambios guardados en este navegador.')
-      return true
-    } catch {
-      setError('No se pudo guardar. El estado anterior se conservó. Revisa el espacio disponible del navegador.')
-      return false
-    }
+    return store.commit(next)
   }
   const effectiveStudents = students.records.map((item) => ({
     ...item,
@@ -58,9 +42,9 @@ export function useSchool(settings: InstitutionSettings) {
     setData,
     students: effectiveStudents,
     teachers: teachers.records,
-    error: blocked || error,
-    setError,
-    notice,
+    error: blocked || store.error,
+    setError: store.setError,
+    notice: store.notice,
     blocked: !!blocked,
     commit,
   }

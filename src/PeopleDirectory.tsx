@@ -1,16 +1,18 @@
 import { FormEvent, useEffect, useRef, useState } from 'react'
 import { GraduationCap, Plus, Save, Search, Users, X } from 'lucide-react'
-import { DirectoryKind, DirectoryRecord, filterDirectory, loadDirectory, prepareDirectoryRecord } from './directory'
+import { DirectoryKind, DirectoryRecord, filterDirectory, prepareDirectoryRecord } from './directory'
+import { useDirectoryStore, useSchoolData } from './hooks/data'
 import { InstitutionSettings } from './institution'
 import './directory.css'
 import { Link } from 'react-router-dom'
 import DocumentFiles from './DocumentFiles'
-import { effectiveStudentStatus, loadSchool, studentIsWithdrawn } from './school'
+import { effectiveStudentStatus, studentIsWithdrawn } from './school'
 
 export default function PeopleDirectory({ kind, settings }: { kind: DirectoryKind; settings: InstitutionSettings }) {
-  const [loaded] = useState(() => loadDirectory(kind))
-  const [records, setRecords] = useState(loaded.records)
-  const [school] = useState(() => loadSchool(settings))
+  const directory = useDirectoryStore(kind)
+  const loaded = { records: directory.data, error: directory.loadError }
+  const records = directory.data
+  const school = useSchoolData(settings)
   const [query, setQuery] = useState('')
   const [area, setArea] = useState('')
   const [status, setStatus] = useState('')
@@ -96,13 +98,7 @@ export default function PeopleDirectory({ kind, settings }: { kind: DirectoryKin
     const next = records.some((item) => item.id === draft.id)
       ? records.map((item) => (item.id === draft.id ? result.record : item))
       : [...records, result.record]
-    try {
-      localStorage.setItem(`campusone-${kind}-v1`, JSON.stringify(next))
-    } catch {
-      setError('No se pudo guardar. Revisa el espacio o los permisos del navegador e intenta nuevamente.')
-      return
-    }
-    setRecords(next)
+    directory.commit(next, '')
     setQuery('')
     setArea('')
     setStatus('')
@@ -131,9 +127,9 @@ export default function PeopleDirectory({ kind, settings }: { kind: DirectoryKin
       <p className="directory-local">
         Demostración local · Los expedientes de este directorio se guardan únicamente en este navegador.
       </p>
-      {loaded.error && (
+      {(loaded.error || directory.error) && (
         <p className="directory-error" role="alert">
-          {loaded.error}
+          {loaded.error || directory.error}
         </p>
       )}
       {notice && (

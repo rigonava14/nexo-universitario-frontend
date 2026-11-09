@@ -1,44 +1,35 @@
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
-import { DirectoryRecord, loadDirectory } from './directory'
-import { Operations, loadOperations, saveOperations } from './operations'
+import { DirectoryRecord } from './directory'
+import { Operations, validOperations } from './operations'
+import { useDirectoryRecords, useOperationsStore } from './hooks/data'
 import './operations.css'
 
 export function useOperations() {
-  const [loaded] = useState(loadOperations)
-  const [students] = useState(() => loadDirectory('students'))
-  const [teachers] = useState(() => loadDirectory('teachers'))
-  const [data, setData] = useState(loaded.data)
-  const [error, setError] = useState('')
-  const [notice, setNotice] = useState('')
-  const blocked = loaded.error || students.error || teachers.error
+  const store = useOperationsStore()
+  const students = useDirectoryRecords('students')
+  const teachers = useDirectoryRecords('teachers')
+  const blocked = store.loadError || students.error || teachers.error
   function commit(next: Operations) {
-    setNotice('')
-    const current = loadOperations()
-    const changedElsewhere = JSON.stringify(current.data) !== JSON.stringify(data)
-    const failure =
-      blocked ||
-      current.error ||
-      (changedElsewhere
-        ? 'Los datos cambiaron en otra pestaña. Recarga este módulo antes de guardar para conservar los cambios existentes.'
-        : saveOperations(next))
-    if (failure) {
-      setError(failure)
+    store.setNotice('')
+    if (blocked) {
+      store.setError(blocked)
       return false
     }
-    setData(next)
-    setError('')
-    setNotice('Cambios guardados en este navegador.')
-    return true
+    if (!validOperations(next)) {
+      store.setError('Revisa los campos obligatorios, fechas, identificadores, cupos y porcentajes.')
+      return false
+    }
+    return store.commit(next)
   }
   return {
-    data,
+    data: store.data,
     students: students.records,
     teachers: teachers.records,
-    error: blocked || error,
+    error: blocked || store.error,
     blocked: !!blocked,
-    notice,
-    setError,
+    notice: store.notice,
+    setError: store.setError,
     commit,
   }
 }

@@ -18,10 +18,21 @@ export default tseslint.config(
   },
   {
     files: ['src/**/*.{ts,tsx}'],
-    ignores: ['src/services/local/**'],
+    ignores: ['src/services/**'],
     rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['**/services/local/*'],
+              message: 'Usa `services` desde src/services o un hook de src/hooks; los adaptadores son intercambiables.',
+            },
+          ],
+        },
+      ],
       'no-restricted-globals': [
-        'warn', // pasa a 'error' al terminar la tarea 0.12
+        'error',
         { name: 'localStorage', message: 'Usa src/services/: las pantallas no acceden a almacenamiento (ADR 0001).' },
         { name: 'sessionStorage', message: 'Usa src/services/: las pantallas no acceden a almacenamiento (ADR 0001).' },
         { name: 'indexedDB', message: 'Usa src/services/: las pantallas no acceden a almacenamiento (ADR 0001).' },

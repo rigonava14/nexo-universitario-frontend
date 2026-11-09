@@ -1,16 +1,14 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
-import { Applicant, loadApplicants, saveApplicants } from './admissions'
-import {
-  InstitutionSettings,
-  applyInstitutionSettings,
-  loadInstitutionSettings,
-  resetInstitutionSettings,
-  saveInstitutionSettings,
-} from './institution'
+import { createContext, ReactNode, useContext, useEffect } from 'react'
+import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
+import { Applicant } from './admissions'
+import { InstitutionSettings, applyInstitutionSettings } from './institution'
+import { services } from './services'
+import { queryKeys } from './hooks/query-client'
 
 type AppState = {
   institution: InstitutionSettings
-  updateInstitution: (settings: InstitutionSettings) => void
+  /** Aplica el cambio al momento y lo guarda; si el guardado falla, revierte y rechaza la promesa. */
+  updateInstitution: (settings: InstitutionSettings) => Promise<void>
   restoreInstitution: () => void
   applicants: Applicant[]
   updateApplicant: (applicant: Applicant) => void
@@ -19,35 +17,51 @@ type AppState = {
 
 const AppStateContext = createContext<AppState | null>(null)
 
-/** Estado compartido entre portales. En la tarea 0.12 sus lecturas y escrituras pasan a src/services/. */
+/** Configuración institucional y aspirantes, compartidos entre portales. Los datos llegan por src/services. */
 export function AppStateProvider({ children }: { children: ReactNode }) {
-  const [applicants, setApplicants] = useState<Applicant[]>(loadApplicants)
-  const [institution, setInstitution] = useState<InstitutionSettings>(loadInstitutionSettings)
+  const queryClient = useQueryClient()
+  const { data: institution } = useSuspenseQuery({
+    queryKey: queryKeys.institution,
+    queryFn: () => services.institution.load(),
+  })
+  const { data: applicants } = useSuspenseQuery({
+    queryKey: queryKeys.applicants,
+    queryFn: () => services.admissions.list(),
+  })
   useEffect(() => applyInstitutionSettings(institution), [institution])
+
+  function setInstitution(settings: InstitutionSettings) {
+    queryClient.setQueryData(queryKeys.institution, settings)
+    // El catálogo de control escolar se arma con los planes: se vuelve a leer al abrir el módulo de nuevo,
+    // no a mitad de una edición.
+    void queryClient.invalidateQueries({ queryKey: queryKeys.school, refetchType: 'none' })
+  }
+
+  function setApplicants(update: (current: Applicant[]) => Applicant[]) {
+    const next = update(queryClient.getQueryData<Applicant[]>(queryKeys.applicants) ?? applicants)
+    queryClient.setQueryData(queryKeys.applicants, next)
+    void services.admissions.save(next)
+  }
 
   const value: AppState = {
     institution,
     updateInstitution(settings) {
-      saveInstitutionSettings(settings)
+      const previous = queryClient.getQueryData<InstitutionSettings>(queryKeys.institution) ?? institution
       setInstitution(settings)
+      return services.institution.save(settings).catch((error: unknown) => {
+        setInstitution(previous)
+        throw error
+      })
     },
     restoreInstitution() {
-      setInstitution(resetInstitutionSettings())
+      void services.institution.reset().then(setInstitution)
     },
     applicants,
     updateApplicant(updated) {
-      setApplicants((current) => {
-        const next = current.map((item) => (item.id === updated.id ? updated : item))
-        saveApplicants(next)
-        return next
-      })
+      setApplicants((current) => current.map((item) => (item.id === updated.id ? updated : item)))
     },
     createApplicant(applicant) {
-      setApplicants((current) => {
-        const next = [applicant, ...current]
-        saveApplicants(next)
-        return next
-      })
+      setApplicants((current) => [applicant, ...current])
     },
   }
 
