@@ -62,7 +62,6 @@ export type SchoolData = {
     requestSnapshot: TeachingRequest[]
   }[]
 }
-export const schoolKey = 'campusone-school-v1'
 export const emptySchool: SchoolData = {
   subjects: [],
   groups: [],
@@ -231,29 +230,6 @@ export function validSchool(value: unknown): value is SchoolData {
         ),
     )
   )
-}
-export function loadSchool(settings: InstitutionSettings): { data: SchoolData; error: string } {
-  try {
-    const saved = localStorage.getItem(schoolKey)
-    const data: unknown = saved === null ? structuredClone(emptySchool) : JSON.parse(saved)
-    if (!validSchool(data)) throw new Error('Invalid school data')
-    // The catalogue starts with the existing plan subjects; no existing record is replaced.
-    for (const program of settings.academicOffer.programs)
-      for (const term of program.curriculum)
-        for (const subject of term.subjects)
-          if (
-            !data.subjects.some(
-              (item) => item.id === subject.id || item.code.toLowerCase() === subject.code.toLowerCase(),
-            )
-          )
-            data.subjects.push({ ...subject })
-    return { data, error: '' }
-  } catch {
-    return {
-      data: structuredClone(emptySchool),
-      error: 'No se pudo leer Control escolar. La escritura está bloqueada para proteger los datos guardados.',
-    }
-  }
 }
 export function studentProgram(data: SchoolData, studentId: string, area: string, settings: InstitutionSettings) {
   return (

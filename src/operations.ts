@@ -71,7 +71,6 @@ export type Operations = {
   englishEnrollments: EnglishEnrollment[]
   settings: OperatingSettings
 }
-export const operationsKey = 'campusone-operations-v1'
 export const defaultOperations: Operations = {
   residencies: [],
   graduations: [],
@@ -210,32 +209,6 @@ export function validOperations(value: unknown): value is Operations {
       data.englishEnrollments.filter((item) => item.groupId === group.id && item.status === 'Inscrito').length <=
       group.capacity,
   )
-}
-
-export function loadOperations(): { data: Operations; error: string } {
-  try {
-    const saved = localStorage.getItem(operationsKey)
-    if (saved === null) return { data: structuredClone(defaultOperations), error: '' }
-    const data: unknown = JSON.parse(saved)
-    if (!validOperations(data)) throw new Error('Invalid operations')
-    return { data, error: '' }
-  } catch {
-    return {
-      data: structuredClone(defaultOperations),
-      error:
-        'No se pudieron leer los datos operativos guardados. Para protegerlos, la edición está bloqueada hasta corregir el almacenamiento del navegador.',
-    }
-  }
-}
-
-export function saveOperations(data: Operations): string {
-  if (!validOperations(data)) return 'Revisa los campos obligatorios, fechas, identificadores, cupos y porcentajes.'
-  try {
-    localStorage.setItem(operationsKey, JSON.stringify(data))
-    return ''
-  } catch {
-    return 'No se pudo guardar. Revisa el espacio y los permisos del navegador e intenta de nuevo.'
-  }
 }
 
 export function residencyError(item: Residency, settings: OperatingSettings, others: Residency[]) {
