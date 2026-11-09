@@ -8,12 +8,12 @@ Estados: **Hecho**, **En curso**, **Siguiente**, **Pendiente**.
 
 | #    | Historia                                                    | Estado    | Notas                                                                                                         |
 | ---- | ----------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------- |
-| 0.1  | Fusionar el PR del tema visual y `DESIGN.md`                | Pendiente | Lo hace la persona dueña en GitHub; este PR ya incluye el trabajo de la fase 0                                |
+| 0.1  | Fusionar el PR del tema visual y `DESIGN.md`                | Hecho     | PR #1 y PR #2 fusionados en `main`                                                                            |
 | 0.2  | Fijar versiones exactas                                     | Hecho     | TypeScript bajó a 6.0.3: `typescript-eslint` aún no soporta la 7                                              |
 | 0.3  | Node 24 en `.nvmrc` y `engines`                             | Hecho     | `engines` acepta desde 22.18 para entornos locales                                                            |
 | 0.4  | Prettier y ESLint, formateo completo                        | Hecho     | La regla de almacenamiento está en advertencia (23 casos) hasta 0.12                                          |
 | 0.5  | CI en GitHub Actions                                        | Hecho     | `.github/workflows/ci.yml`                                                                                    |
-| 0.6  | Proteger `main`                                             | Pendiente | Configuración manual en GitHub: PR obligatorio + CI en verde                                                  |
+| 0.6  | Proteger `main`                                             | Hecho     | Ruleset en GitHub: PR obligatorio, CI en verde (lint/build/reglas y Playwright), sin force push ni borrado    |
 | 0.7  | Quitar `gsap`                                               | Hecho     | Paquete principal de 736 kB a 622 kB                                                                          |
 | 0.8  | Backlog                                                     | Hecho     | Este archivo                                                                                                  |
 | 0.9  | Rutas declaradas con carga diferida                         | Hecho     | Paquete inicial 290 kB (meta del plan: 250 kB; revisar en 0.13)                                               |
