@@ -11,7 +11,6 @@ import {
   Save,
   Search,
   Trash2,
-  Users,
   X,
 } from 'lucide-react'
 import { InstitutionSettings } from './institution'

@@ -26,7 +26,6 @@ import {
   Menu,
   Pencil,
   Save,
-  School,
   Search,
   TrendingUp,
   UserRound,
