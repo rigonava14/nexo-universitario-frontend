@@ -1,6 +1,8 @@
 # CampusOne — Frontend
 
 Inventario de módulos faltantes y secuencia de trabajo: [MODULOS.md](MODULOS.md).
+Estándar visual obligatorio (colores, tipografía, componentes): [DESIGN.md](DESIGN.md).
+
 
 Primera base visual para una plataforma integral de gestión universitaria.
 
